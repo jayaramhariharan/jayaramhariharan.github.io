@@ -22,3 +22,6 @@ Date: 2026-04-11
 - Renamed the external case-study folder from `whattonamethis` to `C:\Users\jayar\portfolio_content_system`.
 - Added a junction at `C:\Users\jayar\portfolio_jay_apr\portfolio_content_system` so the content system is reachable from the APR workspace without copying it into the app.
 - Prepared the app and content system for separate GitHub repos and backup flows.
+- Deleted the old GitHub repo `jrambackup1-lgtm/portfolio_Jay`.
+- Created and pushed the new app repo: `https://github.com/jrambackup1-lgtm/portfolio_jay_apr`.
+- Kept the content system as a separate backup repo and pushed it to: `https://github.com/jrambackup1-lgtm/portfolio_content_system`.
