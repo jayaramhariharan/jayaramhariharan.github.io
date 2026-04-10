@@ -19,6 +19,15 @@ GitHub status:
 - App repo is live and synced.
 - Content system is backed up separately and synced via its own repo.
 
+Vercel status:
+
+- Production project: `portfolio-jay-2026`
+- Production URL: `https://portfolio-jay-2026.vercel.app`
+- GitHub repo `jrambackup1-lgtm/portfolio_jay_apr` is connected to Vercel.
+- Pushes to `master` now trigger production deployments.
+- `vercel.json` is committed to keep Vite build settings explicit.
+- Older Vercel projects were removed; this is the only remaining Vercel project in the account.
+
 How to run:
 
 - `npm install`

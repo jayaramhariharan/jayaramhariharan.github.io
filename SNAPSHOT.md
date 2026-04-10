@@ -15,6 +15,21 @@ Validated runtime state:
 
 - Build passes with `npm run build`
 - Dev server responds on `http://127.0.0.1:40001/`
+- Production deploy responds at `https://portfolio-jay-2026.vercel.app`
+- GitHub `master` pushes now auto-deploy to Vercel
+
+Deployment state:
+
+- Vercel project: `portfolio-jay-2026`
+- Production URL: `https://portfolio-jay-2026.vercel.app`
+- Repo-linked auto deploy: `jrambackup1-lgtm/portfolio_jay_apr` on `master`
+- Older Vercel projects were removed during cleanup so this is the only remaining project in the account
+
+Deployment config:
+
+- `vercel.json` is tracked in the repo
+- Build command: `npm run build`
+- Output directory: `dist`
 
 Included preference files:
 

@@ -25,3 +25,15 @@ Date: 2026-04-11
 - Deleted the old GitHub repo `jrambackup1-lgtm/portfolio_Jay`.
 - Created and pushed the new app repo: `https://github.com/jrambackup1-lgtm/portfolio_jay_apr`.
 - Kept the content system as a separate backup repo and pushed it to: `https://github.com/jrambackup1-lgtm/portfolio_content_system`.
+- Added `vercel.json` with explicit Vite production settings:
+  - framework: `vite`
+  - build command: `npm run build`
+  - output directory: `dist`
+- Created and linked the Vercel project `portfolio-jay-2026`.
+- Connected Vercel to the GitHub repo `jrambackup1-lgtm/portfolio_jay_apr`.
+- Pushed the deployment config commit to `master` so GitHub-triggered production deploys are active.
+- Verified production at `https://portfolio-jay-2026.vercel.app`.
+- Verified hash routes resolve in production:
+  - `/#/case-study/1`
+  - `/#/case-study/2`
+- Removed older Vercel projects so only `portfolio-jay-2026` remains in the account.
