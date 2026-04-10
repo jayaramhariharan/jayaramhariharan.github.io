@@ -9,6 +9,7 @@ Purpose:
 - External content system kept separate at `C:\Users\jayar\portfolio_content_system`
 - Junction inside APR: `C:\Users\jayar\portfolio_jay_apr\portfolio_content_system`
 - Intended GitHub repo: `jrambackup1-lgtm/portfolio_jay_apr`
+- Live app repo: `https://github.com/jrambackup1-lgtm/portfolio_jay_apr`
 
 Validated runtime state:
 
@@ -24,6 +25,7 @@ External content-system access:
 
 - Use the APR junction `portfolio_content_system` when working from an APR-rooted IDE.
 - Content-system repo should stay separate: `jrambackup1-lgtm/portfolio_content_system`
+- Live content repo: `https://github.com/jrambackup1-lgtm/portfolio_content_system`
 
 Restored runtime files carried into this snapshot:
 

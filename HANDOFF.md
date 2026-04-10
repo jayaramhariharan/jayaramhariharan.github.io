@@ -14,6 +14,11 @@ Current status:
 - GitHub repo target for this app: `https://github.com/jrambackup1-lgtm/portfolio_jay_apr`
 - Keep the content system in its own repo: `https://github.com/jrambackup1-lgtm/portfolio_content_system`
 
+GitHub status:
+
+- App repo is live and synced.
+- Content system is backed up separately and synced via its own repo.
+
 How to run:
 
 - `npm install`
