@@ -1,0 +1,193 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;700&display=swap');
+
+/* 
+  DESIGN SYSTEM — Exact copy from dousa-miao-portfolio-replica
+  Fonts: Coconat (serif), Neue Montreal (sans), Inter Display (display)
+  No dark mode.
+*/
+
+@font-face {
+    font-family: 'Coconat';
+    src: url('https://framerusercontent.com/assets/ajqZQvqHcHYfzV6VYjZCsDHG6kM.woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neue Montreal';
+    src: url('https://framerusercontent.com/assets/FcZ6VvBKLAWytbiu90yQexnjt4.woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neue Montreal';
+    src: url('https://framerusercontent.com/assets/KFUu3XNaEGEz90ZvDBi2DsnjeE.woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Display';
+    src: url('https://framerusercontent.com/assets/2uIBiALfCHVpWbHqRMZutfT7giU.woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --color-token-dark-green: #14261f;
+    --color-token-light-green: #61e88a;
+    --color-token-bright-green: #3cda64;
+    --color-token-light-bg: #fefefd;
+    --color-token-dark-bg: #0a0a0a;
+    --color-token-gray-bg: #f0f0f0;
+    --color-token-text-gray: #787878;
+
+    --color-primary: var(--color-token-dark-green);
+    --color-secondary: var(--color-token-light-green);
+    --color-background: var(--color-token-light-bg);
+
+    --font-serif: "Coconat", serif;
+    --font-sans: "Neue Montreal", "Inter", sans-serif;
+    --font-display: "Inter Display", sans-serif;
+    --font-mono: "Space Mono", monospace;
+    --font-playfair: "Playfair Display", serif;
+    --font-roboto-mono: "Roboto Mono", monospace;
+    --font-ibm-sans: "IBM Plex Sans", sans-serif;
+    --font-ibm-mono: "IBM Plex Mono", monospace;
+
+    --max-w-site: 1400px;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        font-size: 93%;
+    }
+
+    body {
+        background-color: #fefefd;
+        color: #14261f;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        caret-color: transparent;
+    }
+
+    input, textarea {
+        caret-color: auto;
+    }
+
+    ::selection {
+        background-color: #61E88A;
+        color: #14261f;
+    }
+
+
+    @media (pointer: fine) {
+        body:not(.using-keyboard), body:not(.using-keyboard) a, body:not(.using-keyboard) button, body:not(.using-keyboard) .cursor-pointer {
+            cursor: none !important;
+        }
+    }
+
+    /* Keyboard Navigation Focus States */
+    :focus:not(:focus-visible) {
+        outline: none;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-token-light-green);
+        outline-offset: 4px;
+        border-radius: 4px;
+        transition: outline-offset 0.2s ease;
+    }
+}
+
+@layer utilities {
+    .stroke-text-light {
+        -webkit-text-stroke: 1px rgba(20, 38, 31, 0.3);
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: all 300ms ease-out;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .delay-100 {
+        transition-delay: 100ms;
+    }
+
+    .delay-200 {
+        transition-delay: 200ms;
+    }
+
+    .delay-300 {
+        transition-delay: 300ms;
+    }
+
+    .delay-400 {
+        transition-delay: 400ms;
+    }
+
+    .delay-500 {
+        transition-delay: 500ms;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    @keyframes entranceSlideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-entrance {
+        opacity: 0;
+        animation: entranceSlideUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .entrance-delay-1 {
+        animation-delay: 100ms;
+    }
+    
+    .entrance-delay-2 {
+        animation-delay: 300ms;
+    }
+    
+    .entrance-delay-3 {
+        animation-delay: 500ms;
+    }
+}
