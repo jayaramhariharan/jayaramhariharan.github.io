@@ -1,0 +1,106 @@
+import React, { useEffect, useRef } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { PROJECTS } from '../constants';
+import Navbar from '../components/Navbar';
+
+const ViperZCaseStudy = React.lazy(() => import('./ViperZCaseStudy'));
+const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
+
+const DefaultCaseStudy: React.FC<{ project: any }> = ({ project }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
+  return (
+    <div className="bg-[#fbfbfd] min-h-screen" ref={containerRef}>
+      <Navbar />
+      <main className="relative z-10 pt-32 pb-20 px-6 md:px-12 max-w-site mx-auto">
+        <div className="mb-12">
+          <Link to="/" className="inline-flex items-center text-token-text-gray hover:text-token-dark-green transition-colors font-sans mb-8">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Link>
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-token-dark-green mb-6 tracking-tighter">
+            {project.title}
+          </h1>
+          <div className="flex flex-wrap gap-3 mb-8">
+            {project.details?.techStack?.map((tag: string) => (
+              <span key={tag} className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-sans text-token-text-gray">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative h-[50vh] md:h-[70vh] w-full rounded-2xl overflow-hidden mb-20 bg-gray-100">
+          <motion.img 
+            style={{ y }}
+            src={project.image} 
+            alt={project.title}
+            className="absolute inset-0 w-full h-[120%] object-cover origin-top"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+
+        <div className="max-w-3xl mx-auto">
+          <div className="relative pl-6 md:pl-8 border-l border-gray-300 mb-16">
+            <h3 className="font-mono text-xs font-medium text-gray-400 mb-4 uppercase tracking-[0.2em]">The Objective</h3>
+            <p className="font-sans text-xl md:text-2xl font-normal leading-relaxed text-[#1d1d1f] tracking-tight">
+              {project.description}
+            </p>
+          </div>
+          
+          {/* Placeholder for more case study content */}
+          <div className="p-8 bg-gray-50 rounded-2xl border border-gray-100 text-center">
+            <p className="text-token-text-gray font-sans">Detailed case study content coming soon.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+const CaseStudy: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+
+  if (id === '1') {
+    // ViperZ has its own custom page
+    return (
+      <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
+        <ViperZCaseStudy />
+      </React.Suspense>
+    );
+  }
+
+  if (id === '2') {
+    // Wolf has its own custom page
+    return (
+      <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
+        <WolfCaseStudy />
+      </React.Suspense>
+    );
+  }
+
+  const project = PROJECTS.find(p => p.id === Number(id));
+
+  if (!project) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-token-light-bg">
+        <Navbar />
+        <div className="text-center">
+          <h1 className="text-4xl font-display font-bold text-token-dark-green mb-4 tracking-tighter">Project Not Found</h1>
+          <Link to="/" className="text-token-light-green hover:underline font-sans">Return Home</Link>
+        </div>
+      </div>
+    );
+  }
+
+  return <DefaultCaseStudy project={project} />;
+};
+
+export default CaseStudy;

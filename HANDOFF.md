@@ -1,0 +1,30 @@
+# Handoff
+
+Canonical project folder:
+
+`C:\Users\jayar\portfolio_jay_apr`
+
+Current status:
+
+- This folder contains the working portfolio app state.
+- It is the cleaned successor to `portfolio_v2`.
+- Continue all future implementation here.
+- The external case-study and content system now lives at `C:\Users\jayar\portfolio_content_system`.
+- A junction is available inside this folder at `portfolio_content_system` so it stays visible from an APR-rooted IDE.
+- GitHub repo target for this app: `https://github.com/jrambackup1-lgtm/portfolio_jay_apr`
+- Keep the content system in its own repo: `https://github.com/jrambackup1-lgtm/portfolio_content_system`
+
+How to run:
+
+- `npm install`
+- `npm run dev -- --host 127.0.0.1 --port 40001`
+
+Verification baseline:
+
+- `npm run build` passes
+- Home page and case-study routes resolve
+- The app matches the previously confirmed working state
+
+Content-system note:
+
+- Edit case studies and content-system files through `C:\Users\jayar\portfolio_jay_apr\portfolio_content_system` in the IDE, or directly at `C:\Users\jayar\portfolio_content_system`.
