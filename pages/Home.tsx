@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import Skills from '../components/Skills';
 import WorkGrid from '../components/WorkGrid';
 import ExperienceList from '../components/ExperienceList';
 import DesignValues from '../components/DesignValues';
@@ -32,6 +33,7 @@ const Home: React.FC = () => {
       <Navbar />
       <main className="relative z-10 bg-[#fbfbfd]">
         <Hero />
+        <Skills />
         <ExperienceList />
         <WorkGrid />
         <DesignValues />

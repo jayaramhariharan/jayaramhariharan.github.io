@@ -39,6 +39,18 @@ Verification baseline:
 - Home page and case-study routes resolve
 - The app matches the previously confirmed working state
 
+Recent UI/content state:
+
+- The home page includes a refreshed interactive `Skills` section.
+- Skills use a right-side list and left-side detail panel.
+- CAD and prototyping now show real software/logo tags and tighter portfolio-style summaries.
+- Hero headline currently reads:
+  - `I'm Jay. I design products and`
+  - `love to solve problems.`
+- Footer CTA currently reads:
+  - `Working on something new?`
+  - `Let's talk`
+
 Content-system note:
 
 - Edit case studies and content-system files through `C:\Users\jayar\portfolio_jay_apr\portfolio_content_system` in the IDE, or directly at `C:\Users\jayar\portfolio_content_system`.
