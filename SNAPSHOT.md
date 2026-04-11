@@ -17,6 +17,7 @@ Validated runtime state:
 - Dev server responds on `http://127.0.0.1:40001/`
 - Production deploy responds at `https://portfolio-jay-2026.vercel.app`
 - GitHub `master` pushes now auto-deploy to Vercel
+- Home page includes the refreshed interactive skills section
 
 Deployment state:
 
@@ -48,3 +49,9 @@ Restored runtime files carried into this snapshot:
 - `pages/NotFound.tsx`
 - `pages/ViperZCaseStudy.tsx`
 - `pages/WolfCaseStudy.tsx`
+
+Recent portfolio updates:
+
+- `components/Skills.tsx` now uses a click-to-reveal layout with cleaner, denser skill content
+- CAD and prototyping sections now list real software with logo tags
+- Hero and footer copy were shortened for a cleaner first-screen read

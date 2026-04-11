@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
             I'm Jay. I design products and
           </span>
           <span className="block mt-1 md:mt-4">
-            solve mechanical problems before production
+            love to solve problems
             <span className="text-[#a3a3a3]">.</span>
           </span>
         </h1>

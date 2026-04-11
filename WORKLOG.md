@@ -37,3 +37,18 @@ Date: 2026-04-11
   - `/#/case-study/1`
   - `/#/case-study/2`
 - Removed older Vercel projects so only `portfolio-jay-2026` remains in the account.
+- Reworked the home-page skills section into an interactive split layout:
+  - right-side skill list
+  - left-side detail panel on selection
+  - minimal visuals only where they add signal
+- Updated skills content to better reflect actual work:
+  - CAD software: `SolidWorks`, `Fusion 360`, `Rhino`, `Siemens NX`
+  - prototyping software: `Cura`, `PrusaSlicer`, `Bambu Studio`
+  - added concise, scannable skill summaries for CAD, prototyping, product development, mechanisms, and system integration
+- Added local logo assets for skill tags under `public/logos/`.
+- Updated hero copy to:
+  - `I'm Jay. I design products and`
+  - `love to solve problems.`
+- Updated footer CTA copy to:
+  - `Working on something new?`
+  - `Let's talk`

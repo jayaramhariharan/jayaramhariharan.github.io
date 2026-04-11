@@ -19,11 +19,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_minmax(220px,0.7fr)] gap-12 mb-20 md:mb-28 items-end">
           <div className="flex flex-col items-start">
             <p className="mb-4 font-sans text-[11px] uppercase tracking-[0.15em] text-token-text-gray">
-              Building a product?
+              Working on something new?
             </p>
             <button onClick={handleCopyEmail} className="group inline-flex items-center gap-2 -ml-1 text-left cursor-pointer" data-cursor="nav">
               <h2 className="font-serif text-5xl md:text-7xl leading-tight text-token-dark-green">
-                Let's talk about the product
+                Let's talk
               </h2>
 
               <div className="transform translate-y-0.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-out">
