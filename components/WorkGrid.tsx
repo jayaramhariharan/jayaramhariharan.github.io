@@ -10,6 +10,10 @@ const homepageCopy: Record<number, { hook: string; proof: string }> = {
   2: {
     hook: 'Designed the chassis from a flat pattern, added a wedge between rounds, and won the tournament.',
     proof: 'Tournament champion | Best Designer'
+  },
+  3: {
+    hook: 'Sealed a spinning propeller shaft at 3000 RPM and designed foil geometry to lift the hull clean at 5 knots.',
+    proof: '$207 BOM | 27 parts | zero shaft ingress'
   }
 };
 
@@ -72,7 +76,7 @@ const WorkGrid: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    loading="lazy"
+                   
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     onError={handleImageError}
                   />

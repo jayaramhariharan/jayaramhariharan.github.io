@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     title: "Wolf",
     category: "Product Design",
-    image: "https://picsum.photos/seed/wolf-hero/1200/800",
+    image: "/case-studies/wolf/hero.jpg",
     description: "Won a combat robotics tournament with a chassis designed to cut, fold, and survive impacts.",
     details: {
       client: "Propeller Technologies",
@@ -133,17 +133,17 @@ export const PROJECTS: Project[] = [
         {
           title: "Flat Pattern Engineering",
           description: "The chassis started as a full flat layout drawn directly into the sheet. Cut lines, bend radii, motor mounts, battery positions, and wiring paths were resolved before fabrication so the whole bot could be made in one mark-cut-bend pass.\n\nThe key decision was using fold geometry as structure. Short side walls reinforced the base plate, and the pattern stayed simple enough to manufacture without losing alignment.",
-          image: "/pics/wolf-process-1.png"
+          image: "/case-studies/wolf/top.jpg"
         },
         {
           title: "Chassis Assembly",
           description: "Once the sheet came back from cutting and bending, the build moved into mechanical integration. The folded chassis was assembled first, then the rear-drive motors, battery pack, receiver, motor driver, and wiring were installed low inside the body.\n\nEverything was arranged for stability and impact survival. No welding, no redundant structure, and no loose routing that could fail during a hit.",
-          image: "/pics/wolf-process-2.png"
+          image: "/case-studies/wolf/iso.jpg"
         },
         {
           title: "Combat Optimization",
           description: "The opening rumble validated the chassis but exposed a contact problem: Wolf could push, yet it could not consistently get under opponents. That made the next decision clear.\n\nBetween rounds I designed a bolt-on wedge from leftover sheet material and mounted it to the existing chassis. It was a fast, constraint-aware upgrade that changed the way Wolf entered every fight and directly improved match control.",
-          image: "/pics/wolf-process-3.png"
+          image: "/case-studies/wolf/closeup-wedge.jpg"
         }
       ],
       stats: [
@@ -151,6 +151,20 @@ export const PROJECTS: Project[] = [
         { value: "100%", label: "Win Rate" },
         { value: "0", label: "Structural Failures" },
         { value: "2", label: "Awards Won" }
+      ],
+      gallery: [
+        {
+          image: "/case-studies/wolf/hero.jpg",
+          caption: "Hero view"
+        },
+        {
+          image: "/case-studies/wolf/iso.jpg",
+          caption: "Isometric view"
+        },
+        {
+          image: "/case-studies/wolf/top.jpg",
+          caption: "Top view"
+        }
       ],
       cmf: [
         {
@@ -170,6 +184,85 @@ export const PROJECTS: Project[] = [
           code: "Combat Wedge",
           finish: "Bolt-On Upgrade",
           hex: "#9CA3AF"
+        }
+      ]
+    }
+  },
+  {
+    id: 3,
+    title: "Hydrofoil Boat",
+    category: "Marine Engineering",
+    image: "/case-studies/hydrofoil/hero.png",
+    description: "Built a foil-assisted RC hull around two problems: getting the hull to leave the water, and keeping the propeller shaft watertight once it does.",
+    details: {
+      client: "Blueprint Community",
+      year: "2024",
+      role: "Mechanical Design / Prototyping",
+      techStack: ["CAD", "FDM PETG", "Foil Design", "Waterproofing", "ESP32"],
+      challenge: "27 parts — 19 mechanical, 8 electrical — total BOM $207.60. The mechanical problem is getting the hull to leave the water, stay stable once it does, and not flood through the spinning propeller shaft in the process.\n\nShaft penetration is where RC marine builds die. The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull. Standard rubber seals compress out of spec under sustained dynamic load. Get the seal wrong and water tracks back up the stern tube into the electronics bay.",
+      solution: "Foil geometry and shaft sealing are not independent problems — if the AoA is wrong, the boat porpoises, and porpoising creates surge loading at the shaft seal. The mechanical system fails at the weakest link.\n\nAll structural parts printed in PETG (better moisture resistance than PLA, tighter layer adhesion under sustained load). Hull waterproofed post-print to close layer-line porosity. Struts at 50% infill for hydrodynamic stiffness. Main foil at 4° AoA. Shaft sealed with a rubber/silicone stern tube seal packed with marine grease. Lead ballast at the bow set CG at 31% of waterline length.",
+      outcome: "A hull that transitions from displacement to foil-supported mode at ~5 knots with stable pitch. Shaft seal held through repeated full-throttle runs with zero ingress. The infill strategy across the 12 printed parts reflects the load map: 100% on control arms (smallest linkage parts, highest failure risk), 70% on the shaft housing, down to 25% on the hull body where weight matters more than compressive strength.",
+      research: [
+        {
+          title: "Foil AoA vs. Cavitation Risk",
+          content: "High angle of attack gets lift fast — but steepen past 6° and water separates from the upper surface. Lift becomes unpredictable above that threshold. The 4° setting gives enough lift to clear the hull at takeoff speed without triggering early cavitation on the main foil."
+        },
+        {
+          title: "Shaft Seal and Stern Tube",
+          content: "The propeller shaft penetrates the hull at a point that sees both rotational load and forward water pressure. A rubber/silicone stern tube seal packed with marine grease provides a grease-buffer layer the water must displace before it reaches the seal face. The shaft housing is the highest-infill printed part (70%) because it takes the combined bearing load from the shaft and the water pressure at the penetration point."
+        },
+        {
+          title: "PETG Infill Strategy",
+          content: "12 of the 19 mechanical parts are 3D-printed PETG. The infill percentages are structural decisions: control arms at 100% (servo linkage, smallest cross-section, highest failure risk), shaft housing at 70%, motor mount at 60%, struts at 50% (stiff enough to hold AoA geometry under hydrodynamic load), hull at 25% (weight-critical, post-print waterproofing handles the porosity)."
+        }
+      ],
+      process: [
+        {
+          title: "Hull and Foil Geometry",
+          description: "Hull printed in PETG at 0.2mm layer height, 25% infill, waterproofed post-print. Main foil AoA: 4°. Struts at 50% infill. Stabilizer foil handles pitch — if the rear foil is oversized, the stern rises and the bow digs in. The entire transition inverts.",
+          image: "/case-studies/hydrofoil/hero.png"
+        },
+        {
+          title: "Propeller Shaft Sealing",
+          description: "Shaft housing printed at 70% infill — highest-stress printed part. Stern tube packed with marine grease, terminated with a rubber/silicone seal at the hull penetration. Grease fills the annular gap as the primary barrier before water reaches the seal face.",
+          image: "/case-studies/hydrofoil/hero.png"
+        },
+        {
+          title: "Ballast and Drive Train",
+          description: "Lead ballast at the bow sets CG at 31% of waterline length. Universal flexible coupling at the motor-shaft interface absorbs brushless motor vibration. Control arms printed at 100% infill — smallest parts in the servo linkage, highest failure risk under repeated actuation.",
+          image: "/case-studies/hydrofoil/hero.png"
+        }
+      ],
+      stats: [
+        { value: "27", label: "Total Parts" },
+        { value: "$207", label: "Total BOM" },
+        { value: "4°", label: "Foil AoA" },
+        { value: "15°", label: "Strut Sweep" }
+      ],
+      gallery: [
+        {
+          image: "/case-studies/hydrofoil/hero.png",
+          caption: "Hydrofoil boat build"
+        }
+      ],
+      cmf: [
+        {
+          name: "PETG",
+          code: "12 Printed Parts",
+          finish: "0.2mm / 25–100% Infill",
+          hex: "#93C5FD"
+        },
+        {
+          name: "Stern Tube Seal",
+          code: "Rubber / Silicone",
+          finish: "Marine Grease Packed",
+          hex: "#374151"
+        },
+        {
+          name: "Lead Ballast",
+          code: "CG Tuning",
+          finish: "31% WL Placement",
+          hex: "#6B7280"
         }
       ]
     }

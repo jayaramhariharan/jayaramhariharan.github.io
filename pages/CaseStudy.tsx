@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 
 const ViperZCaseStudy = React.lazy(() => import('./ViperZCaseStudy'));
 const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
+const HydrofoilBoatCaseStudy = React.lazy(() => import('./HydrofoilBoatCaseStudy'));
 
 const DefaultCaseStudy: React.FC<{ project: any }> = ({ project }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -82,6 +83,15 @@ const CaseStudy: React.FC = () => {
     return (
       <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
         <WolfCaseStudy />
+      </React.Suspense>
+    );
+  }
+
+  if (id === '3') {
+    // Hydrofoil Boat has its own custom page
+    return (
+      <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
+        <HydrofoilBoatCaseStudy />
       </React.Suspense>
     );
   }
