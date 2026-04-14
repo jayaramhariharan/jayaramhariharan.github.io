@@ -104,7 +104,7 @@ const ViperZCaseStudy: React.FC = () => {
   const [scrollRange, setScrollRange] = useState(0);
 
   const nextProjects = [
-    { id: 2, title: 'Wolf.', image: 'https://picsum.photos/seed/wolf-hero/1920/1080' },
+    { id: 2, title: 'Wolf.', image: '/case-studies/wolf/hero.jpg' },
     { id: 3, title: 'Fintech.', image: 'https://picsum.photos/seed/fintech/1920/1080' }
   ];
   const [nextProjectIndex, setNextProjectIndex] = useState(0);
