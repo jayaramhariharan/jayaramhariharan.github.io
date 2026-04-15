@@ -5,61 +5,102 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 
 const wolfImages = {
-  hero: '/case-studies/wolf/hero.jpg',
-  iso: '/case-studies/wolf/iso.jpg',
-  side: '/case-studies/wolf/side.jpg',
-  top: '/case-studies/wolf/top.jpg',
-  closeupWedge: '/case-studies/wolf/closeup-wedge.jpg',
-  wedgeVariation: '/case-studies/wolf/wedge-variation.jpg',
-  systemSchematic: '/case-studies/wolf/system-schematic.svg',
+  heroBackdrop: '/case-studies/wolf/iso34th.png',
+  projectCard: '/case-studies/wolf/internal_ghost.png',
+  hero: '/case-studies/wolf/hero.png',
+  iso: '/case-studies/wolf/iso.png',
+  iso34th: '/case-studies/wolf/iso34th.png',
+  side: '/case-studies/wolf/side.png',
+  top: '/case-studies/wolf/top.png',
+  closeupWedge: '/case-studies/wolf/closeup_wedge.png',
+  noWedge: '/case-studies/wolf/no_wedge.png',
+  internalGhost: '/case-studies/wolf/internal_ghost.png',
+  systemSchematic: '/case-studies/wolf/combat_robot_wolf_SCHEMATIC.svg',
 };
+
+const imageAspectRatios = {
+  heroBackdrop: '2752 / 1536',
+  hero: '1792 / 2398',
+  iso: '1792 / 2400',
+  iso34th: '1792 / 2400',
+  side: '1792 / 2400',
+  top: '1792 / 2400',
+  closeupWedge: '1792 / 2400',
+  noWedge: '1024 / 1536',
+  internalGhost: '2752 / 1536',
+  systemSchematic: '16 / 9',
+};
+
+type AspectImageProps = {
+  src: string;
+  alt: string;
+  aspectRatio: string;
+  className?: string;
+  imgClassName?: string;
+};
+
+const AspectImage: React.FC<AspectImageProps> = ({
+  src,
+  alt,
+  aspectRatio,
+  className = '',
+  imgClassName = '',
+}) => (
+  <div className={className} style={{ aspectRatio }}>
+    <img src={src} alt={alt} className={`h-full w-full object-contain ${imgClassName}`.trim()} loading="lazy" />
+  </div>
+);
 
 const decisionPaths = [
   {
-    title: 'Wedge-first concept.',
-    body: 'Best first-contact theory, but the fabrication path was too risky. The compound bends asked for precision the single-pass build could not guarantee.',
+    title: 'Start with the wedge.',
+    body: 'Tempting, but compound bends are hard to get right on a deadline. One mistake and you\'re starting over.',
   },
   {
-    title: 'Tall-wall protection.',
-    body: 'Protection improved, but the center of gravity moved in the wrong direction. A bot that tips under side impact is already halfway to losing.',
+    title: 'Build tall walls.',
+    body: 'More protection, but the bot gets top-heavy. Get hit from the side and you\'re on your back.',
   },
   {
-    title: 'Low rectangular chassis.',
-    body: 'The whole form resolves from a single flat pattern. Mark it, cut it, fold it. Every gram the chassis doesn\'t weigh is a gram available for the weapon and drive — the alternatives threw away that math as soon as they added compound bends.',
+    title: 'Keep it low and flat.',
+    body: 'Draw the pattern, cut once, fold. The fold IS the structure. Every gram saved on the chassis is a gram for the weapon.',
   },
 ];
 
 const wedgeFrames = [
   {
-    src: wolfImages.wedgeVariation,
-    alt: 'Wolf with removable wedge variation attached',
-    label: '01: upgrade package',
-    caption: 'The between-rounds wedge add-on changed how Wolf entered contact without forcing a chassis rebuild.',
+    src: wolfImages.noWedge,
+    alt: 'Wolf before the wedge upgrade',
+    aspectRatio: imageAspectRatios.noWedge,
+    label: '01: before upgrade',
+    caption: 'Round one exposed the contact problem: the flat front face could push, but it could not consistently get under opponents.',
   },
   {
     src: wolfImages.closeupWedge,
+    aspectRatio: imageAspectRatios.closeupWedge,
     alt: 'Close-up of Wolf wedge geometry',
     label: '02: contact detail',
     caption: 'The front geometry lowers the first contact point and turns the leading edge into a control surface.',
   },
   {
-    src: wolfImages.side,
-    alt: 'Wolf side profile',
-    label: '03: low profile',
-    caption: 'The side profile shows why the chassis logic mattered: low mass, short walls, and a stable stance under impact.',
+    src: wolfImages.hero,
+    aspectRatio: imageAspectRatios.hero,
+    alt: 'Wolf with wedge installed',
+    label: '03: after upgrade',
+    caption: 'The bolt-on wedge changed first contact without forcing a chassis rebuild, which is why it mattered mid-tournament.',
   },
 ];
 
 const finalFrames = [
-  { src: wolfImages.hero, alt: 'Wolf front hero view', label: '01: hero view' },
-  { src: wolfImages.iso, alt: 'Wolf isometric view', label: '02: isometric view' },
-  { src: wolfImages.top, alt: 'Wolf top view', label: '03: top view' },
+  { src: wolfImages.hero, alt: 'Wolf front hero view', aspectRatio: imageAspectRatios.hero, label: '01: hero view' },
+  { src: wolfImages.iso, alt: 'Wolf isometric view', aspectRatio: imageAspectRatios.iso, label: '02: isometric view' },
+  { src: wolfImages.iso34th, alt: 'Wolf three-quarter isometric view', aspectRatio: imageAspectRatios.iso34th, label: '03: three-quarter view' },
+  { src: wolfImages.top, alt: 'Wolf top view', aspectRatio: imageAspectRatios.top, label: '04: top view' },
 ];
 
 const WolfCaseStudy: React.FC = () => {
   const nextProjects = [
     { id: 1, title: 'Viper-Z.', image: '/pics/final-front.jpg' },
-    { id: 3, title: 'Fintech.', image: 'https://picsum.photos/seed/fintech/1920/1080' },
+    { id: 3, title: 'Hydrofoil.', image: '/pics/hydrofoil-hero.jpg' },
   ];
   const [nextProjectIndex, setNextProjectIndex] = useState(0);
   const currentNextProject = nextProjects[nextProjectIndex];
@@ -105,9 +146,9 @@ const WolfCaseStudy: React.FC = () => {
         >
           <div className="absolute inset-0 z-0 pointer-events-none">
             <img
-              src={wolfImages.hero}
+              src={wolfImages.heroBackdrop}
               alt="Wolf robot hero render"
-              className="h-full w-full object-cover object-[center_42%] opacity-80"
+              className="h-full w-full object-cover object-center opacity-95"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
           </div>
@@ -125,7 +166,7 @@ const WolfCaseStudy: React.FC = () => {
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4 text-right font-mono text-[10px] leading-relaxed uppercase tracking-[0.2em] text-white/70 backdrop-blur-2xl">
                 <span className="font-semibold text-white">Case Study 02</span>
                 <br />
-                Confidential
+                2024
               </div>
             </nav>
 
@@ -186,12 +227,12 @@ const WolfCaseStudy: React.FC = () => {
             <div className="relative lg:col-span-5">
               <div className="sticky top-32">
                 <div className="reveal mb-8 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">
-                  01 &mdash; The Challenge
+                  The Setup
                 </div>
                 <h2 className="reveal font-display text-4xl font-medium leading-tight tracking-tight text-[#1d1d1f] md:text-5xl">
-                  Single-pass
+                  Build it once.
                   <br />
-                  fabrication.
+                  Build it right.
                 </h2>
               </div>
             </div>
@@ -229,7 +270,7 @@ const WolfCaseStudy: React.FC = () => {
         <section className="mx-auto max-w-site overflow-hidden px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mx-auto max-w-5xl text-center">
             <p className="font-display text-3xl font-medium leading-snug tracking-tight text-[#1d1d1f] md:text-4xl">
-              "Pick the right alloy. Draw the flat pattern. <span className="text-[#86868b]">Every fold is load-bearing.</span>"
+              "The fold is the structure. No brackets, no bolts, no extra weight."
             </p>
           </div>
         </section>
@@ -239,17 +280,21 @@ const WolfCaseStudy: React.FC = () => {
             <div className="relative lg:col-span-4">
               <div className="sticky top-32">
                 <div className="reveal mb-8 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">
-                  02 &mdash; Decision Path
+                  The Decision
                 </div>
                 <h2 className="reveal font-display text-4xl font-medium leading-tight tracking-tight text-[#1d1d1f] md:text-5xl">
-                  The geometry had to earn its keep.
+                  Shape follows function.
                 </h2>
               </div>
             </div>
 
             <div className="flex flex-col gap-10 lg:col-span-8">
               <figure className="reveal overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] md:p-8">
-                <img src={wolfImages.top} alt="Wolf top view render" className="h-[60vh] w-full object-contain" loading="lazy" />
+                <AspectImage
+                  src={wolfImages.top}
+                  alt="Wolf top view render"
+                  aspectRatio={imageAspectRatios.top}
+                />
                 <figcaption className="mt-6 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.18em] text-gray-500">
                   <span className="font-mono">Selected final geometry</span>
                   <span className="font-sans text-[11px] font-medium text-[#1d1d1f]">Low, stable, single-sheet friendly</span>
@@ -270,7 +315,7 @@ const WolfCaseStudy: React.FC = () => {
         </section>
 
         <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
-          <div className="reveal mb-20 text-left font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">03 &mdash; The Build</div>
+          <div className="reveal mb-20 text-left font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">The Build</div>
 
           <div className="reveal delay-100 flex w-full flex-col">
             <div className="group flex flex-col gap-8 border-t border-black/10 py-12 transition-colors hover:border-black/30 md:flex-row md:items-start md:gap-16">
@@ -317,8 +362,8 @@ const WolfCaseStudy: React.FC = () => {
         <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
           <div className="reveal mb-20 flex flex-col items-start justify-between md:flex-row md:items-end">
             <div>
-              <div className="mb-6 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">04 &mdash; Wedge Upgrade</div>
-              <h2 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-[#1d1d1f] md:text-7xl">Contact control.</h2>
+              <div className="mb-6 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">The Fix</div>
+              <h2 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-[#1d1d1f] md:text-7xl">Getting under.</h2>
             </div>
             <div className="mt-10 flex flex-wrap gap-3 md:mt-0">
               {['First Contact', 'Low Profile', 'Bolt-On', 'Constraint Aware'].map((tag) => (
@@ -332,7 +377,7 @@ const WolfCaseStudy: React.FC = () => {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {wedgeFrames.map((frame, index) => (
               <figure key={frame.label} className={`reveal overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${index === 1 ? 'delay-100 md:mt-24' : index === 2 ? 'delay-200' : ''}`}>
-                <img src={frame.src} alt={frame.alt} className="h-[420px] w-full object-contain" loading="lazy" />
+                <AspectImage src={frame.src} alt={frame.alt} aspectRatio={frame.aspectRatio} />
                 <div className="mt-6 mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-gray-400">{frame.label}</div>
                 <figcaption className="font-sans text-base leading-relaxed font-light text-gray-600">{frame.caption}</figcaption>
               </figure>
@@ -341,21 +386,19 @@ const WolfCaseStudy: React.FC = () => {
         </section>
 
         <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
-          <div className="reveal mb-20 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">05 &mdash; Final Execution</div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-            <figure className="group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] md:col-span-8">
-              <img src={finalFrames[0].src} alt={finalFrames[0].alt} className="h-[80vh] w-full object-contain" loading="lazy" />
-              <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">{finalFrames[0].label}</figcaption>
-            </figure>
-
-            <div className="md:col-span-4 flex flex-col gap-6">
-              {finalFrames.slice(1).map((frame, index) => (
-                <figure key={frame.label} className={`group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${index === 0 ? 'delay-100' : 'delay-200'}`}>
-                  <img src={frame.src} alt={frame.alt} className="h-[calc(40vh-0.75rem)] w-full object-contain" loading="lazy" />
-                  <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">{frame.label}</figcaption>
-                </figure>
-              ))}
-            </div>
+          <div className="reveal mb-20 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">Final Build</div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {finalFrames.map((frame, index) => (
+              <figure
+                key={frame.label}
+                className={`group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
+                  index === 1 ? 'delay-100' : index === 2 ? 'delay-200' : index === 3 ? 'delay-300' : ''
+                }`}
+              >
+                <AspectImage src={frame.src} alt={frame.alt} aspectRatio={frame.aspectRatio} />
+                <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">{frame.label}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 
@@ -364,7 +407,7 @@ const WolfCaseStudy: React.FC = () => {
             <div className="md:col-span-4 lg:col-span-3">
               <h2 className="mb-4 font-display text-2xl font-medium tracking-tight text-[#1d1d1f] md:text-3xl">Specifications</h2>
               <p className="max-w-xs font-sans text-sm leading-relaxed text-gray-500">
-                Key metrics and technical details defining the final outcome of the project.
+                What we built, what it cost, and how it performed.
               </p>
             </div>
 
@@ -422,9 +465,9 @@ const WolfCaseStudy: React.FC = () => {
         </section>
 
         <section className="mx-auto max-w-site border-t border-gray-200/60 px-8 py-24 md:px-16 md:py-32">
-          <div className="reveal mb-16 font-mono text-sm font-medium uppercase tracking-[0.2em] text-gray-400">07 &mdash; System Architecture</div>
+          <div className="reveal mb-16 font-mono text-sm font-medium uppercase tracking-[0.2em] text-gray-400">System Architecture</div>
 
-          <div className="reveal delay-100 grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div className="reveal delay-100 grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
             <div>
               <h3 className="mb-6 font-display text-4xl font-medium tracking-tight text-[#1d1d1f] md:text-5xl">
                 Electrical and Mechanical Integration
@@ -446,14 +489,31 @@ const WolfCaseStudy: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-center rounded-[2.5rem] border border-gray-200 bg-white p-8 shadow-sm">
-              <img src={wolfImages.systemSchematic} alt="Wolf system schematic" className="max-h-[500px] h-auto w-full object-contain" loading="lazy" />
+            <div className="grid gap-6">
+              <figure className="rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-sm">
+                <AspectImage
+                  src={wolfImages.internalGhost}
+                  alt="Wolf internal ghost render"
+                  aspectRatio={imageAspectRatios.internalGhost}
+                />
+                <figcaption className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-gray-400">
+                  Internal package layout
+                </figcaption>
+              </figure>
+              <figure className="flex items-center justify-center rounded-[2.5rem] border border-gray-200 bg-white p-8 shadow-sm">
+                <AspectImage
+                  src={wolfImages.systemSchematic}
+                  alt="Wolf system schematic"
+                  aspectRatio={imageAspectRatios.systemSchematic}
+                  imgClassName="max-h-[500px]"
+                />
+              </figure>
             </div>
           </div>
         </section>
 
         <section className="mx-auto max-w-site border-t border-gray-200/60 px-8 py-24 md:px-16 md:py-32">
-          <div className="reveal mb-16 font-mono text-sm font-medium uppercase tracking-[0.2em] text-gray-400">08 &mdash; Bill of Materials</div>
+          <div className="reveal mb-16 font-mono text-sm font-medium uppercase tracking-[0.2em] text-gray-400">Component Breakdown</div>
 
           <div className="reveal delay-100 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16 lg:gap-32">
             <div className="md:col-span-4 lg:col-span-4">
@@ -526,9 +586,25 @@ const WolfCaseStudy: React.FC = () => {
         </section>
 
         <section className="mx-auto max-w-site border-t border-gray-200/60 px-8 py-24 md:px-16 md:py-32">
-          <div className="reveal mb-16 font-mono text-sm font-medium uppercase tracking-[0.2em] text-gray-400">09 &mdash; Profile Reference</div>
-          <div className="reveal delay-100 rounded-[2.5rem] border border-gray-200 bg-white p-4 shadow-sm md:p-8">
-            <img src={wolfImages.side} alt="Wolf side profile reference" className="w-full rounded-2xl object-contain" loading="lazy" />
+          <div className="reveal mb-16 font-mono text-sm font-medium uppercase tracking-[0.2em] text-gray-400">Reference Views</div>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <figure className="reveal delay-100 rounded-[2.5rem] border border-gray-200 bg-white p-4 shadow-sm md:p-8">
+              <AspectImage
+                src={wolfImages.side}
+                alt="Wolf side profile reference"
+                aspectRatio={imageAspectRatios.internalGhost}
+                className="overflow-hidden rounded-2xl"
+                imgClassName="!object-cover object-center"
+              />
+            </figure>
+            <figure className="reveal delay-200 rounded-[2.5rem] border border-gray-200 bg-white p-4 shadow-sm md:p-8">
+              <AspectImage
+                src={wolfImages.internalGhost}
+                alt="Wolf internal ghost reference"
+                aspectRatio={imageAspectRatios.internalGhost}
+                className="rounded-2xl"
+              />
+            </figure>
           </div>
         </section>
       </main>
