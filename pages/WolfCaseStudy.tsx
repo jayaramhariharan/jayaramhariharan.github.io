@@ -95,6 +95,7 @@ const finalFrames = [
   { src: wolfImages.iso, alt: 'Wolf isometric view', aspectRatio: imageAspectRatios.iso, label: '02: isometric view' },
   { src: wolfImages.iso34th, alt: 'Wolf three-quarter isometric view', aspectRatio: imageAspectRatios.iso34th, label: '03: three-quarter view' },
   { src: wolfImages.top, alt: 'Wolf top view', aspectRatio: imageAspectRatios.top, label: '04: top view' },
+  { src: wolfImages.systemSchematic, alt: 'Wolf system schematic', aspectRatio: imageAspectRatios.systemSchematic, label: '05: system schematic' },
 ];
 
 const WolfCaseStudy: React.FC = () => {
@@ -270,7 +271,7 @@ const WolfCaseStudy: React.FC = () => {
         <section className="mx-auto max-w-site overflow-hidden px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mx-auto max-w-5xl text-center">
             <p className="font-display text-3xl font-medium leading-snug tracking-tight text-[#1d1d1f] md:text-4xl">
-              "The fold is the structure. No brackets, no bolts, no extra weight."
+              "Folded, not framed."
             </p>
           </div>
         </section>
@@ -363,7 +364,7 @@ const WolfCaseStudy: React.FC = () => {
           <div className="reveal mb-20 flex flex-col items-start justify-between md:flex-row md:items-end">
             <div>
               <div className="mb-6 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">The Fix</div>
-              <h2 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-[#1d1d1f] md:text-7xl">Getting under.</h2>
+              <h2 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-[#1d1d1f] md:text-7xl">Under.</h2>
             </div>
             <div className="mt-10 flex flex-wrap gap-3 md:mt-0">
               {['First Contact', 'Low Profile', 'Bolt-On', 'Constraint Aware'].map((tag) => (
@@ -387,19 +388,19 @@ const WolfCaseStudy: React.FC = () => {
 
         <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
           <div className="reveal mb-20 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">Final Build</div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {finalFrames.map((frame, index) => (
-              <figure
-                key={frame.label}
-                className={`group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
-                  index === 1 ? 'delay-100' : index === 2 ? 'delay-200' : index === 3 ? 'delay-300' : ''
-                }`}
-              >
-                <AspectImage src={frame.src} alt={frame.alt} aspectRatio={frame.aspectRatio} />
-                <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">{frame.label}</figcaption>
-              </figure>
-            ))}
-          </div>
+           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+             {finalFrames.map((frame, index) => (
+               <figure
+                 key={frame.label}
+                 className={`group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
+                   index === 1 ? 'delay-100' : index === 2 ? 'delay-200' : index === 3 ? 'delay-300' : index === 4 ? 'delay-400' : ''
+                 }`}
+               >
+                 <AspectImage src={frame.src} alt={frame.alt} aspectRatio={frame.aspectRatio} />
+                 <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">{frame.label}</figcaption>
+               </figure>
+             ))}
+           </div>
         </section>
 
         <section className="mx-auto max-w-site px-6 py-24 md:px-12 md:py-32">
