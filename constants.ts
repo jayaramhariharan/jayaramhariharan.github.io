@@ -5,7 +5,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     title: "Viper-Z Twist Axis",
     category: "Mechatronics",
-    image: "https://picsum.photos/seed/flightstick1/1200/800",
+    image: "/case-studies/viper/home-card-latest.jpg",
     heroImages: [
       "https://picsum.photos/seed/flightstick1/1200/800",
       "https://picsum.photos/seed/flightstick2/600/400",

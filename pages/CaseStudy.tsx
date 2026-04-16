@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import Navbar from '../components/Navbar';
+import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const ViperZCaseStudy = React.lazy(() => import('./ViperZCaseStudy'));
 const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
@@ -66,8 +67,34 @@ const DefaultCaseStudy: React.FC<{ project: any }> = ({ project }) => {
   );
 };
 
+const LockedCaseStudies: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-[#fbfbfd]">
+      <Navbar />
+      <main className="px-6 md:px-12 pt-32 pb-20 max-w-site mx-auto">
+        <div className="max-w-3xl">
+          <Link to="/" className="inline-flex items-center text-token-text-gray hover:text-token-dark-green transition-colors font-sans mb-8">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Link>
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-token-dark-green mb-6 tracking-tighter">
+            Case studies are locked on the live site.
+          </h1>
+          <p className="font-sans text-lg md:text-xl font-light leading-relaxed text-[#1d1d1f] max-w-2xl">
+            These pages are still in progress, so they stay available on localhost only for now.
+          </p>
+        </div>
+      </main>
+    </div>
+  );
+};
+
 const CaseStudy: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+
+  if (!areCaseStudiesUnlocked()) {
+    return <LockedCaseStudies />;
+  }
 
   if (id === '1') {
     // ViperZ has its own custom page

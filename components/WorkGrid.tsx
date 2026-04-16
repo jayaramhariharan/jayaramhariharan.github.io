@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
+import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const homepageCopy: Record<number, { hook: string; proof: string }> = {
   1: {
@@ -18,6 +19,8 @@ const homepageCopy: Record<number, { hook: string; proof: string }> = {
 };
 
 const WorkGrid: React.FC = () => {
+  const caseStudiesUnlocked = areCaseStudiesUnlocked();
+
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = '/pics/cad-screenshot.jpg';
   };
@@ -67,35 +70,65 @@ const WorkGrid: React.FC = () => {
             }
 
             return (
-              <Link
-                key={project.id}
-                to={`/case-study/${project.id}`}
-                className={`group reveal block ${i % 2 === 0 ? '' : 'delay-100'}`}
-              >
-                <div className="overflow-hidden rounded-sm bg-gray-100 aspect-[4/3] mb-6 relative">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                   
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    onError={handleImageError}
-                  />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-serif mb-2 text-token-dark-green group-hover:text-token-light-green transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 font-sans font-light leading-relaxed mb-4">{homeCopy?.hook ?? project.description}</p>
-                  {homeCopy?.proof ? (
-                    <p className="mb-4 text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">
-                      {homeCopy.proof}
-                    </p>
-                  ) : null}
-                  <div className="inline-flex items-center gap-2 border-b border-transparent group-hover:border-token-light-green transition-all pb-0.5">
-                    <span className="text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">View project</span>
+              caseStudiesUnlocked ? (
+                <Link
+                  key={project.id}
+                  to={`/case-study/${project.id}`}
+                  className={`group reveal block ${i % 2 === 0 ? '' : 'delay-100'}`}
+                >
+                  <div className="overflow-hidden rounded-sm bg-gray-100 aspect-[4/3] mb-6 relative">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      onError={handleImageError}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-serif mb-2 text-token-dark-green group-hover:text-token-light-green transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 font-sans font-light leading-relaxed mb-4">{homeCopy?.hook ?? project.description}</p>
+                    {homeCopy?.proof ? (
+                      <p className="mb-4 text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">
+                        {homeCopy.proof}
+                      </p>
+                    ) : null}
+                    <div className="inline-flex items-center gap-2 border-b border-transparent group-hover:border-token-light-green transition-all pb-0.5">
+                      <span className="text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">View project</span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  key={project.id}
+                  className={`reveal block ${i % 2 === 0 ? '' : 'delay-100'}`}
+                  aria-disabled="true"
+                >
+                  <div className="overflow-hidden rounded-sm bg-gray-100 aspect-[4/3] mb-6 relative">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      onError={handleImageError}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-serif mb-2 text-token-dark-green">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 font-sans font-light leading-relaxed mb-4">{homeCopy?.hook ?? project.description}</p>
+                    {homeCopy?.proof ? (
+                      <p className="mb-4 text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">
+                        {homeCopy.proof}
+                      </p>
+                    ) : null}
+                    <div className="inline-flex items-center gap-2 border-b border-transparent pb-0.5">
+                      <span className="text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">Case study in progress</span>
+                    </div>
                   </div>
                 </div>
-              </Link>
+              )
             );
           })}
       </div>
