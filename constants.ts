@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     title: "Wolf",
     category: "Product Design",
-    image: "/case-studies/wolf/hero.jpg",
+    image: "/case-studies/wolf/iso34th.png",
     description: "Won a combat robotics tournament with a chassis designed to cut, fold, and survive impacts.",
     details: {
       client: "Propeller Technologies",
@@ -133,17 +133,17 @@ export const PROJECTS: Project[] = [
         {
           title: "Flat Pattern Engineering",
           description: "The chassis started as a full flat layout drawn directly into the sheet. Cut lines, bend radii, motor mounts, battery positions, and wiring paths were resolved before fabrication so the whole bot could be made in one mark-cut-bend pass.\n\nThe key decision was using fold geometry as structure. Short side walls reinforced the base plate, and the pattern stayed simple enough to manufacture without losing alignment.",
-          image: "/case-studies/wolf/top.jpg"
+          image: "/case-studies/wolf/top.png"
         },
         {
           title: "Chassis Assembly",
           description: "Once the sheet came back from cutting and bending, the build moved into mechanical integration. The folded chassis was assembled first, then the rear-drive motors, battery pack, receiver, motor driver, and wiring were installed low inside the body.\n\nEverything was arranged for stability and impact survival. No welding, no redundant structure, and no loose routing that could fail during a hit.",
-          image: "/case-studies/wolf/iso.jpg"
+          image: "/case-studies/wolf/internal_ghost.png"
         },
         {
           title: "Combat Optimization",
           description: "The opening rumble validated the chassis but exposed a contact problem: Wolf could push, yet it could not consistently get under opponents. That made the next decision clear.\n\nBetween rounds I designed a bolt-on wedge from leftover sheet material and mounted it to the existing chassis. It was a fast, constraint-aware upgrade that changed the way Wolf entered every fight and directly improved match control.",
-          image: "/case-studies/wolf/closeup-wedge.jpg"
+          image: "/case-studies/wolf/closeup_wedge.png"
         }
       ],
       stats: [
@@ -154,15 +154,15 @@ export const PROJECTS: Project[] = [
       ],
       gallery: [
         {
-          image: "/case-studies/wolf/hero.jpg",
-          caption: "Hero view"
+          image: "/case-studies/wolf/hero.png",
+          caption: "Front view"
         },
         {
-          image: "/case-studies/wolf/iso.jpg",
-          caption: "Isometric view"
+          image: "/case-studies/wolf/iso34th.png",
+          caption: "Three-quarter view"
         },
         {
-          image: "/case-studies/wolf/top.jpg",
+          image: "/case-studies/wolf/top.png",
           caption: "Top view"
         }
       ],
@@ -191,53 +191,53 @@ export const PROJECTS: Project[] = [
   {
     id: 3,
     title: "Hydrofoil Boat",
-    category: "Marine Engineering",
+    category: "Waterproofing / FDM",
     image: "/case-studies/hydrofoil/hero.png",
-    description: "Built a foil-assisted RC hull around two problems: getting the hull to leave the water, and keeping the propeller shaft watertight once it does.",
+    description: "A waterproofing methodology stress-tested at the hardest version of the problem: rotating propeller shaft, dynamic loads, below the waterline, $207 BOM.",
     details: {
       client: "Blueprint Community",
       year: "2024",
       role: "Mechanical Design / Prototyping",
-      techStack: ["CAD", "FDM PETG", "Foil Design", "Waterproofing", "ESP32"],
-      challenge: "27 parts — 19 mechanical, 8 electrical — total BOM $207.60. The mechanical problem is getting the hull to leave the water, stay stable once it does, and not flood through the spinning propeller shaft in the process.\n\nShaft penetration is where RC marine builds die. The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull. Standard rubber seals compress out of spec under sustained dynamic load. Get the seal wrong and water tracks back up the stern tube into the electronics bay.",
-      solution: "Foil geometry and shaft sealing are not independent problems — if the AoA is wrong, the boat porpoises, and porpoising creates surge loading at the shaft seal. The mechanical system fails at the weakest link.\n\nAll structural parts printed in PETG (better moisture resistance than PLA, tighter layer adhesion under sustained load). Hull waterproofed post-print to close layer-line porosity. Struts at 50% infill for hydrodynamic stiffness. Main foil at 4° AoA. Shaft sealed with a rubber/silicone stern tube seal packed with marine grease. Lead ballast at the bow set CG at 31% of waterline length.",
-      outcome: "A hull that transitions from displacement to foil-supported mode at ~5 knots with stable pitch. Shaft seal held through repeated full-throttle runs with zero ingress. The infill strategy across the 12 printed parts reflects the load map: 100% on control arms (smallest linkage parts, highest failure risk), 70% on the shaft housing, down to 25% on the hull body where weight matters more than compressive strength.",
+      techStack: ["CAD", "FDM PETG", "Waterproofing", "Sealing Design", "PETG Post-Process"],
+      challenge: "27 parts — 19 mechanical, 8 electrical — total BOM $207.60. The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull below the waterline. Standard rubber seals compress out of spec under sustained dynamic load. FDM-printed hulls have layer-line porosity invisible to the naked eye — but water finds it.\n\nCommunity data is unambiguous: PLA hulls flood in under 60 seconds. PETG fares better but reaches 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing — it buys time for the sealing architecture to work. If the architecture is wrong, the material does not matter.",
+      solution: "Waterproofing is not a single decision — it is a hierarchy. Material selection determines the failure mode. Sealing architecture determines when water reaches the hull. Porosity closure determines whether the hull itself is the failure.\n\nMaterial first: PETG over PLA — failure-mode selection, not preference. Still requires post-print epoxy treatment to close layer-line porosity.\n\nSealing hierarchy: marine grease fills the annular gap around the shaft first. Water must displace the entire grease column before it reaches the rubber stern tube seal. The seal is the last resort, not the plan.\n\nPorosity closure: post-print epoxy treatment applied to all exterior surfaces before any water exposure. Not optional for any printed part in a wet environment.",
+      outcome: "Shaft seal held through repeated full-throttle runs with zero ingress. The infill strategy across the 12 printed parts reflects the failure consequence map: 100% on control arms (servo linkage, smallest cross-section, highest failure risk), 70% on shaft housing, 60% on motor mount, 50% on struts, 25% on the hull shell (weight-critical, post-print treatment closes the porosity).\n\nThe methodology proved at the hardest version of the problem: rotating shaft, dynamic load, below waterline. The same three decisions — material, sealing hierarchy, porosity closure — transfer directly to any printed enclosure in a wet environment.",
       research: [
         {
-          title: "Foil AoA vs. Cavitation Risk",
-          content: "High angle of attack gets lift fast — but steepen past 6° and water separates from the upper surface. Lift becomes unpredictable above that threshold. The 4° setting gives enough lift to clear the hull at takeoff speed without triggering early cavitation on the main foil."
+          title: "Material Selection Under Constraint",
+          content: "PLA was ruled out first. Community data is consistent: PLA hulls take on water in under 60 seconds because the material is hydrophilic and layer-line porosity cannot be reliably sealed. PETG provides better moisture resistance and tighter inter-layer adhesion, but even PETG hulls have been documented at 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing — it buys time for the sealing architecture to work."
         },
         {
-          title: "Shaft Seal and Stern Tube",
-          content: "The propeller shaft penetrates the hull at a point that sees both rotational load and forward water pressure. A rubber/silicone stern tube seal packed with marine grease provides a grease-buffer layer the water must displace before it reaches the seal face. The shaft housing is the highest-infill printed part (70%) because it takes the combined bearing load from the shaft and the water pressure at the penetration point."
+          title: "Sealing Hierarchy",
+          content: "The propeller shaft penetrates the hull at a point that sees both rotational load and forward water pressure at around 3000 RPM. A rubber/silicone stern tube seal packed with marine grease creates a grease-buffer layer the water must displace before it reaches the seal face. Most printed enclosures get this backwards — they treat the seal as the primary barrier and the geometry as secondary. Here, the grease column is the primary barrier and the seal is the last resort."
         },
         {
-          title: "PETG Infill Strategy",
-          content: "12 of the 19 mechanical parts are 3D-printed PETG. The infill percentages are structural decisions: control arms at 100% (servo linkage, smallest cross-section, highest failure risk), shaft housing at 70%, motor mount at 60%, struts at 50% (stiff enough to hold AoA geometry under hydrodynamic load), hull at 25% (weight-critical, post-print waterproofing handles the porosity)."
+          title: "Infill as Structural Engineering",
+          content: "12 of the 19 mechanical parts are 3D-printed PETG. Infill percentages are structural decisions, not defaults: control arms at 100% (servo linkage, smallest cross-section, highest failure consequence), shaft housing at 70%, motor mount at 60%, struts at 50%, hull at 25%. Five tiers across 12 parts. Mass goes where failure risk is highest, and post-print treatment closes the surface rather than relying on dense infill everywhere."
         }
       ],
       process: [
         {
-          title: "Hull and Foil Geometry",
-          description: "Hull printed in PETG at 0.2mm layer height, 25% infill, waterproofed post-print. Main foil AoA: 4°. Struts at 50% infill. Stabilizer foil handles pitch — if the rear foil is oversized, the stern rises and the bow digs in. The entire transition inverts.",
+          title: "Material and Porosity Closure",
+          description: "PETG selected over PLA based on failure-mode analysis: PLA hulls flood in under 60 seconds in community stress tests. PETG reduces immediate ingress risk but still requires post-print epoxy treatment to close layer-line porosity. Treatment applied to all exterior surfaces before any water exposure — not optional.",
           image: "/case-studies/hydrofoil/hero.png"
         },
         {
-          title: "Propeller Shaft Sealing",
-          description: "Shaft housing printed at 70% infill — highest-stress printed part. Stern tube packed with marine grease, terminated with a rubber/silicone seal at the hull penetration. Grease fills the annular gap as the primary barrier before water reaches the seal face.",
+          title: "Sealing Architecture",
+          description: "Stern tube packed with marine grease, terminated with a rubber/silicone seal at the hull penetration. Grease fills the annular gap around the shaft as the primary barrier — water must displace the entire grease column before reaching the seal face. Shaft housing printed at 70% infill — highest-stress printed part — to handle combined bearing load and water pressure at the penetration point.",
           image: "/case-studies/hydrofoil/hero.png"
         },
         {
-          title: "Ballast and Drive Train",
-          description: "Lead ballast at the bow sets CG at 31% of waterline length. Universal flexible coupling at the motor-shaft interface absorbs brushless motor vibration. Control arms printed at 100% infill — smallest parts in the servo linkage, highest failure risk under repeated actuation.",
+          title: "Infill Tiering by Failure Consequence",
+          description: "Five infill tiers across 12 printed parts: 100% for control arms (servo linkage, smallest cross-section, highest failure consequence), 70% for shaft housing, 60% for motor mount, 50% for struts (hydrodynamic stiffness), 25% for the hull shell (weight-critical, post-print treatment closes the porosity). Mass allocated by failure consequence, not by convenience.",
           image: "/case-studies/hydrofoil/hero.png"
         }
       ],
       stats: [
-        { value: "27", label: "Total Parts" },
+        { value: "0", label: "Ingress Events" },
         { value: "$207", label: "Total BOM" },
-        { value: "4°", label: "Foil AoA" },
-        { value: "15°", label: "Strut Sweep" }
+        { value: "3", label: "Sealing Layers" },
+        { value: "5", label: "Infill Tiers" }
       ],
       gallery: [
         {
@@ -249,7 +249,7 @@ export const PROJECTS: Project[] = [
         {
           name: "PETG",
           code: "12 Printed Parts",
-          finish: "0.2mm / 25–100% Infill",
+          finish: "Post-Print Epoxy Sealed",
           hex: "#93C5FD"
         },
         {
@@ -259,9 +259,9 @@ export const PROJECTS: Project[] = [
           hex: "#374151"
         },
         {
-          name: "Lead Ballast",
-          code: "CG Tuning",
-          finish: "31% WL Placement",
+          name: "Infill Tiers",
+          code: "5 Levels",
+          finish: "25% → 100% by Risk",
           hex: "#6B7280"
         }
       ]
