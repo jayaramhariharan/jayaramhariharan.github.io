@@ -3,7 +3,7 @@ import { Project, Experience, SocialLink, DesignValue } from './types';
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Viper-Z Twist Axis",
+    title: "Precision Joystick Grip Upgrade",
     category: "Mechatronics",
     image: "/case-studies/viper/home-card-latest.jpg",
     heroImages: [
@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
       "https://picsum.photos/seed/flightstick2/600/400",
       "https://picsum.photos/seed/flightstick3/600/400"
     ],
-    description: "Added a 6th axis to a premium HOTAS grip with a $15 subsystem and no change to the outer ergonomics.",
+    description: "Upgraded a premium joystick grip with an added twist feature, preserving the original ergonomic shape while expanding control.",
     details: {
       client: "Private Client",
       year: "2023",
@@ -106,7 +106,7 @@ export const PROJECTS: Project[] = [
     title: "Wolf",
     category: "Product Design",
     image: "/case-studies/wolf/hero.jpg",
-    description: "Won a combat robotics tournament with a chassis designed to cut, fold, and survive impacts.",
+    description: "Designed and campaigned a battlebot that won the tournament with a low, impact-resistant chassis and a between-round wedge upgrade.",
     details: {
       client: "Propeller Technologies",
       year: "2022",
@@ -190,10 +190,10 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: "Hydrofoil Boat",
+    title: "Sealed Hydrofoil Test Boat",
     category: "Marine Engineering",
     image: "/case-studies/hydrofoil/hero.png",
-    description: "Built a foil-assisted RC hull around two problems: getting the hull to leave the water, and keeping the propeller shaft watertight once it does.",
+    description: "Built a hydrofoil test boat to prove a waterproofing method for rotating shafts, printed hulls, and dynamic loads below the waterline.",
     details: {
       client: "Blueprint Community",
       year: "2024",
