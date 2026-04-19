@@ -1,23 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
+import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const homepageCopy: Record<number, { hook: string; proof: string }> = {
   1: {
-    hook: 'Added twist yaw to a Viper grip without changing the feel of the original body.',
-    proof: '$15 test rig | original form kept intact'
+    hook: 'Added twist yaw to a premium grip while keeping the original ergonomics intact.',
+    proof: '$15 validation rig | Hall-effect twist sensing'
   },
   2: {
-    hook: 'Designed the chassis from a flat pattern, added a wedge between rounds, and won the tournament.',
-    proof: 'Tournament champion | Best Designer'
+    hook: 'Built from one aluminum sheet, then improved between rounds and won the tournament.',
+    proof: '6/6 rounds won | Best Designer'
   },
   3: {
-    hook: 'Sealed a spinning propeller shaft at 3000 RPM and designed foil geometry to lift the hull clean at 5 knots.',
-    proof: '$207 BOM | 27 parts | zero shaft ingress'
+    hook: 'Sealed a 3000 RPM shaft below the waterline and proved the waterproofing setup in testing.',
+    proof: '$207 BOM | 27 parts | zero ingress'
   }
 };
 
 const WorkGrid: React.FC = () => {
+  const caseStudiesUnlocked = areCaseStudiesUnlocked();
+
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     e.currentTarget.src = '/pics/cad-screenshot.jpg';
   };
@@ -27,7 +30,7 @@ const WorkGrid: React.FC = () => {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-16 reveal">
         <h2 className="font-serif text-5xl md:text-7xl text-token-dark-green tracking-tight">Selected work</h2>
         <p className="max-w-md font-sans text-sm md:text-base font-light leading-relaxed text-gray-500 md:text-right">
-          A few projects I've documented so far.
+          Three product builds where the constraint decided the design.
         </p>
       </div>
 
@@ -67,35 +70,65 @@ const WorkGrid: React.FC = () => {
             }
 
             return (
-              <Link
-                key={project.id}
-                to={`/case-study/${project.id}`}
-                className={`group reveal block ${i % 2 === 0 ? '' : 'delay-100'}`}
-              >
-                <div className="overflow-hidden rounded-sm bg-gray-100 aspect-[4/3] mb-6 relative">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                   
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    onError={handleImageError}
-                  />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-serif mb-2 text-token-dark-green group-hover:text-token-light-green transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 font-sans font-light leading-relaxed mb-4">{homeCopy?.hook ?? project.description}</p>
-                  {homeCopy?.proof ? (
-                    <p className="mb-4 text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">
-                      {homeCopy.proof}
-                    </p>
-                  ) : null}
-                  <div className="inline-flex items-center gap-2 border-b border-transparent group-hover:border-token-light-green transition-all pb-0.5">
-                    <span className="text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">View project</span>
+              caseStudiesUnlocked ? (
+                <Link
+                  key={project.id}
+                  to={`/case-study/${project.id}`}
+                  className={`group reveal block ${i % 2 === 0 ? '' : 'delay-100'}`}
+                >
+                  <div className="overflow-hidden rounded-sm bg-gray-100 aspect-[4/3] mb-6 relative">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      onError={handleImageError}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-serif mb-2 text-token-dark-green group-hover:text-token-light-green transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 font-sans font-light leading-relaxed mb-4">{homeCopy?.hook ?? project.description}</p>
+                    {homeCopy?.proof ? (
+                      <p className="mb-4 text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">
+                        {homeCopy.proof}
+                      </p>
+                    ) : null}
+                    <div className="inline-flex items-center gap-2 border-b border-transparent group-hover:border-token-light-green transition-all pb-0.5">
+                      <span className="text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">View project</span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  key={project.id}
+                  className={`reveal block ${i % 2 === 0 ? '' : 'delay-100'}`}
+                  aria-disabled="true"
+                >
+                  <div className="overflow-hidden rounded-sm bg-gray-100 aspect-[4/3] mb-6 relative">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      onError={handleImageError}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-serif mb-2 text-token-dark-green">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 font-sans font-light leading-relaxed mb-4">{homeCopy?.hook ?? project.description}</p>
+                    {homeCopy?.proof ? (
+                      <p className="mb-4 text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">
+                        {homeCopy.proof}
+                      </p>
+                    ) : null}
+                    <div className="inline-flex items-center gap-2 border-b border-transparent pb-0.5">
+                      <span className="text-[11px] font-sans uppercase tracking-[0.15em] text-token-text-gray">Case study in progress</span>
+                    </div>
                   </div>
                 </div>
-              </Link>
+              )
             );
           })}
       </div>

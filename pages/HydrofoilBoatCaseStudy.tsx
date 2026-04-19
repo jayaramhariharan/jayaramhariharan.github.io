@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const hydrofoilImages = { hero: '/case-studies/hydrofoil/hero.png' };
 const imageAspectRatios = { hero: '16 / 9' };
@@ -30,30 +31,30 @@ const AspectImage: React.FC<AspectImageProps> = ({
 const decisionPaths = [
   {
     title: 'PETG, not PLA.',
-    body: 'Material selection is failure-mode selection. Community data shows PLA hulls flood in under 60 seconds — the material is hydrophilic and layer-line porosity cannot be sealed reliably. PETG reduces immediate ingress risk and gives tighter inter-layer adhesion, but still needs post-print treatment. The material buys time for the sealing architecture to work. It is not the waterproofing.',
+    body: 'PETG stayed as the base material because it is a safer wet-service substrate than PLA. It was not treated as a waterproof answer by itself. The material only worked as the base for the rest of the sealing stack.',
   },
   {
-    title: 'Grease first, seal second.',
-    body: 'The stern tube is packed with marine grease before the rubber seal is installed. Water must displace the entire grease column before it reaches the seal face. Most printed enclosures get this backwards — they treat the seal as the primary barrier and the surrounding geometry as secondary. Here the grease column is the plan and the seal is the last resort.',
+    title: 'Grease the shaft path.',
+    body: 'RC boat builders treat shaft grease as both lubrication and a water barrier in the drive line. The shaft path got grease in the stern tube and a seal at the penetration because the first version showed one seal was not enough under load.',
   },
   {
-    title: 'Close the layer lines.',
-    body: 'FDM layer-line porosity is invisible to the naked eye but water finds it. Post-print epoxy treatment applied to all exterior surfaces before any water exposure closes the microscopic gaps that infill percentage cannot address. Not optional for any printed part in a wet environment.',
+    title: 'Seal the shell.',
+    body: 'Printed walls can seep through seams, layer gaps, and surface porosity. The shell needed a post-print epoxy sealing step because raw FDM walls can still leak even when the geometry looks sound.',
   },
 ];
 
 const processFrames = [
   {
-    label: '01: material selection',
-    caption: 'PETG over PLA — failure-mode selection, not preference. Post-print epoxy treatment closes layer-line porosity before any water exposure.',
+    label: '01: ingress map',
+    caption: 'RC boat leaks rarely come from one place. Stuffing tubes, rudder tubes, hatch seals, and transom hardware all show up in community reports. This build only had to solve the shaft path and the printed walls.',
   },
   {
-    label: '02: sealing hierarchy',
-    caption: 'Stern tube packed with marine grease. Water must displace the grease column before reaching the rubber seal face. Seal is last resort, not the plan.',
+    label: '02: first failure',
+    caption: 'The first version had a single rubber shaft seal and a PLA hull. It flooded at the shaft on the first run. When the walls were checked separately, they wept anyway.',
   },
   {
-    label: '03: infill tiering',
-    caption: 'Five tiers across 12 printed parts: 100% control arms → 70% shaft housing → 60% motor mount → 50% struts → 25% hull shell. Mass follows failure consequence.',
+    label: '03: structure vs sealing',
+    caption: 'Parts around the shaft load path and motor mount were printed denser than non-structural covers, but density supported the hardware. It was not treated as the sealing strategy.',
   },
 ];
 
@@ -65,10 +66,10 @@ const finalFrames = [
 ];
 
 const stats = [
-  { value: '0', label: 'Ingress Events' },
+  { value: '2', label: 'Leak Paths' },
   { value: '$207', label: 'Total BOM' },
-  { value: '3', label: 'Sealing Layers' },
-  { value: '5', label: 'Infill Tiers' },
+  { value: '27', label: 'Total Parts' },
+  { value: '2', label: 'Foil Servos' },
 ];
 
 const HydrofoilBoatCaseStudy: React.FC = () => {
@@ -85,24 +86,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
     setNextProjectIndex((prev) => (prev + 1) % nextProjects.length);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const reveals = document.querySelectorAll('.reveal');
-      for (let i = 0; i < reveals.length; i += 1) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = windowHeight * 0.15;
-
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add('active');
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useScrollReveal();
 
   return (
     <motion.div
@@ -159,7 +143,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                 transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-2xl font-sans text-xl font-light leading-tight tracking-tight text-white/90 pointer-events-auto md:text-3xl"
               >
-                A 3D-printed RC hull built to prove a waterproofing methodology at the hardest version of the problem: rotating shaft, dynamic loads, below the waterline.
+                A 3D-printed RC boat that treated the shaft path and the hull walls as two different leak paths, then built a sealing stack for both.
               </motion.p>
             </div>
           </div>
@@ -204,9 +188,9 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                   01 &mdash; The Challenge
                 </div>
                 <h2 className="reveal font-display text-4xl font-medium leading-tight tracking-tight text-[#1d1d1f] md:text-5xl">
-                  Waterproofing is not a feature.
+                  Leaks never come
                   <br />
-                  It's a hierarchy.
+                  from one place.
                 </h2>
               </div>
             </div>
@@ -214,21 +198,21 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
             <div className="flex flex-col gap-16 pt-4 lg:col-span-7 lg:pt-16">
               <div className="reveal">
                 <p className="font-sans text-xl font-light leading-relaxed tracking-tight text-[#86868b] md:text-2xl">
-                  The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull below the waterline. Standard rubber seals compress out of spec under sustained dynamic load. FDM-printed hulls have layer-line porosity invisible to the naked eye — but water finds it. Most printed enclosures flood from porosity, not catastrophic seal failure.
+                  The propeller shaft had to spin through the hull. The hull could not let water in. On RC boats that problem usually spreads across stuffing tubes, rudder tubes, hatch seals, and transom hardware.
                 </p>
               </div>
 
               <div className="reveal delay-100">
                 <p className="font-sans text-xl font-light leading-relaxed tracking-tight text-[#86868b] md:text-2xl">
-                  Community data is unambiguous: PLA hulls flood in under 60 seconds. PETG fares better but reaches 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing — it buys time for the sealing architecture to work. If the architecture is wrong, the material does not matter.
+                  A printed hull adds one more path. It can seep through seams, layer gaps, and surface porosity. This build only had to solve two of them, but they were enough: the shaft path failed under load, and the printed body leaked through the walls.
                 </p>
               </div>
 
               <div className="reveal delay-200 mt-8">
                 <div className="border-l border-gray-300 pl-6 md:pl-8">
                   <h3 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-[#86868b]">The Objective</h3>
-                  <p className="font-sans text-xl font-normal leading-relaxed tracking-tight text-[#1d1d1f] md:text-2xl">
-                    Prove that a three-layer waterproofing hierarchy — material selection, sealing architecture, porosity closure — holds at the hardest version of the problem.
+                  <p className="font-sans text-xl md:text-2xl font-normal leading-relaxed text-[#1d1d1f] tracking-tight">
+                    Split the problem into the two leak paths this build actually had, then build a layered sealing stack for both.
                   </p>
                 </div>
               </div>
@@ -239,7 +223,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
         <section className="mx-auto max-w-site overflow-hidden px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mx-auto max-w-5xl text-center">
             <p className="font-display text-3xl font-medium leading-snug tracking-tight text-[#1d1d1f] md:text-4xl">
-              "Waterproofing is not a feature you add. It's a hierarchy you design from the inside out. The shaft seal is not the plan — it's the last resort."
+              "The common pattern is not one bad part. It is a stack of small ingress points."
             </p>
           </div>
         </section>
@@ -252,9 +236,9 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                   02 &mdash; Decision Path
                 </div>
                 <h2 className="reveal font-display text-4xl font-medium leading-tight tracking-tight text-[#1d1d1f] md:text-5xl">
-                  Three decisions.
+                  Build the stack.
                   <br />
-                  In this order.
+                  Not the myth.
                 </h2>
               </div>
             </div>
@@ -269,7 +253,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                 />
                 <figcaption className="mt-6 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.18em] text-[#86868b]">
                   <span className="font-mono">Final assembly</span>
-                  <span className="font-sans text-[11px] font-medium text-[#1d1d1f]">Three-layer sealing hierarchy validated under dynamic load</span>
+                  <span className="font-sans text-[11px] font-medium text-[#1d1d1f]">Layered sealing stack for the shaft path and the printed shell</span>
                 </figcaption>
               </figure>
 
@@ -429,7 +413,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
             <a href="https://www.linkedin.com/in/jayaramh" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
               LinkedIn
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
+            <a href="https://www.dropbox.com/scl/fi/muxe6aezb1wq0nbekr3x6/Jayaram_H_Resume.pdf?rlkey=uk5ksee5omgrpgcvzmy36ywd3&st=74qy6y7j&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
               Resume
             </a>
             <a href="mailto:jayaram.h1501@gmail.com" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">

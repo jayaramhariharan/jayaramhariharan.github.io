@@ -1,17 +1,19 @@
-import { Project, Experience, SocialLink, DesignValue } from './types';
+import { Project, Experience, SocialLink, PhilosophyRule, PhilosophySetLogic } from './types';
+
+export const RESUME_URL = "https://www.dropbox.com/scl/fi/muxe6aezb1wq0nbekr3x6/Jayaram_H_Resume.pdf?rlkey=uk5ksee5omgrpgcvzmy36ywd3&st=74qy6y7j&dl=0";
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Viper-Z Twist Axis",
+    title: "Precision Joystick Grip Upgrade",
     category: "Mechatronics",
-    image: "https://picsum.photos/seed/flightstick1/1200/800",
+    image: "/case-studies/viper/home-card-latest.jpg",
     heroImages: [
       "https://picsum.photos/seed/flightstick1/1200/800",
       "https://picsum.photos/seed/flightstick2/600/400",
       "https://picsum.photos/seed/flightstick3/600/400"
     ],
-    description: "Added a 6th axis to a premium HOTAS grip with a $15 subsystem and no change to the outer ergonomics.",
+    description: "Upgraded a premium joystick grip with an added twist feature, preserving the original ergonomic shape while expanding control.",
     details: {
       client: "Private Client",
       year: "2023",
@@ -106,7 +108,7 @@ export const PROJECTS: Project[] = [
     title: "Wolf",
     category: "Product Design",
     image: "/case-studies/wolf/iso34th.png",
-    description: "Won a combat robotics tournament with a chassis designed to cut, fold, and survive impacts.",
+    description: "Designed and campaigned a battlebot that won the tournament with a low, impact-resistant chassis and a between-round wedge upgrade.",
     details: {
       client: "Propeller Technologies",
       year: "2022",
@@ -190,10 +192,10 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: "Hydrofoil Boat",
+    title: "Sealed Hydrofoil Test Boat",
     category: "Waterproofing / FDM",
     image: "/case-studies/hydrofoil/hero.png",
-    description: "A waterproofing methodology stress-tested at the hardest version of the problem: rotating propeller shaft, dynamic loads, below the waterline, $207 BOM.",
+    description: "Built a hydrofoil test boat to prove a waterproofing method for rotating shafts, printed hulls, and dynamic loads below the waterline.",
     details: {
       client: "Blueprint Community",
       year: "2024",
@@ -303,26 +305,37 @@ export const EXPERIENCE: Experience[] = [
   }
 ];
 
-export const DESIGN_VALUES: DesignValue[] = [
+export const PHILOSOPHY_RULES: PhilosophyRule[] = [
   {
-    title: "Useful first",
-    description: "If the product does not solve the right problem, the rest of the work does not matter much."
+    title: "extra features are suspicious.",
+    description: "If a feature does not make the product easier, clearer, or more useful, I do not think it belongs there."
   },
   {
-    title: "Make it work",
-    description: "A concept can look good early. I care more about whether it works properly when parts, tolerances, and use start to matter."
+    title: "smart only helps when it helps.",
+    description: "I like technology when it removes real effort. If it adds automation, intelligence, or complexity without improving the original job, I think the product got worse."
   },
   {
-    title: "Keep it simple",
-    description: "I try not to add parts, features, or complexity unless they improve the product in a clear way."
+    title: "automate the repeatable parts.",
+    description: "If a task can be turned into a system, I would rather do that once and spend the time on something that actually needs judgment."
   },
   {
-    title: "Ready to build",
-    description: "Good design should be clear enough to prototype, explain, and hand off without confusion."
+    title: "learn fast. correct fast.",
+    description: "If I don't know, I say it early. Then I find out, test it, and use that to make the next decision better."
   }
 ];
 
+export const PHILOSOPHY_SET_LOGIC: PhilosophySetLogic = {
+  intro: "These four lines work as a system:",
+  points: [
+    "Cut what does not earn its place.",
+    "Reject fake smartness.",
+    "Systemize repeated work.",
+    "Stay honest about gaps and improve quickly."
+  ],
+  conclusion: "They are short enough to scan, but specific enough to sound like Jay rather than generic portfolio copy."
+};
+
 export const SOCIALS: SocialLink[] = [
   { name: "LinkedIn", url: "https://www.linkedin.com/in/jayaramh" },
-  { name: "See full CV", url: "/resume.pdf" }
+  { name: "See full CV", url: RESUME_URL }
 ];

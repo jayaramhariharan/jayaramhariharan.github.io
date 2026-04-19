@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      .label { font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace; font-size: 11px; fill: #6b7280; }
+      .component { fill: none; stroke: #1d1d1f; stroke-width: 1.5; }
+      .power { fill: none; stroke: #f59e0b; stroke-width: 1.5; stroke-dasharray: 4,4; }
+      .signal { fill: none; stroke: #4ade80; stroke-width: 1; }
+      .arrow { fill: #6b7280; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#fafafa"/>
+  
+  <!-- Chassis Outline -->
+  <path class="component" d="M 200 300 L 200 380 L 280 380 L 280 420 L 480 420 L 480 380 L 560 380 L 560 300 L 480 260 L 280 260 L 200 300 Z"/>
+  <text x="390" y="355" class="label" text-anchor="middle">CHASSIS (5052-H32)</text>
+  
+  <!-- Drum Weapon -->
+  <ellipse cx="560" cy="330" rx="25" ry="50" class="component"/>
+  <text x="560" y="300" class="label" text-anchor="middle">DRUM</text>
+  <text x="560" y="395" class="label" text-anchor="middle">8,000 RPM</text>
+  
+  <!-- Motor -->
+  <rect x="460" y="310" width="40" height="25" class="component"/>
+  <text x="480" y="335" class="label" text-anchor="middle">MOTOR</text>
+  
+  <!-- Battery -->
+  <rect x="320" y="340" width="60" height="30" rx="3" class="component"/>
+  <text x="350" y="365" class="label" text-anchor="middle">LiPo 3S</text>
+  
+  <!-- PDB -->
+  <rect x="400" y="370" width="30" height="20" class="component"/>
+  <text x="415" y="400" class="label" text-anchor="middle">PDB</text>
+  
+  <!-- ESC -->
+  <rect x="320" y="290" width="35" height="20" class="component"/>
+  <text x="337" y="305" class="label" text-anchor="middle">ESC</text>
+  
+  <!-- ESP32 -->
+  <rect x="400" y="320" width="30" height="20" class="component"/>
+  <text x="415" y="335" class="label" text-anchor="middle">ESP32</text>
+  
+  <!-- Receiver -->
+  <rect x="450" y="290" width="30" height="15" class="component"/>
+  <text x="465" y="305" class="label" text-anchor="middle">RX</text>
+  
+  <!-- Drive Motors -->
+  <circle cx="240" cy="350" r="12" class="component"/>
+  <circle cx="240" cy="350" r="4" fill="#1d1d1f"/>
+  <text x="240" y="380" class="label" text-anchor="middle">L</text>
+  
+  <circle cx="240" cy="330" r="12" class="component"/>
+  <circle cx="240" cy="330" r="4" fill="#1d1d1f"/>
+  <text x="240" y="320" class="label" text-anchor="middle">R</text>
+  
+  <!-- Power Lines -->
+  <path class="power" d="M 350 355 L 350 370 L 400 370"/>
+  <path class="power" d="M 430 370 L 460 370 L 460 330"/>
+  <path class="power" d="M 320 300 L 320 290 L 337 290"/>
+  <path class="power" d="M 400 340 L 415 340"/>
+  <path class="power" d="M 350 355 L 350 380 L 415 380"/>
+  
+  <!-- Signal Lines -->
+  <path class="signal" d="M 415 320 L 415 310 L 465 305"/>
+  <path class="signal" d="M 465 295 L 465 290 L 350 290"/>
+  <path class="signal" d="M 355 300 L 355 330"/>
+  <path class="signal" d="M 430 330 L 480 330"/>
+  
+  <!-- Wedge -->
+  <path class="component" d="M 180 320 L 140 340 L 180 360 L 180 320"/>
+  <text x="160" y="390" class="label" text-anchor="middle">WEDGE</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="500" width="12" height="12" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="70" y="510" class="label">POWER (11.1V)</text>
+  
+  <rect x="50" y="520" width="12" height="12" fill="none" stroke="#4ade80" stroke-width="1"/>
+  <text x="70" y="530" class="label">PWM SIGNAL</text>
+  
+  <rect x="50" y="540" width="12" height="12" fill="none" stroke="#1d1d1f" stroke-width="1.5"/>
+  <text x="70" y="550" class="label">STRUCTURE</text>
+</svg>

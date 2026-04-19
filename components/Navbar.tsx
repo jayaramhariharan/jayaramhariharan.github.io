@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center">
           <Link to="/" className={`font-sans text-lg md:text-xl tracking-[0.08em] uppercase font-normal ${textClass} hover:opacity-70 transition-opacity`} data-cursor="nav">
-            Jay
+            Jayaram
           </Link>
         </div>
 

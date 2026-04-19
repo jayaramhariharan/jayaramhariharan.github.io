@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { RESUME_URL } from '../constants';
 
 const Footer: React.FC = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -19,11 +20,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_minmax(220px,0.7fr)] gap-12 mb-20 md:mb-28 items-end">
           <div className="flex flex-col items-start">
             <p className="mb-4 font-sans text-[11px] uppercase tracking-[0.15em] text-token-text-gray">
-              Working on something new?
+              Working through a product problem?
             </p>
-            <button onClick={handleCopyEmail} className="group inline-flex items-center gap-2 -ml-1 text-left cursor-pointer" data-cursor="nav">
+            <a href="mailto:jayaram.h1501@gmail.com" className="group inline-flex items-center gap-2 -ml-1 text-left" data-cursor="nav">
               <h2 className="font-serif text-5xl md:text-7xl leading-tight text-token-dark-green">
-                Let's talk
+                Let's talk about product.
               </h2>
 
               <div className="transform translate-y-0.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-out">
@@ -32,14 +33,20 @@ const Footer: React.FC = () => {
                   <polyline points="7 7 17 7 17 17" />
                 </svg>
               </div>
-            </button>
+            </a>
+            <p className="mt-5 max-w-md font-sans text-base leading-relaxed text-gray-600">
+              Email is the best place to reach me if you want to talk through a product, mechanism, or build problem.
+            </p>
           </div>
 
           <div className="flex flex-col gap-3 md:items-end md:text-right">
+            <button onClick={handleCopyEmail} className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto text-left cursor-pointer" data-cursor="nav">
+              jayaram.h1501@gmail.com
+            </button>
             <a href="https://www.linkedin.com/in/jayaramh" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto" data-cursor="nav">
               LinkedIn
             </a>
-            <a href="/resume.pdf" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto" data-cursor="nav">
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto" data-cursor="nav">
               Download CV
             </a>
           </div>
