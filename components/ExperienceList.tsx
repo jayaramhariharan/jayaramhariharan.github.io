@@ -1,5 +1,5 @@
 import React from 'react';
-import { EXPERIENCE } from '../constants';
+import { EXPERIENCE, RESUME_URL } from '../constants';
 
 const AboutSection: React.FC = () => {
   return (
@@ -16,11 +16,15 @@ const AboutSection: React.FC = () => {
         <div className="lg:col-span-7 lg:col-start-6 flex flex-col gap-12">
           <div className="flex flex-col gap-8 reveal delay-100">
             <p className="font-sans text-xl md:text-2xl font-light leading-relaxed text-token-dark-green">
-              I'm a product design engineer. I like building products, solving mechanical problems, and working through the parts that decide whether something will come together properly.
+              I build mechanical products and work through the parts that decide whether they actually come together.
             </p>
 
             <p className="font-sans text-xl md:text-2xl font-light leading-relaxed text-token-dark-green">
-              Most of my work is in CAD, mechanical design, prototyping, and product development. I care about products that are useful, work well, look right, and stay simple enough to build.
+              A lot of that work sits in CAD, mechanisms, prototypes, and the decisions that only become obvious when parts have to fit, assemble, and survive revision.
+            </p>
+
+            <p className="font-sans text-xl md:text-2xl font-light leading-relaxed text-token-dark-green">
+              I like products that are useful, mechanically clear, and simple enough to move toward a real build without confusion.
             </p>
           </div>
 
@@ -67,7 +71,7 @@ const AboutSection: React.FC = () => {
           </div>
 
           <div className="flex justify-end pt-8 reveal">
-            <a href="/resume.pdf" className="relative group inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.15em] uppercase transition-colors text-token-text-gray pb-1">
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="relative group inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.15em] uppercase transition-colors text-token-text-gray pb-1">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <polyline points="7 10 12 15 17 10" />

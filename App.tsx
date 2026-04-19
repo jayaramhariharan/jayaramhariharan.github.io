@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import Home from './pages/Home';
 import CaseStudy from './pages/CaseStudy';
 import NotFound from './pages/NotFound';
-import SmoothScroll from './components/SmoothScroll';
 import CustomCursor from './components/CustomCursor';
 
 const GlobalProgressBar: React.FC = () => {
@@ -38,8 +37,6 @@ const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) =
   useEffect(() => {
     // Scroll to top when the new page mounts (after exit animation of previous page)
     window.scrollTo(0, 0);
-    // Also dispatch a custom event so SmoothScroll can reset Lenis
-    window.dispatchEvent(new Event('page-mounted'));
   }, []);
 
   return (
@@ -73,7 +70,6 @@ const App: React.FC = () => {
     <Router>
       <div className="min-h-screen font-sans antialiased transition-colors duration-500">
         <CustomCursor />
-        <SmoothScroll />
         <GlobalProgressBar />
         <AnimatedRoutes />
       </div>
