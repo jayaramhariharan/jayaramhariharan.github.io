@@ -60,7 +60,13 @@ export interface SocialLink {
   url: string;
 }
 
-export interface DesignValue {
+export interface PhilosophyRule {
   title: string;
   description: string;
+}
+
+export interface PhilosophySetLogic {
+  intro: string;
+  points: string[];
+  conclusion: string;
 }

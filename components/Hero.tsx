@@ -17,7 +17,6 @@ const Hero: React.FC = () => {
             <span className="text-[#a3a3a3]">.</span>
           </span>
         </h1>
-
       </div>
 
       <div className="absolute bottom-4 left-6 right-6 md:left-12 md:right-12 pb-10 animate-entrance entrance-delay-2">

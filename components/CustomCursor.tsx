@@ -4,10 +4,23 @@ import React, { useEffect, useState, useRef } from 'react';
 const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHidden, setIsHidden] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const positionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Check for touch device and reduced motion preference
+    const checkDevice = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+      setPrefersReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    };
+    
+    checkDevice();
+    
+    // Don't show custom cursor on touch devices or if user prefers reduced motion
+    if (isTouchDevice || prefersReducedMotion) return;
+
     const onMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       setPosition({ x: clientX, y: clientY });
@@ -31,9 +44,10 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseleave", onMouseLeave);
     };
-  }, []);
+  }, [isTouchDevice, prefersReducedMotion]);
 
-  if (isHidden) return null;
+  // Don't render on touch devices or if user prefers reduced motion
+  if (isTouchDevice || prefersReducedMotion || isHidden) return null;
 
   return (
     <div
