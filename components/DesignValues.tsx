@@ -1,5 +1,5 @@
 import React from 'react';
-import { DESIGN_VALUES } from '../constants';
+import { PHILOSOPHY_RULES } from '../constants';
 
 const DesignValues: React.FC = () => {
   return (
@@ -14,9 +14,9 @@ const DesignValues: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 reveal delay-200">
-        {DESIGN_VALUES.map((item, index) => (
+        {PHILOSOPHY_RULES.map((item, index) => (
           <div
-            key={index}
+            key={item.title}
             className="relative overflow-hidden bg-white rounded-[2.5rem] p-10 md:p-14 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 group flex flex-col justify-between min-h-[380px]"
           >
             <div className="absolute -top-12 -right-8 text-[14rem] font-sans font-bold text-gray-50/80 select-none pointer-events-none transition-transform duration-700 group-hover:scale-105 group-hover:-translate-x-4 group-hover:translate-y-4">

@@ -222,7 +222,7 @@ const ViperZCaseStudy: React.FC = () => {
               transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="font-sans text-xl md:text-3xl text-white/90 font-light max-w-2xl tracking-tight leading-tight pointer-events-auto"
             >
-              A custom flight controller modification with integrated twist yaw.
+              The Thrustmaster Viper grip. Right shape, right buttons. No twist axis.
             </motion.p>
           </div>
         </div>
@@ -272,21 +272,15 @@ const ViperZCaseStudy: React.FC = () => {
             {/* Right Column: Narrative */}
             <div className="lg:col-span-7 flex flex-col gap-16 pt-4 lg:pt-16">
               <div className="reveal">
-                <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">The Specific Problem</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight">
-                  The Thrustmaster F-16C Viper is a 1:1 scale metal replica of an actual F-16 grip. Ergonomics, weight, and button layout are right — but like all Warthog/Viper-style sticks it has no twist yaw axis, because the real F-16 doesn't have one either. Authentic. Also a problem for anything outside pure DCS realism.
+                  The Thrustmaster F-16C Viper is a 1:1 scale metal replica of the actual F-16 grip. Ergonomics, weight, and button layout are right. It has no twist yaw axis because the real F-16 doesn't have one either. Authentic. Also a problem for anything outside pure DCS realism.
                 </p>
               </div>
 
               <div className="reveal delay-100">
-                <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">The Pain Points</h3>
-                <ol className="font-sans text-lg text-gray-600 font-light leading-relaxed tracking-tight list-decimal list-inside flex flex-col gap-4">
-                  <li>No twist → must buy rudder pedals ($150–$300 extra) — <em>"Why are rudder pedals always so expensive?"</em> — r/hotas</li>
-                  <li>Hat-switch workarounds are unplayable for precision yaw</li>
-                  <li>Users want to keep the grip they trust — <em>"With a Virpil base you'd be keeping the metal TM grip — replacing the worst part, keeping the best."</em> — r/hotas</li>
-                  <li>Full upgrade path: $400–700</li>
-                  <li>Cross-brand compatibility is confusing — <em>"The Warthog base is NOT equipped to allow full functionality of the Virpil grip."</em> — r/VIRPIL</li>
-                </ol>
+                <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight">
+                  Without a twist axis, yaw control meant separate rudder pedals ($150–$300) or remapping a hat switch. Neither is analog and neither is what the client wanted. The full upgrade path to a proper base ran $400–700 and required giving up the grip entirely.
+                </p>
               </div>
 
               <div className="reveal delay-200 mt-8">
@@ -364,7 +358,7 @@ const ViperZCaseStudy: React.FC = () => {
               <div className="sticky top-32">
                 <div className="text-sm uppercase tracking-[0.2em] font-mono text-gray-400 font-medium mb-8 reveal">— The Iteration</div>
                 <h2 className="font-display text-4xl md:text-5xl font-medium leading-tight tracking-tight text-[#1d1d1f] reveal">
-                  V1 tried to replace the electronics.<br/>V2 kept everything that worked.
+                  V1 tried to fit everything inside.<br/>V2 kept everything that worked.
                 </h2>
               </div>
             </div>
@@ -374,7 +368,7 @@ const ViperZCaseStudy: React.FC = () => {
               <div className="reveal">
                 <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">V1 — The Wrong Approach</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight">
-                  First attempt: Virpil electronics placed inside the Thrustmaster shell. The electronics package was too large, and button mapping couldn't replicate Thrustmaster controls. The user lost the controls they trusted — a grip that worked electrically but felt completely wrong.
+                  First attempt: fit the new electronics inside the existing body. The client called it too big and bulky. Harder to open and service than the original. Button mapping couldn't be replicated. Not a retrofit. Just a bigger grip.
                 </p>
               </div>
 
@@ -512,7 +506,7 @@ const ViperZCaseStudy: React.FC = () => {
             <div className="md:col-span-4 lg:col-span-4">
               <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tight text-[#1d1d1f] mb-4">Bill of Materials</h2>
               <p className="text-lg text-gray-600 font-sans leading-relaxed mb-8">
-                By leveraging Commercial Off-The-Shelf (COTS) electronics and custom 3D printed mechanics, I reduced the prototyping cost from an estimated $10,000+ (tooling) to under $15.
+                COTS electronics and 3D printed mechanics kept the subsystem cost under $15 for the prototype. The alternative upgrade path runs $300–700+.
               </p>
             </div>
             
@@ -586,7 +580,7 @@ const ViperZCaseStudy: React.FC = () => {
           <Link to="/" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Index</Link>
           <div className="flex gap-2 md:gap-4">
             <a href="https://www.linkedin.com/in/jayaramh" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">LinkedIn</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Resume</a>
+            <a href="https://www.dropbox.com/scl/fi/muxe6aezb1wq0nbekr3x6/Jayaram_H_Resume.pdf?rlkey=uk5ksee5omgrpgcvzmy36ywd3&st=74qy6y7j&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Resume</a>
             <a href="mailto:jayaram.h1501@gmail.com" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Email</a>
           </div>
         </div>

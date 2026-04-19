@@ -5,16 +5,16 @@ import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const homepageCopy: Record<number, { hook: string; proof: string }> = {
   1: {
-    hook: 'Added twist yaw to a Viper grip without changing the feel of the original body.',
-    proof: '$15 test rig | original form kept intact'
+    hook: 'Added twist yaw to a premium grip while keeping the original ergonomics intact.',
+    proof: '$15 validation rig | Hall-effect twist sensing'
   },
   2: {
-    hook: 'Designed the chassis from a flat pattern, added a wedge between rounds, and won the tournament.',
-    proof: 'Tournament champion | Best Designer'
+    hook: 'Built from one aluminum sheet, then improved between rounds and won the tournament.',
+    proof: '6/6 rounds won | Best Designer'
   },
   3: {
-    hook: 'Sealed a spinning propeller shaft at 3000 RPM and designed foil geometry to lift the hull clean at 5 knots.',
-    proof: '$207 BOM | 27 parts | zero shaft ingress'
+    hook: 'Sealed a 3000 RPM shaft below the waterline and proved the waterproofing setup in testing.',
+    proof: '$207 BOM | 27 parts | zero ingress'
   }
 };
 
@@ -30,7 +30,7 @@ const WorkGrid: React.FC = () => {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-16 reveal">
         <h2 className="font-serif text-5xl md:text-7xl text-token-dark-green tracking-tight">Selected work</h2>
         <p className="max-w-md font-sans text-sm md:text-base font-light leading-relaxed text-gray-500 md:text-right">
-          A few projects I've documented so far.
+          Three product builds where the constraint decided the design.
         </p>
       </div>
 
