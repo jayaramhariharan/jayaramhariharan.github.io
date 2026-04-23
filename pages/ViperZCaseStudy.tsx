@@ -564,7 +564,7 @@ const ViperZCaseStudy: React.FC = () => {
           <Link to="/" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Index</Link>
           <div className="flex gap-2 md:gap-4">
             <a href="https://www.linkedin.com/in/jayaramh" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">LinkedIn</a>
-            <a href="https://www.dropbox.com/scl/fi/muxe6aezb1wq0nbekr3x6/Jayaram_H_Resume.pdf?rlkey=uk5ksee5omgrpgcvzmy36ywd3&st=74qy6y7j&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Resume</a>
+            <a href="https://www.dropbox.com/scl/fi/23hl8s4mtt27p26u92ahh/jayaram_hariharan-resume.pdf?rlkey=krxna677qsjagszmjh7nc4owp&st=l2zyh8v0&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Resume</a>
             <a href="mailto:jayaram.h1501@gmail.com" data-cursor="nav" className="hover:text-[#1d1d1f] px-5 py-2.5 rounded-full transition-colors font-medium">Email</a>
           </div>
         </div>
