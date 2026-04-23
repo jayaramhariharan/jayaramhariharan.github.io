@@ -1,6 +1,6 @@
 import { Project, Experience, SocialLink, PhilosophyRule, PhilosophySetLogic } from './types';
 
-export const RESUME_URL = "https://www.dropbox.com/scl/fi/muxe6aezb1wq0nbekr3x6/Jayaram_H_Resume.pdf?rlkey=uk5ksee5omgrpgcvzmy36ywd3&st=74qy6y7j&dl=0";
+export const RESUME_URL = "https://www.dropbox.com/scl/fi/23hl8s4mtt27p26u92ahh/jayaram_hariharan-resume.pdf?rlkey=krxna677qsjagszmjh7nc4owp&st=l2zyh8v0&dl=0";
 
 export const PROJECTS: Project[] = [
   {
