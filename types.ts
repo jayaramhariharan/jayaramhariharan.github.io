@@ -52,6 +52,7 @@ export interface Experience {
   role: string;
   period: string;
   description: string;
+  highlights?: string[];
   details?: string[];
 }
 

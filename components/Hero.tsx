@@ -5,12 +5,12 @@ const Hero: React.FC = () => {
     <section className="h-screen min-h-[700px] flex flex-col justify-center items-center px-6 md:px-12 relative overflow-hidden bg-token-light-bg transition-colors duration-500">
       <div className="relative z-10 w-full max-w-site mx-auto text-center flex flex-col items-center justify-center -mt-6 md:-mt-0">
         <p className="mb-6 text-[11px] font-sans uppercase tracking-[0.18em] text-token-text-gray animate-entrance entrance-delay-1">
-          Designing products since 2019
+          Mechanical product design since 2019
         </p>
 
         <h1 className="font-serif text-[8.5vw] md:text-[5.5vw] leading-[0.9] -tracking-[0.03em] text-token-dark-green animate-entrance entrance-delay-1">
           <span className="block md:whitespace-nowrap">
-            I'm Jay. I design products and
+            I&apos;m Jay. I design products and
           </span>
           <span className="block mt-1 md:mt-4">
             love to solve problems
@@ -28,12 +28,12 @@ const Hero: React.FC = () => {
               <p className="text-sm font-sans text-token-dark-green">Product Design Engineer at Afterconcepts</p>
             </div>
             <div>
-              <div className="text-[10px] font-sans uppercase tracking-[0.18em] text-token-text-gray mb-1">Work</div>
-              <p className="text-sm font-sans text-token-dark-green">Healthcare, consumer tech, mobility, and industrial products</p>
+              <div className="text-[10px] font-sans uppercase tracking-[0.18em] text-token-text-gray mb-1">Industries</div>
+              <p className="text-sm font-sans text-token-dark-green">Consumer electronics, EVs, medical devices, industrial equipment</p>
             </div>
             <div>
-              <div className="text-[10px] font-sans uppercase tracking-[0.18em] text-token-text-gray mb-1">Focus</div>
-              <p className="text-sm font-sans text-token-dark-green">CAD, mechanical design, prototypes, and development</p>
+              <div className="text-[10px] font-sans uppercase tracking-[0.18em] text-token-text-gray mb-1">What I Do</div>
+              <p className="text-sm font-sans text-token-dark-green">Mechanical design from CAD through production</p>
             </div>
           </div>
 
