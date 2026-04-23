@@ -3,13 +3,13 @@ import { PHILOSOPHY_RULES } from '../constants';
 
 const DesignValues: React.FC = () => {
   return (
-    <section id="philosophy" className="px-6 md:px-12 py-32 max-w-site mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 reveal gap-8">
+    <section id="philosophy" className="scroll-mt-28 px-6 py-28 md:px-12 max-w-site mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 reveal gap-8">
         <h2 className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] text-token-dark-green leading-[1.1] tracking-tight">
-          Design philosophy.
+          Design philosophy<span className="text-token-light-green">.</span>
         </h2>
         <p className="max-w-md font-sans text-sm md:text-base text-gray-500 leading-relaxed font-light md:text-right">
-          A few rules that guide the way I design products.
+          A few rules that keep the work clear, useful, and buildable.
         </p>
       </div>
 
@@ -17,9 +17,9 @@ const DesignValues: React.FC = () => {
         {PHILOSOPHY_RULES.map((item, index) => (
           <div
             key={item.title}
-            className="relative overflow-hidden bg-white rounded-[2.5rem] p-10 md:p-14 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 group flex flex-col justify-between min-h-[380px]"
+            className="group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-lg border border-gray-100 bg-white p-7 shadow-none transition-all duration-500 hover:border-gray-200 hover:shadow-[0_8px_24px_rgb(0,0,0,0.04)] md:min-h-[320px] md:p-10"
           >
-            <div className="absolute -top-12 -right-8 text-[14rem] font-sans font-bold text-gray-50/80 select-none pointer-events-none transition-transform duration-700 group-hover:scale-105 group-hover:-translate-x-4 group-hover:translate-y-4">
+            <div className="pointer-events-none absolute -right-6 -top-10 hidden select-none font-sans text-[11rem] font-bold text-gray-50/80 transition-transform duration-700 group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:scale-105 md:block">
               {index + 1}
             </div>
 

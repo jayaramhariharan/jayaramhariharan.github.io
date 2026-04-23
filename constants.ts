@@ -9,9 +9,9 @@ export const PROJECTS: Project[] = [
     category: "Mechatronics",
     image: "/case-studies/viper/home-card-latest.jpg",
     heroImages: [
-      "https://picsum.photos/seed/flightstick1/1200/800",
-      "https://picsum.photos/seed/flightstick2/600/400",
-      "https://picsum.photos/seed/flightstick3/600/400"
+      "/case-studies/viper/home-card-latest.jpg",
+      "/pics/final-front.jpg",
+      "/pics/final-quarter.jpg"
     ],
     description: "Upgraded a premium joystick grip with an added twist feature, preserving the original ergonomic shape while expanding control.",
     details: {
@@ -19,13 +19,13 @@ export const PROJECTS: Project[] = [
       year: "2023",
       role: "Product Design, Mechatronics, CAD, Firmware",
       techStack: ["CAD", "C++", "Arduino", "Reverse Engineering", "3D Printing"],
-      challenge: "A flight sim enthusiast had found their perfect grip—a Thrustmaster F-16C Viper HOTAS, a premium 1:1 scale metal replica. The ergonomics were exactly what they wanted.\n\nBut it was missing one critical feature: twist yaw. The grip could handle pitch and roll, but for yaw control, they'd need separate rudder pedals—an expensive and space-consuming addition.\n\nThe Challenge: Build a custom, 1:1 scale operational replica that integrates a high-precision twist axis without altering the external ergonomics.",
+      challenge: "A flight sim enthusiast had found their perfect grip - a Thrustmaster F-16C Viper HOTAS, a premium 1:1 scale metal replica. The ergonomics were exactly what they wanted.\n\nBut it was missing one critical feature: twist yaw. The grip could handle pitch and roll, but for yaw control, they'd need separate rudder pedals - an expensive and space-consuming addition.\n\nThe Challenge: Build a custom, 1:1 scale operational replica that integrates a high-precision twist axis without altering the external ergonomics.",
       solution: "I analyzed what went wrong with previous attempts and identified the core mistake: trying to shrink the wrong thing. Instead of cramming existing electronics into a smaller space, I needed to rethink the architecture entirely.\n\nThe key insight: the grip's upper body (the distinct head, the triggers) was fixed and non-negotiable. But the mounting interface was the opportunity for innovation.\n\nInstead of trying to fit someone else's electronics, I asked: what if I only add what's actually needed?",
       outcome: "Precision: 10-bit Hall-Effect sensing with custom auto-calibration and deadzone filtering.\n\nErgonomics: 100% geometric match to original grip, but with added 6th degree of freedom (twist).\n\nCost Efficiency: $15 COTS mechatronics BOM replaced $10k+ potential ground-up fabrication costs.\n\nValidation: Built a $15 'Ghost' emulator to replace $300+ hardware; 100% functional validation.\n\nInnovation: First-ever 1:1 scale Viper grip with integrated high-precision twist yaw functionality.\n\nDeployment: Delivered a field-tested, bespoke unit with zero post-delivery maintenance issues.",
       research: [
         {
           title: "The Split-Brain Architecture",
-          content: "I designed a dual-interface architecture—a dedicated twist module with its own sensor and controller, running alongside the original button electronics. Two systems, one grip.\n\nNew Signal Path:\nHall-Effect twist axis -> SparkFun Qwiic Pro Micro -> separate USB port (independent HID joystick)\n\nLegacy Signal Path:\nOriginal Thrustmaster 5-pin DIN connector -> Warthog base (19+ buttons)"
+          content: "I designed a dual-interface architecture - a dedicated twist module with its own sensor and controller, running alongside the original button electronics. Two systems, one grip.\n\nNew Signal Path:\nHall-Effect twist axis -> SparkFun Qwiic Pro Micro -> separate USB port (independent HID joystick)\n\nLegacy Signal Path:\nOriginal Thrustmaster 5-pin DIN connector -> Warthog base (19+ buttons)"
         },
         {
           title: "Precision Sensing",
@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
         },
         {
           title: "Building a Ghost",
-          content: "A major bottleneck occurred: the Warthog Base—needed for testing all 19+ buttons—was unavailable in India and cost-prohibitive to ship for a single test.\n\nI needed to validate that every button worked before shipping the final unit. But I couldn't get the hardware.\n\nThe Solution:\nI built a base emulator using a second SparkFun Qwiic Pro Micro with MMJoy2/FreeJoy open-source joystick firmware. This transformed the microcontroller into a Warthog Base emulator—eliminating the need for the $300+ physical base.\n\nResult: Successfully validated 100% of button and twist functionality before shipping, without ever having the original mounting base. Testing infrastructure cost: ~$15 vs. $300+."
+          content: "A major bottleneck occurred: the Warthog Base - needed for testing all 19+ buttons - was unavailable in India and cost-prohibitive to ship for a single test.\n\nI needed to validate that every button worked before shipping the final unit. But I couldn't get the hardware.\n\nThe Solution:\nI built a base emulator using a second SparkFun Qwiic Pro Micro with MMJoy2/FreeJoy open-source joystick firmware. This transformed the microcontroller into a Warthog Base emulator - eliminating the need for the $300+ physical base.\n\nResult: Successfully validated 100% of button and twist functionality before shipping, without ever having the original mounting base. Testing infrastructure cost: ~$15 vs. $300+."
         }
       ],
       moodboard: {
@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
         },
         {
           title: "Mechanical Hybridization",
-          description: "Instead of trying to shrink the VPC electronics, I modularized the hardware.\n\nI harvested the mechanical twist control from a VPC unit and engineered a custom base extension in CAD. The lower section of the Thrustmaster aluminum body was modified to accommodate the twist module while keeping the upper ergonomics identical to the original.\n\nInternal supports were added for the controller boards within the joystick rather than increasing the overall part girth—maintaining a sleek profile.",
+          description: "Instead of trying to shrink the VPC electronics, I modularized the hardware.\n\nI harvested the mechanical twist control from a VPC unit and engineered a custom base extension in CAD. The lower section of the Thrustmaster aluminum body was modified to accommodate the twist module while keeping the upper ergonomics identical to the original.\n\nInternal supports were added for the controller boards within the joystick rather than increasing the overall part girth - maintaining a sleek profile.",
           image: "/pics/wireframe_drawings (2).png"
         },
         {
@@ -114,7 +114,7 @@ export const PROJECTS: Project[] = [
       year: "2022",
       role: "Design Lead",
       techStack: ["CAD", "Sheet Metal Fabrication", "Mechatronics", "Combat Robotics"],
-      challenge: "Propeller Technologies ran a multi-day combat robotics tournament: royal rumble to open, then one-on-one elimination bouts through to the championship. Last bot in the ring wins. I was design lead on a three-person team, and there were no kits or templates. Each team got a sheet of aluminium and had to turn flat stock into a fighting machine.\n\nThe constraints were hard. Single Aluminum 5052 sheet. Three brushless motors, ESP32, 3S LiPo, three ESCs—all needing to fit inside. No fabrication equipment on our end, so the chassis had to be designed for mark, cut, and bend in a single pass. Everything had to resolve from one flat pattern and still survive repeated impacts in the ring.",
+      challenge: "Propeller Technologies ran a multi-day combat robotics tournament: royal rumble to open, then one-on-one elimination bouts through to the championship. Last bot in the ring wins. I was design lead on a three-person team, and there were no kits or templates. Each team got a sheet of aluminium and had to turn flat stock into a fighting machine.\n\nThe constraints were hard. Single Aluminum 5052 sheet. Three brushless motors, ESP32, 3S LiPo, three ESCs - all needing to fit inside. No fabrication equipment on our end, so the chassis had to be designed for mark, cut, and bend in a single pass. Everything had to resolve from one flat pattern and still survive repeated impacts in the ring.",
       solution: "Three chassis directions were evaluated against what actually mattered: can it be folded from a flat pattern, will it win a pushing match, and will it survive side impacts. The wedge ramp had the right combat physics because it could get under an opponent and lift their drive wheels, but the compound-angle bends made it too risky for a single-pass fabrication method. The tall-wall box improved perimeter protection, but the added height raised the center of gravity and made lateral impacts more dangerous. The flat rectangular chassis was the one option where fabrication reality and match performance pointed the same way: low center of gravity, clean fold geometry, and short walls that doubled as structural flanges.\n\nFrom there the engineering started with the flat pattern. I laid out cut lines, bend radii, motor mounts, battery positions, and wiring channels directly into the aluminium so the entire chassis could be cut and bent in one pass. Every fold had to do structural work. Side walls stiffened the base plate, and tab-slot joints locked the rear panel without welding or unnecessary complexity.\n\nThe build stayed simple on purpose. Dual Brushless 2205 2300KV motors on 30A ESCs drove the rear wheels, with a spinning drum weapon (6061 aluminum, steel teeth, 3536 1400KV motor) mounted forward. An ESP32 with Flysky 2.4GHz wireless RC handled control, powered by an 11.1V 3S LiPo through a Matek PDB. The result was a form that could actually be built under the constraint, hold ground in combat, and leave enough clarity in the design to improve quickly when live match data showed what needed to change.",
       outcome: "Wolf won the full tournament: the opening royal rumble and five one-on-one elimination bouts. 6/6 rounds won, 100% win rate, and 0 structural failures across the event.\n\nThe turning point came after round one. The base chassis was stable and had torque, but the flat front face gave up too much in direct engagements. Between rounds I designed and fabricated a bolt-on wedge from remaining sheet offcuts, using the existing chassis without changing the base structure. That upgrade gave Wolf a reliable way to get under opponents, break traction, and control the exchange.\n\nPropeller Technologies awarded Wolf both Tournament Champion and Best Designer. It was also the only bot in the field to receive a mid-tournament mechanical upgrade and turn that change directly into match advantage.",
       research: [
@@ -201,17 +201,17 @@ export const PROJECTS: Project[] = [
       year: "2024",
       role: "Mechanical Design / Prototyping",
       techStack: ["CAD", "FDM PETG", "Waterproofing", "Sealing Design", "PETG Post-Process"],
-      challenge: "27 parts — 19 mechanical, 8 electrical — total BOM $207.60. The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull below the waterline. Standard rubber seals compress out of spec under sustained dynamic load. FDM-printed hulls have layer-line porosity invisible to the naked eye — but water finds it.\n\nCommunity data is unambiguous: PLA hulls flood in under 60 seconds. PETG fares better but reaches 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing — it buys time for the sealing architecture to work. If the architecture is wrong, the material does not matter.",
-      solution: "Waterproofing is not a single decision — it is a hierarchy. Material selection determines the failure mode. Sealing architecture determines when water reaches the hull. Porosity closure determines whether the hull itself is the failure.\n\nMaterial first: PETG over PLA — failure-mode selection, not preference. Still requires post-print epoxy treatment to close layer-line porosity.\n\nSealing hierarchy: marine grease fills the annular gap around the shaft first. Water must displace the entire grease column before it reaches the rubber stern tube seal. The seal is the last resort, not the plan.\n\nPorosity closure: post-print epoxy treatment applied to all exterior surfaces before any water exposure. Not optional for any printed part in a wet environment.",
-      outcome: "Shaft seal held through repeated full-throttle runs with zero ingress. The infill strategy across the 12 printed parts reflects the failure consequence map: 100% on control arms (servo linkage, smallest cross-section, highest failure risk), 70% on shaft housing, 60% on motor mount, 50% on struts, 25% on the hull shell (weight-critical, post-print treatment closes the porosity).\n\nThe methodology proved at the hardest version of the problem: rotating shaft, dynamic load, below waterline. The same three decisions — material, sealing hierarchy, porosity closure — transfer directly to any printed enclosure in a wet environment.",
+      challenge: "27 parts - 19 mechanical, 8 electrical - total BOM $207.60. The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull below the waterline. Standard rubber seals compress out of spec under sustained dynamic load. FDM-printed hulls have layer-line porosity invisible to the naked eye - but water finds it.\n\nCommunity data is unambiguous: PLA hulls flood in under 60 seconds. PETG fares better but reaches 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing - it buys time for the sealing architecture to work. If the architecture is wrong, the material does not matter.",
+      solution: "Waterproofing is not a single decision - it is a hierarchy. Material selection determines the failure mode. Sealing architecture determines when water reaches the hull. Porosity closure determines whether the hull itself is the failure.\n\nMaterial first: PETG over PLA - failure-mode selection, not preference. Still requires post-print epoxy treatment to close layer-line porosity.\n\nSealing hierarchy: marine grease fills the annular gap around the shaft first. Water must displace the entire grease column before it reaches the rubber stern tube seal. The seal is the last resort, not the plan.\n\nPorosity closure: post-print epoxy treatment applied to all exterior surfaces before any water exposure. Not optional for any printed part in a wet environment.",
+      outcome: "Shaft seal held through repeated full-throttle runs with zero ingress. The infill strategy across the 12 printed parts reflects the failure consequence map: 100% on control arms (servo linkage, smallest cross-section, highest failure risk), 70% on shaft housing, 60% on motor mount, 50% on struts, 25% on the hull shell (weight-critical, post-print treatment closes the porosity).\n\nThe methodology proved at the hardest version of the problem: rotating shaft, dynamic load, below waterline. The same three decisions - material, sealing hierarchy, porosity closure - transfer directly to any printed enclosure in a wet environment.",
       research: [
         {
           title: "Material Selection Under Constraint",
-          content: "PLA was ruled out first. Community data is consistent: PLA hulls take on water in under 60 seconds because the material is hydrophilic and layer-line porosity cannot be reliably sealed. PETG provides better moisture resistance and tighter inter-layer adhesion, but even PETG hulls have been documented at 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing — it buys time for the sealing architecture to work."
+          content: "PLA was ruled out first. Community data is consistent: PLA hulls take on water in under 60 seconds because the material is hydrophilic and layer-line porosity cannot be reliably sealed. PETG provides better moisture resistance and tighter inter-layer adhesion, but even PETG hulls have been documented at 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing - it buys time for the sealing architecture to work."
         },
         {
           title: "Sealing Hierarchy",
-          content: "The propeller shaft penetrates the hull at a point that sees both rotational load and forward water pressure at around 3000 RPM. A rubber/silicone stern tube seal packed with marine grease creates a grease-buffer layer the water must displace before it reaches the seal face. Most printed enclosures get this backwards — they treat the seal as the primary barrier and the geometry as secondary. Here, the grease column is the primary barrier and the seal is the last resort."
+          content: "The propeller shaft penetrates the hull at a point that sees both rotational load and forward water pressure at around 3000 RPM. A rubber/silicone stern tube seal packed with marine grease creates a grease-buffer layer the water must displace before it reaches the seal face. Most printed enclosures get this backwards - they treat the seal as the primary barrier and the geometry as secondary. Here, the grease column is the primary barrier and the seal is the last resort."
         },
         {
           title: "Infill as Structural Engineering",
@@ -221,12 +221,12 @@ export const PROJECTS: Project[] = [
       process: [
         {
           title: "Material and Porosity Closure",
-          description: "PETG selected over PLA based on failure-mode analysis: PLA hulls flood in under 60 seconds in community stress tests. PETG reduces immediate ingress risk but still requires post-print epoxy treatment to close layer-line porosity. Treatment applied to all exterior surfaces before any water exposure — not optional.",
+          description: "PETG selected over PLA based on failure-mode analysis: PLA hulls flood in under 60 seconds in community stress tests. PETG reduces immediate ingress risk but still requires post-print epoxy treatment to close layer-line porosity. Treatment applied to all exterior surfaces before any water exposure - not optional.",
           image: "/case-studies/hydrofoil/hero.png"
         },
         {
           title: "Sealing Architecture",
-          description: "Stern tube packed with marine grease, terminated with a rubber/silicone seal at the hull penetration. Grease fills the annular gap around the shaft as the primary barrier — water must displace the entire grease column before reaching the seal face. Shaft housing printed at 70% infill — highest-stress printed part — to handle combined bearing load and water pressure at the penetration point.",
+          description: "Stern tube packed with marine grease, terminated with a rubber/silicone seal at the hull penetration. Grease fills the annular gap around the shaft as the primary barrier - water must displace the entire grease column before reaching the seal face. Shaft housing printed at 70% infill - highest-stress printed part - to handle combined bearing load and water pressure at the penetration point.",
           image: "/case-studies/hydrofoil/hero.png"
         },
         {
@@ -263,7 +263,7 @@ export const PROJECTS: Project[] = [
         {
           name: "Infill Tiers",
           code: "5 Levels",
-          finish: "25% → 100% by Risk",
+          finish: "25% -> 100% by Risk",
           hex: "#6B7280"
         }
       ]
@@ -277,10 +277,10 @@ export const EXPERIENCE: Experience[] = [
     company: "Afterconcepts",
     role: "Product Design Engineer",
     period: "2024 - Present",
-    description: "At Afterconcepts, I work across healthcare, consumer tech, mobility, and industrial products, helping shape products from early concepts through CAD and prototype development.",
+    description: "Mechanical design across healthcare, consumer, mobility, and industrial products, from concept work through CAD and prototypes.",
     details: [
-      "A lot of that work sits in mechanical design: internal layout, part design, assemblies, mounting, mechanisms, and the decisions that make a product come together properly.",
-      "I also work through prototypes and revisions so the design gets clearer, works better, and is easier to move toward production."
+      "Internal layouts, part design, assemblies, and mechanisms that have to work in a real build.",
+      "Prototype changes, vendor feedback, and revisions that make the next version clearer."
     ]
   },
   {
@@ -288,9 +288,9 @@ export const EXPERIENCE: Experience[] = [
     company: "IIT Madras",
     role: "Solar Vehicle Engineering",
     period: "2023",
-    description: "On the IIT Madras solar vehicle team, I worked on structural layout and vehicle layout for a build where fabrication exposed weak decisions quickly.",
+    description: "Structural design for a solar vehicle where CAD had to survive fabrication.",
     details: [
-      "That made CAD more practical: mounting, part placement, and build sequence had to make sense before the team started making parts."
+      "Mounting, part placement, and build sequence had to be resolved before parts were made."
     ]
   },
   {
@@ -298,9 +298,9 @@ export const EXPERIENCE: Experience[] = [
     company: "Design Internships",
     role: "CAD & Prototyping",
     period: "2022",
-    description: "In aerospace and automotive internships, I spent most of my time on CAD, detailing, and prototype support under stricter engineering standards.",
+    description: "Aerospace and automotive internships focused on CAD, detailing, prototype builds, and drawing work.",
     details: [
-      "That pushed me toward cleaner drawings, tighter revision discipline, and a better sense of how engineering teams depend on accurate design work."
+      "That pushed me toward cleaner drawings, tighter revision control, and design work other engineers can build from."
     ]
   }
 ];
@@ -308,19 +308,19 @@ export const EXPERIENCE: Experience[] = [
 export const PHILOSOPHY_RULES: PhilosophyRule[] = [
   {
     title: "extra features are suspicious.",
-    description: "If a feature does not make the product easier, clearer, or more useful, I do not think it belongs there."
+    description: "If something does not make the product easier to use, easier to build, or easier to maintain, it probably should not be there."
   },
   {
     title: "smart only helps when it helps.",
-    description: "I like technology when it removes real effort. If it adds automation, intelligence, or complexity without improving the original job, I think the product got worse."
+    description: "Technology is useful when it removes real effort. If it adds setup, confusion, or failure points without doing real work, it is not an upgrade."
   },
   {
     title: "automate the repeatable parts.",
-    description: "If a task can be turned into a system, I would rather do that once and spend the time on something that actually needs judgment."
+    description: "Repeated work should become a system. That saves time for the parts that still need judgment."
   },
   {
     title: "learn fast. correct fast.",
-    description: "If I don't know, I say it early. Then I find out, test it, and use that to make the next decision better."
+    description: "I would rather find the weak point early, admit it, and fix it than protect a bad decision for too long."
   }
 ];
 

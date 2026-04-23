@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 import { PROJECTS } from '../constants';
+import type { Project } from '../types';
 import Navbar from '../components/Navbar';
 import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
@@ -10,7 +11,7 @@ const ViperZCaseStudy = React.lazy(() => import('./ViperZCaseStudy'));
 const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
 const HydrofoilBoatCaseStudy = React.lazy(() => import('./HydrofoilBoatCaseStudy'));
 
-const DefaultCaseStudy: React.FC<{ project: any }> = ({ project }) => {
+const DefaultCaseStudy: React.FC<{ project: Project }> = ({ project }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     offset: ["start start", "end start"]
@@ -57,10 +58,28 @@ const DefaultCaseStudy: React.FC<{ project: any }> = ({ project }) => {
             </p>
           </div>
           
-          {/* Placeholder for more case study content */}
-          <div className="p-8 bg-gray-50 rounded-2xl border border-gray-100 text-center">
-            <p className="text-token-text-gray font-sans">Detailed case study content coming soon.</p>
-          </div>
+          {project.details ? (
+            <div className="space-y-12">
+              {[
+                ['Challenge', project.details.challenge],
+                ['Solution', project.details.solution],
+                ['Outcome', project.details.outcome],
+              ].map(([label, copy]) => (
+                copy ? (
+                  <section key={label} className="border-t border-gray-200 pt-8">
+                    <h3 className="mb-5 font-mono text-xs font-medium uppercase tracking-[0.2em] text-gray-400">{label}</h3>
+                    <div className="space-y-5">
+                      {copy.split('\n\n').map((paragraph) => (
+                        <p key={paragraph} className="font-sans text-lg font-light leading-relaxed text-gray-600">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </section>
+                ) : null
+              ))}
+            </div>
+          ) : null}
         </div>
       </main>
     </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Zap, Wrench } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import ParallaxImage from '../components/ParallaxImage';
 import useScrollReveal from '../hooks/useScrollReveal';
 
 const wolfImages = {
@@ -47,9 +48,14 @@ const AspectImage: React.FC<AspectImageProps> = ({
   className = '',
   imgClassName = '',
 }) => (
-  <div className={className} style={{ aspectRatio }}>
-    <img src={src} alt={alt} className={`h-full w-full object-contain ${imgClassName}`.trim()} loading="lazy" />
-  </div>
+  <ParallaxImage
+    src={src}
+    alt={alt}
+    className={className}
+    imgClassName={imgClassName}
+    fit="contain"
+    style={{ aspectRatio }}
+  />
 );
 
 const decisionPaths = [
@@ -99,7 +105,7 @@ const WolfCaseStudy: React.FC = () => {
   const [activeCostTab, setActiveCostTab] = useState<'electrical' | 'mechanical'>('electrical');
   const nextProjects = [
     { id: 1, title: 'Viper-Z.', image: '/pics/final-front.jpg' },
-    { id: 3, title: 'Hydrofoil.', image: '/pics/hydrofoil-hero.jpg' },
+    { id: 3, title: 'Hydrofoil.', image: '/case-studies/hydrofoil/hero.png' },
   ];
   const [nextProjectIndex, setNextProjectIndex] = useState(0);
   const currentNextProject = nextProjects[nextProjectIndex];
@@ -128,17 +134,21 @@ const WolfCaseStudy: React.FC = () => {
         >
           <div className="absolute inset-0 z-0 pointer-events-none flex">
             <div className="flex-1 relative">
-              <img
+              <ParallaxImage
                 src={wolfImages.heroBackdrop}
                 alt="Wolf robot hero render"
-                className="h-full w-full object-cover object-center opacity-95"
+                className="h-full w-full"
+                imgClassName="object-center opacity-95"
+                loading="eager"
               />
             </div>
             <div className="flex-1 relative">
-              <img
+              <ParallaxImage
                 src={wolfImages.hero}
                 alt="Wolf robot front view"
-                className="h-full w-full object-cover object-center opacity-95"
+                className="h-full w-full"
+                imgClassName="object-center opacity-95"
+                loading="eager"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
@@ -157,7 +167,7 @@ const WolfCaseStudy: React.FC = () => {
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4 text-right font-mono text-[10px] leading-relaxed uppercase tracking-[0.2em] text-white/70 backdrop-blur-2xl">
                 <span className="font-semibold text-white">Case Study 02</span>
                 <br />
-                2024
+                2022
               </div>
             </nav>
 
@@ -232,14 +242,14 @@ const WolfCaseStudy: React.FC = () => {
               <div className="reveal">
                 <h3 className="mb-6 font-sans text-2xl font-medium text-[#1d1d1f]">The Tournament</h3>
                 <p className="font-sans text-xl leading-relaxed font-light tracking-tight text-[#86868b] md:text-2xl">
-                  Propeller Technologies hosted a 10-team combat robotics tournament over two days. Open arena melee to open — all bots, no pairing — then one-on-one elimination bouts through to the championship. <span className="font-medium text-[#1d1d1f]">Whatever you brought in, you built without a shop.</span>
+                  Propeller Technologies hosted a 10-team combat robotics tournament over two days. Open arena melee to open - all bots, no pairing - then one-on-one elimination bouts through to the championship. <span className="font-medium text-[#1d1d1f]">Whatever you brought in, you built without a shop.</span>
                 </p>
               </div>
 
               <div className="reveal delay-100">
                 <h3 className="mb-6 font-sans text-2xl font-medium text-[#1d1d1f]">The Constraint</h3>
                 <p className="font-sans text-xl leading-relaxed font-light tracking-tight text-[#86868b] md:text-2xl">
-                  No kits. No templates. Three-person team — I owned chassis geometry and fabrication strategy. We needed a compact chassis folded from Aluminum 5052 without a second fabrication pass. 5052-H32, not 6061. 6061 at 3mm needs heat treatment to fold clean without cracking. 5052 holds the radius. The fold is the structure.
+                  No kits. No templates. Three-person team - I owned chassis geometry and fabrication strategy. We needed a compact chassis folded from Aluminum 5052 without a second fabrication pass. 5052-H32, not 6061. 6061 at 3mm needs heat treatment to fold clean without cracking. 5052 holds the radius. The fold is the structure.
                 </p>
               </div>
 
@@ -308,7 +318,7 @@ const WolfCaseStudy: React.FC = () => {
               </div>
               <div className="flex-1">
                 <p className="font-sans text-lg leading-relaxed font-light text-gray-500">
-                  The engineering started with a flat pattern. I drew the full cut layout directly onto the aluminium: cut lines, bend radii, motor mounts, battery positions, and wiring channels. Every fold served double duty. 5052-H32 holds the bend radius without cracking — it's not the alloy off a hardware shelf, it's the one you pick when the fold IS the structure.
+                  The engineering started with a flat pattern. I drew the full cut layout directly onto the aluminium: cut lines, bend radii, motor mounts, battery positions, and wiring channels. Every fold served double duty. 5052-H32 holds the bend radius without cracking - it's not the alloy off a hardware shelf, it's the one you pick when the fold IS the structure.
                 </p>
               </div>
             </div>
@@ -606,13 +616,12 @@ const WolfCaseStudy: React.FC = () => {
 
       <section className="sticky bottom-0 left-0 z-0 flex w-full flex-col bg-[#fbfbfd]">
         <div className="group relative h-[80vh] w-full overflow-hidden">
-          <motion.img
+          <ParallaxImage
             key={currentNextProject.id}
-            initial={{ opacity: 0.5, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
             src={currentNextProject.image}
             alt="Next Project"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+            className="absolute inset-0"
+            loading="eager"
           />
           <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-700 group-hover:bg-black/10" />
 
@@ -642,10 +651,11 @@ const WolfCaseStudy: React.FC = () => {
 
           <button
             onClick={handleNextProjectSwitch}
+            aria-label="Switch next project"
             data-cursor="nav"
             className="group/switchbtn absolute top-1/2 right-8 z-20 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-white/30 shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-110 hover:bg-white hover:text-black"
           >
-            <ArrowRight size={24} strokeWidth={1.5} className="transition-transform duration-500 group-hover/switchbtn:translate-x-1" />
+            <ArrowRight size={24} strokeWidth={1.5} aria-hidden="true" className="transition-transform duration-500 group-hover/switchbtn:translate-x-1" />
           </button>
 
           <Link to={`/case-study/${currentNextProject.id}`} className="absolute inset-0 z-0" />

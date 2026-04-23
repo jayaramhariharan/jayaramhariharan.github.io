@@ -1,9 +1,7 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;700&display=swap');
 
 /* 
-  DESIGN SYSTEM — Exact copy from dousa-miao-portfolio-replica
+  DESIGN SYSTEM - Exact copy from dousa-miao-portfolio-replica
   Fonts: Coconat (serif), Neue Montreal (sans), Inter Display (display)
   No dark mode.
 */
@@ -56,24 +54,25 @@
     --font-serif: "Coconat", serif;
     --font-sans: "Neue Montreal", "Inter", sans-serif;
     --font-display: "Inter Display", sans-serif;
-    --font-mono: "Space Mono", monospace;
-    --font-playfair: "Playfair Display", serif;
-    --font-roboto-mono: "Roboto Mono", monospace;
-    --font-ibm-sans: "IBM Plex Sans", sans-serif;
-    --font-ibm-mono: "IBM Plex Mono", monospace;
+    --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", "Roboto Mono", monospace;
+    --font-playfair: "Coconat", serif;
+    --font-roboto-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", monospace;
+    --font-ibm-sans: "Neue Montreal", "Inter", sans-serif;
+    --font-ibm-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", monospace;
 
     --max-w-site: 1400px;
 }
 
 @layer base {
     html {
-        scroll-behavior: smooth;
-        font-size: 93%;
+        font-size: 100%;
+        overflow-x: clip;
     }
 
     body {
         background-color: #fefefd;
         color: #14261f;
+        overflow-x: clip;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         caret-color: transparent;
@@ -89,8 +88,17 @@
     }
 
 
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            scroll-behavior: smooth;
+        }
+    }
+
     @media (pointer: fine) {
-        body:not(.using-keyboard), body:not(.using-keyboard) a, body:not(.using-keyboard) button, body:not(.using-keyboard) .cursor-pointer {
+        body.custom-cursor-enabled:not(.using-keyboard),
+        body.custom-cursor-enabled:not(.using-keyboard) a,
+        body.custom-cursor-enabled:not(.using-keyboard) button,
+        body.custom-cursor-enabled:not(.using-keyboard) .cursor-pointer {
             cursor: none !important;
         }
     }
@@ -189,5 +197,26 @@
     
     .entrance-delay-3 {
         animation-delay: 500ms;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *, *::before, *::after {
+            animation-duration: 1ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
+            transition-duration: 1ms !important;
+        }
+
+        .reveal,
+        .animate-entrance {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
     }
 }

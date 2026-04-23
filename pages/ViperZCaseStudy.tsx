@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import ParallaxImage from '../components/ParallaxImage';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const ParallaxImg = ({ src, alt, className, children, scrollProgress, direction = "vertical", loading = "eager" }: { src: string, alt: string, className?: string, children?: React.ReactNode, scrollProgress?: any, direction?: "vertical" | "horizontal", loading?: "lazy" | "eager" }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -105,7 +107,7 @@ const ViperZCaseStudy: React.FC = () => {
 
   const nextProjects = [
     { id: 2, title: 'Wolf.', image: '/case-studies/wolf/hero.jpg' },
-    { id: 3, title: 'Fintech.', image: 'https://picsum.photos/seed/fintech/1920/1080' }
+    { id: 3, title: 'Hydrofoil.', image: '/case-studies/hydrofoil/hero.png' }
   ];
   const [nextProjectIndex, setNextProjectIndex] = useState(0);
   const currentNextProject = nextProjects[nextProjectIndex];
@@ -142,25 +144,7 @@ const ViperZCaseStudy: React.FC = () => {
 
   const x = useTransform(scrollYProgress, [0, 1], ["0px", `-${scrollRange}px`]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const reveals = document.querySelectorAll('.reveal');
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = windowHeight * 0.15;
-
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add('active');
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Trigger once on load
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useScrollReveal();
 
   return (
     <motion.div 
@@ -180,11 +164,12 @@ const ViperZCaseStudy: React.FC = () => {
         >
           {/* Background Image */}
           <div className="absolute inset-0 z-0 pointer-events-none">
-            <img
-              src="https://picsum.photos/seed/flightstick1/1920/1080"
+            <ParallaxImage
+              src="/case-studies/viper/home-card-latest.jpg"
               alt="Flightstick"
-              className="w-full h-full object-cover opacity-70"
-              referrerPolicy="no-referrer"
+              className="w-full h-full"
+              imgClassName="opacity-70"
+              loading="eager"
             />
             {/* Gradient overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-0"></div>
@@ -279,7 +264,7 @@ const ViperZCaseStudy: React.FC = () => {
 
               <div className="reveal delay-100">
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight">
-                  Without a twist axis, yaw control meant separate rudder pedals ($150–$300) or remapping a hat switch. Neither is analog and neither is what the client wanted. The full upgrade path to a proper base ran $400–700 and required giving up the grip entirely.
+                  Without a twist axis, yaw control meant separate rudder pedals ($150-$300) or remapping a hat switch. Neither is analog and neither is what the client wanted. The full upgrade path to a proper base ran $400-700 and required giving up the grip entirely.
                 </p>
               </div>
 
@@ -321,7 +306,7 @@ const ViperZCaseStudy: React.FC = () => {
                 </ParallaxImg>
                 <h3 className="font-display text-4xl md:text-6xl font-semibold tracking-tighter mb-6 text-[#1d1d1f]">Reverse Engineering.</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed tracking-tight">
-                  3D scanning gave an exact internal volume map — the grip had almost no clearance, so knowing exactly where the button PCB, shaft, and connectors lived was prerequisite to designing anything new. Output: internal volume map, stress point analysis, shaft geometry. Tool chain: 3D scan → SolidWorks.
+                  3D scanning gave an exact internal volume map - the grip had almost no clearance, so knowing exactly where the button PCB, shaft, and connectors lived was prerequisite to designing anything new. Output: internal volume map, stress point analysis, shaft geometry. Tool chain: 3D scan to SolidWorks.
                 </p>
               </div>
 
@@ -332,7 +317,7 @@ const ViperZCaseStudy: React.FC = () => {
                 </ParallaxImg>
                 <h3 className="font-display text-4xl md:text-6xl font-semibold tracking-tighter mb-6 text-[#1d1d1f]">Mechanical Design.</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed tracking-tight">
-                  Harvested the VPC Constellation Alpha twist module (tested bearing geometry, known torque feel — not reinventing rotation mechanics). Designed a custom base extension collar: CNC aluminum 6061, anodized black body / red trigger / plain interior. V1 printed in PLA via FDM (Cura) to validate fit and rotation before committing to machining.
+                  Harvested the VPC Constellation Alpha twist module (tested bearing geometry, known torque feel - not reinventing rotation mechanics). Designed a custom base extension collar: CNC aluminum 6061, anodized black body / red trigger / plain interior. V1 printed in PLA via FDM (Cura) to validate fit and rotation before committing to machining.
                 </p>
               </div>
 
@@ -343,7 +328,7 @@ const ViperZCaseStudy: React.FC = () => {
                 </ParallaxImg>
                 <h3 className="font-display text-4xl md:text-6xl font-semibold tracking-tighter mb-6 text-[#1d1d1f]">Electronics Integration.</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed tracking-tight">
-                  Dual-interface / split-brain: System 1 is the original TM electronics, untouched. System 2 is the new twist subsystem on its own USB path. Hall Effect A1324 + diametric cylinder magnet — contactless, no wear, no drift. SparkFun Qwiic Pro Micro (ATmega32U4, 33 × 18 mm) — chosen because it's small enough to fit AND has native USB HID hardware. Firmware: Arduino C++ / Joystick.h, sensor on A3 → Z-axis.
+                  Dual-interface / split-brain: System 1 is the original TM electronics, untouched. System 2 is the new twist subsystem on its own USB path. Hall Effect A1324 + diametric cylinder magnet - contactless, no wear, no drift. SparkFun Qwiic Pro Micro (ATmega32U4, 33 x 18 mm) - chosen because it's small enough to fit AND has native USB HID hardware. Firmware: Arduino C++ / Joystick.h, sensor on A3 to Z-axis.
                 </p>
               </div>
             </motion.div>
@@ -353,20 +338,20 @@ const ViperZCaseStudy: React.FC = () => {
         {/* Section 02.5 / THE ITERATION */}
         <section className="py-32 md:py-48 px-8 md:px-16 max-w-site mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-            {/* Left — sticky label */}
+            {/* Left - sticky label */}
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
-                <div className="text-sm uppercase tracking-[0.2em] font-mono text-gray-400 font-medium mb-8 reveal">— The Iteration</div>
+                <div className="text-sm uppercase tracking-[0.2em] font-mono text-gray-400 font-medium mb-8 reveal"> -  The Iteration</div>
                 <h2 className="font-display text-4xl md:text-5xl font-medium leading-tight tracking-tight text-[#1d1d1f] reveal">
                   V1 tried to fit everything inside.<br/>V2 kept everything that worked.
                 </h2>
               </div>
             </div>
 
-            {/* Right — V1/V2 narrative + side-by-side images */}
+            {/* Right - V1/V2 narrative + side-by-side images */}
             <div className="lg:col-span-7 flex flex-col gap-16 pt-4 lg:pt-16">
               <div className="reveal">
-                <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">V1 — The Wrong Approach</h3>
+                <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">V1 - The Wrong Approach</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight">
                   First attempt: fit the new electronics inside the existing body. The client called it too big and bulky. Harder to open and service than the original. Button mapping couldn't be replicated. Not a retrofit. Just a bigger grip.
                 </p>
@@ -378,9 +363,9 @@ const ViperZCaseStudy: React.FC = () => {
               </div>
 
               <div className="reveal delay-200">
-                <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">V2 — The Correct Architecture</h3>
+                <h3 className="font-sans text-2xl font-medium text-[#1d1d1f] mb-6">V2 - The Correct Architecture</h3>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight">
-                  Complete change of approach: keep all Thrustmaster electronics exactly as-is. Add only what's missing — the twist mechanism from a VPC Constellation Alpha, integrated at the lower shaft, with a fully independent electronics path. The grip, buttons, and ergonomics are 100% unchanged. Only the missing axis is new.
+                  Complete change of approach: keep all Thrustmaster electronics exactly as-is. Add only what's missing - the twist mechanism from a VPC Constellation Alpha, integrated at the lower shaft, with a fully independent electronics path. The grip, buttons, and ergonomics are 100% unchanged. Only the missing axis is new.
                 </p>
                 <p className="font-sans text-xl md:text-2xl text-gray-600 font-light leading-relaxed tracking-tight mt-6">
                   Tested in PLA first. Iterated on JST connector routing and twist core tolerances. Then machined in aluminum 6061. Ghost tester: a $15 MMJoy2-based base emulator validated firmware and wiring before touching the real $300+ base.
@@ -403,7 +388,7 @@ const ViperZCaseStudy: React.FC = () => {
                     </div>
                     <div className="flex-1">
                         <p className="font-sans text-gray-600 leading-relaxed text-lg font-light">
-                            Two independent USB devices in one grip. The original Thrustmaster PCB and the new twist subsystem never share a signal path. Adding the twist axis cannot break existing button inputs — by design, not by luck.
+                            Two independent USB devices in one grip. The original Thrustmaster PCB and the new twist subsystem never share a signal path. Adding the twist axis cannot break existing button inputs - by design, not by luck.
                         </p>
                     </div>
                 </div>
@@ -416,7 +401,7 @@ const ViperZCaseStudy: React.FC = () => {
                     </div>
                     <div className="flex-1">
                         <p className="font-sans text-gray-600 leading-relaxed text-lg font-light">
-                            Potentiometers wear. Their resistive wiper/track contact degrades → output noise → drift → ghost inputs — a documented failure mode in the HOTAS community. The A1324 Hall Effect sensor has zero physical contact. No wear, no drift, theoretically infinite lifespan. It reads angular position via the magnetic field of a diametrically magnetized cylinder magnet that produces a clean, linear field as the twist axis rotates.
+                            Potentiometers wear. Their resistive wiper/track contact degrades into output noise, drift, and ghost inputs - a documented failure mode in the HOTAS community. The A1324 Hall Effect sensor has zero physical contact. No wear, no drift, theoretically infinite lifespan. It reads angular position via the magnetic field of a diametrically magnetized cylinder magnet that produces a clean, linear field as the twist axis rotates.
                         </p>
                     </div>
                 </div>
@@ -429,7 +414,7 @@ const ViperZCaseStudy: React.FC = () => {
                     </div>
                     <div className="flex-1">
                         <p className="font-sans text-gray-600 leading-relaxed text-lg font-light">
-                            The real Viper base costs $300+. Wiring the electronics wrong and discovering it late would mean replacing expensive hardware. The ghost tester — a second microcontroller running MMJoy2 open-source firmware — emulated the full electrical signature of the real base. Full firmware and wiring validation for $15 before touching anything expensive.
+                            The real Viper base costs $300+. Wiring the electronics wrong and discovering it late would mean replacing expensive hardware. The ghost tester - a second microcontroller running MMJoy2 open-source firmware - emulated the full electrical signature of the real base. Full firmware and wiring validation for $15 before touching anything expensive.
                         </p>
                     </div>
                 </div>
@@ -480,12 +465,12 @@ const ViperZCaseStudy: React.FC = () => {
 
         {/* Section 06 / THE IMPACT */}
         <section className="py-32 md:py-48 px-8 md:px-16 max-w-site mx-auto">
-          <div className="text-sm uppercase tracking-[0.2em] font-mono text-gray-400 font-medium mb-20 reveal">06 — The Impact</div>
+          <div className="text-sm uppercase tracking-[0.2em] font-mono text-gray-400 font-medium mb-20 reveal">06 - The Impact</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-gray-200 reveal delay-100">
             <div className="border-b md:border-b-0 md:border-r border-gray-200 py-16 pr-0 md:pr-12">
               <span className="font-display text-6xl md:text-7xl font-semibold text-[#1d1d1f] tracking-tighter block mb-4">$15</span>
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-gray-400 block mb-6">Electronics Cost</span>
-              <p className="font-sans text-lg text-gray-600 font-light leading-relaxed">Full twist-axis subsystem from COTS parts. The alternative upgrade path runs $300–700+.</p>
+              <p className="font-sans text-lg text-gray-600 font-light leading-relaxed">Full twist-axis subsystem from COTS parts. The alternative upgrade path runs $300-700+.</p>
             </div>
             <div className="border-b md:border-b-0 md:border-r border-gray-200 py-16 px-0 md:px-12">
               <span className="font-display text-6xl md:text-7xl font-semibold text-[#1d1d1f] tracking-tighter block mb-4">100%</span>
@@ -506,7 +491,7 @@ const ViperZCaseStudy: React.FC = () => {
             <div className="md:col-span-4 lg:col-span-4">
               <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tight text-[#1d1d1f] mb-4">Bill of Materials</h2>
               <p className="text-lg text-gray-600 font-sans leading-relaxed mb-8">
-                COTS electronics and 3D printed mechanics kept the subsystem cost under $15 for the prototype. The alternative upgrade path runs $300–700+.
+                COTS electronics and 3D printed mechanics kept the subsystem cost under $15 for the prototype. The alternative upgrade path runs $300-700+.
               </p>
             </div>
             
@@ -525,14 +510,12 @@ const ViperZCaseStudy: React.FC = () => {
       <section className="sticky bottom-0 left-0 w-full bg-[#fbfbfd] z-0 flex flex-col">
         <div className="relative w-full h-[80vh] overflow-hidden group">
           {/* Background Image */}
-          <motion.img 
+          <ParallaxImage
             key={currentNextProject.id}
-            initial={{ opacity: 0.5, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
             src={currentNextProject.image} 
             alt="Next Project" 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-            referrerPolicy="no-referrer"
+            className="absolute inset-0"
+            loading="eager"
           />
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/20 transition-colors duration-700 group-hover:bg-black/10 pointer-events-none"></div>
@@ -565,10 +548,11 @@ const ViperZCaseStudy: React.FC = () => {
           {/* Right Arrow for Switching */}
           <button 
             onClick={handleNextProjectSwitch}
+            aria-label="Switch next project"
             data-cursor="nav"
             className="absolute right-8 top-1/2 -translate-y-1/2 z-20 w-16 h-16 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-md bg-white/30 hover:bg-white hover:text-black transition-all duration-500 hover:scale-110 group/switchbtn shadow-lg"
           >
-            <ArrowRight size={24} strokeWidth={1.5} className="transition-transform duration-500 group-hover/switchbtn:translate-x-1" />
+            <ArrowRight size={24} strokeWidth={1.5} aria-hidden="true" className="transition-transform duration-500 group-hover/switchbtn:translate-x-1" />
           </button>
           
           {/* Make the whole background clickable except where buttons are */}

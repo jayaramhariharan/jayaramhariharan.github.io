@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Cable, CheckCircle2, Cog, Cpu, FileText, Lightbulb, Package, Ruler, Wrench, Zap } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 
 type Tool = {
   name: string;
@@ -25,7 +25,7 @@ const PrototypeVisualization = () => {
   ];
 
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-4">
+    <div className="rounded-lg border border-gray-200 bg-white p-4">
       <div className="mb-4 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Iteration</span>
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Phase by phase</span>
@@ -38,7 +38,7 @@ const PrototypeVisualization = () => {
               <div className="mx-auto h-8 w-8 rounded-full border border-token-dark-green bg-white text-center font-mono text-[10px] leading-[30px] text-token-dark-green">
                 {index + 1}
               </div>
-              <div className="mt-4 rounded-2xl border border-gray-200 p-3 text-center">
+              <div className="mt-4 rounded-lg border border-gray-200 p-3 text-center">
                 <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">{stage.label}</div>
                 <div className="mt-2 font-sans text-[13px] text-token-dark-green">{stage.note}</div>
               </div>
@@ -54,7 +54,7 @@ const ProductVisualization = () => {
   const steps = ['Define', 'Concept', 'Model', 'Validate', 'Handoff'];
 
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-4">
+    <div className="rounded-lg border border-gray-200 bg-white p-4">
       <div className="mb-4 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Flow</span>
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">5 stages</span>
@@ -62,7 +62,7 @@ const ProductVisualization = () => {
       <div className="flex flex-col gap-2 md:flex-row md:items-center">
         {steps.map((step, index) => (
           <React.Fragment key={step}>
-            <div className="flex-1 rounded-2xl border border-gray-200 px-3 py-4">
+            <div className="flex-1 rounded-lg border border-gray-200 px-3 py-4">
               <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">{`0${index + 1}`}</div>
               <div className="mt-2 font-sans text-[13px] text-token-dark-green">{step}</div>
             </div>
@@ -76,6 +76,7 @@ const ProductVisualization = () => {
 
 const Skills: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const renderTool = (tool: Tool) => (
     <div className="flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5 transition-all hover:border-gray-300 hover:bg-gray-50">
@@ -100,8 +101,7 @@ const Skills: React.FC = () => {
       summaryLines: [
         'I structure CAD around assemblies, interfaces, and manufacturing constraints from the start.',
         'Board space, fasteners, wire paths, bought-out parts, and service access are resolved early in the model.',
-        'Where it helps, I use parametric setups and lightweight automation to speed repetitive modeling and design updates.',
-        'The result is production-minded CAD that supports review, prototyping, and handoff with fewer downstream corrections.',
+        'The model is set up to survive prototyping and handoff without constant back-and-forth fixes.',
       ],
     },
     {
@@ -113,10 +113,9 @@ const Skills: React.FC = () => {
       ],
       toolsLabel: 'Software',
       summaryLines: [
-        'Prototyping is used to answer design questions early, not as a final presentation step.',
-        'Builds are planned around fit, assembly order, mechanism behavior, wiring paths, and structural confidence.',
+        'Fit checks, enclosure studies, mechanism behavior, and wiring questions get answered early through prototypes.',
+        'Builds are planned around assembly order, structural confidence, and what needs to be learned next.',
         'Experience spans FDM, SLA, SLS, silicone molding, CNC machining, laser cutting, and other rapid methods.',
-        'Used for fit checks, enclosure studies, mechanism trials, electronics packaging, and short-run proof parts.',
       ],
       visualization: <PrototypeVisualization />,
       visualizationLabel: 'Iteration view',
@@ -133,8 +132,7 @@ const Skills: React.FC = () => {
       summaryLines: [
         'I work across the full development path from definition through production handoff.',
         'Concept intent, engineering feasibility, and validation stay connected through each stage.',
-        'The work usually spans requirement framing, modeling, prototype learning, and refinement.',
-        'Handoffs are structured so the next build phase starts from something usable and clear.',
+        'Handoffs give the next team something they can actually build from, not vague notes or missing details.',
       ],
       visualization: <ProductVisualization />,
       visualizationLabel: 'Process view',
@@ -151,7 +149,6 @@ const Skills: React.FC = () => {
       summaryLines: [
         'I work through motion paths, pivots, clearances, and repeatable closed-open states.',
         'Hard-stop behavior, return movement, and stack-up are resolved before assembly issues show up.',
-        'A lot of the work sits in brackets, contact surfaces, and tolerance build-up that changes mechanism feel.',
         'The goal is reliable movement across repeated use, service, and real assembly conditions.',
       ],
     },
@@ -167,8 +164,7 @@ const Skills: React.FC = () => {
       summaryLines: [
         'I balance enclosure, electronics, interfaces, and assembly constraints as one system.',
         'That includes boards, wiring, sensors, motors, relays, and control behavior inside tight mechanical packages.',
-        'Power routing, connector access, and cable management are considered alongside structure and serviceability.',
-        'Mechanical and electronic decisions stay aligned so the product remains buildable, testable, and easier to revise.',
+        'Power routing, connector access, and cable management are resolved so the system stays buildable, testable, and simpler to iterate on.',
       ],
     },
   ];
@@ -178,29 +174,32 @@ const Skills: React.FC = () => {
       <div className="mb-20 h-px w-full bg-gray-200 reveal" />
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <div className="sticky top-32 min-h-[320px]">
+          <div className="min-h-[320px] lg:sticky lg:top-32">
             <AnimatePresence mode="wait">
               {selectedIndex === null ? (
                 <motion.div
                   key="default"
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  exit={prefersReducedMotion ? undefined : { opacity: 0, y: -10 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <h2 className="mt-0 font-sans text-[11px] uppercase tracking-[0.18em] text-token-text-gray">What I Do Most</h2>
                   <p className="mt-4 max-w-md font-sans text-xl font-light leading-relaxed text-gray-500">
-                    Mechanical product work across CAD, prototype learning, system decisions, and production-minded development.
+                    Mechanical product work across CAD, prototyping, system decisions, and production-minded development.
                   </p>
                 </motion.div>
               ) : (
                 <motion.div
                   key={skillsData[selectedIndex].title}
-                  initial={{ opacity: 0, y: 10 }}
+                  id="skill-detail-panel"
+                  role="region"
+                  aria-labelledby={`skill-tab-${selectedIndex}`}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex max-h-[78vh] flex-col gap-8 overflow-y-auto pb-8 pr-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                  exit={prefersReducedMotion ? undefined : { opacity: 0, y: -10 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col gap-8 pb-8 lg:max-h-[78vh] lg:overflow-y-auto lg:pr-4"
                 >
                   <div>
                     <div className="mb-3 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-gray-400">
@@ -235,6 +234,7 @@ const Skills: React.FC = () => {
 
                   <button
                     onClick={() => setSelectedIndex(null)}
+                    aria-label="Close skill details"
                     className="mt-2 flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-gray-400 transition-colors hover:text-[#1d1d1f]"
                   >
                     &larr; Close Details
@@ -253,8 +253,12 @@ const Skills: React.FC = () => {
             return (
               <div key={skill.title} className="reveal" style={{ transitionDelay: `${index * 50}ms` }}>
                 <button
+                  id={`skill-tab-${index}`}
                   onClick={() => setSelectedIndex(isSelected ? null : index)}
-                  className={`w-full origin-left text-left font-serif leading-none transition-all duration-500 text-[2.7rem] md:text-[5rem]
+                  aria-pressed={isSelected}
+                  aria-expanded={isSelected}
+                  aria-controls="skill-detail-panel"
+                  className={`w-full origin-left text-left font-serif leading-[0.95] transition-all duration-500 text-[2.1rem] sm:text-[2.8rem] md:text-[4rem] lg:text-[4.6rem]
                     ${
                       isAnySelected
                         ? isSelected

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import ParallaxImage from '../components/ParallaxImage';
 import useScrollReveal from '../hooks/useScrollReveal';
 
 const hydrofoilImages = { hero: '/case-studies/hydrofoil/hero.png' };
@@ -23,9 +24,14 @@ const AspectImage: React.FC<AspectImageProps> = ({
   className = '',
   imgClassName = '',
 }) => (
-  <div className={className} style={{ aspectRatio }}>
-    <img src={src} alt={alt} className={`h-full w-full object-cover ${imgClassName}`.trim()} loading="lazy" />
-  </div>
+  <ParallaxImage
+    src={src}
+    alt={alt}
+    className={className}
+    imgClassName={imgClassName}
+    fit="cover"
+    style={{ aspectRatio }}
+  />
 );
 
 const decisionPaths = [
@@ -35,7 +41,7 @@ const decisionPaths = [
   },
   {
     title: 'Grease the shaft path.',
-    body: 'RC boat builders treat shaft grease as both lubrication and a water barrier in the drive line. The shaft path got grease in the stern tube and a seal at the penetration because the first version showed one seal was not enough under load.',
+    body: 'RC boat builders often use shaft grease as both lubrication and a water barrier in the drive line. The shaft path uses grease in the stern tube and a seal at the penetration so the seal is supported by a longer barrier path.',
   },
   {
     title: 'Seal the shell.',
@@ -50,7 +56,7 @@ const processFrames = [
   },
   {
     label: '02: first failure',
-    caption: 'The first version had a single rubber shaft seal and a PLA hull. It flooded at the shaft on the first run. When the walls were checked separately, they wept anyway.',
+    caption: 'The risky baseline is a single shaft seal and an untreated printed hull. That layout leaves both likely leak paths exposed: water can work around the rotating shaft and through the printed shell.',
   },
   {
     label: '03: structure vs sealing',
@@ -103,10 +109,12 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
           style={{ clipPath: 'inset(0 round 2.5rem)' }}
         >
           <div className="absolute inset-0 z-0 pointer-events-none">
-            <img
+            <ParallaxImage
               src={hydrofoilImages.hero}
               alt="Hydrofoil boat hero render"
-              className="h-full w-full object-cover object-center opacity-90"
+              className="h-full w-full"
+              imgClassName="object-center opacity-90"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
           </div>
@@ -143,7 +151,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                 transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-2xl font-sans text-xl font-light leading-tight tracking-tight text-white/90 pointer-events-auto md:text-3xl"
               >
-                A 3D-printed RC boat that treated the shaft path and the hull walls as two different leak paths, then built a sealing stack for both.
+                A 3D-printed RC boat concept that treats the shaft path and the hull walls as two different leak paths, then builds a sealing stack for both.
               </motion.p>
             </div>
           </div>
@@ -204,7 +212,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
 
               <div className="reveal delay-100">
                 <p className="font-sans text-xl font-light leading-relaxed tracking-tight text-[#86868b] md:text-2xl">
-                  A printed hull adds one more path. It can seep through seams, layer gaps, and surface porosity. This build only had to solve two of them, but they were enough: the shaft path failed under load, and the printed body leaked through the walls.
+                  A printed hull adds one more path. It can seep through seams, layer gaps, and surface porosity. This build focuses on two likely risks: water working around the shaft path, and water moving through the printed body.
                 </p>
               </div>
 
@@ -212,7 +220,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                 <div className="border-l border-gray-300 pl-6 md:pl-8">
                   <h3 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-[#86868b]">The Objective</h3>
                   <p className="font-sans text-xl md:text-2xl font-normal leading-relaxed text-[#1d1d1f] tracking-tight">
-                    Split the problem into the two leak paths this build actually had, then build a layered sealing stack for both.
+                    Split the problem into the two leak paths this build is designed around, then build a layered sealing stack for both.
                   </p>
                 </div>
               </div>
@@ -360,13 +368,12 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
 
       <section className="sticky bottom-0 left-0 z-0 flex w-full flex-col bg-[#fbfbfd]">
         <div className="group relative h-[80vh] w-full overflow-hidden">
-          <motion.img
+          <ParallaxImage
             key={currentNextProject.id}
-            initial={{ opacity: 0.5, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
             src={currentNextProject.image}
             alt="Next Project"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+            className="absolute inset-0"
+            loading="eager"
           />
           <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-700 group-hover:bg-black/10" />
 
@@ -396,10 +403,11 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
 
           <button
             onClick={handleNextProjectSwitch}
+            aria-label="Switch next project"
             data-cursor="nav"
             className="group/switchbtn absolute top-1/2 right-8 z-20 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-white/30 shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-110 hover:bg-white hover:text-black"
           >
-            <ArrowRight size={24} strokeWidth={1.5} className="transition-transform duration-500 group-hover/switchbtn:translate-x-1" />
+            <ArrowRight size={24} strokeWidth={1.5} aria-hidden="true" className="transition-transform duration-500 group-hover/switchbtn:translate-x-1" />
           </button>
 
           <Link to={`/case-study/${currentNextProject.id}`} className="absolute inset-0 z-0" />
