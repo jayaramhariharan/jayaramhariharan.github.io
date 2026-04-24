@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
             <button onClick={handleCopyEmail} aria-label="Copy email address to clipboard" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto text-left cursor-pointer" data-cursor="nav">
               jayaram.h1501@gmail.com
             </button>
-            <a href="https://www.linkedin.com/in/jayaramh" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto" data-cursor="nav">
+            <a href="https://www.linkedin.com/in/jayaramh" target="_blank" rel="noopener noreferrer" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto" data-cursor="nav">
               LinkedIn
             </a>
             <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="text-base font-sans text-token-dark-green hover:text-token-light-green transition-colors w-fit md:ml-auto" data-cursor="nav">
