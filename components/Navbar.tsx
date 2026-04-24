@@ -8,7 +8,8 @@ const Navbar: React.FC = () => {
   
   const isViperZ = location.pathname === '/case-study/1';
   const isWolf = location.pathname === '/case-study/2';
-  const hasCustomHero = isViperZ || isWolf;
+  const isBoat = location.pathname === '/case-study/3';
+  const hasCustomHero = isViperZ || isWolf || isBoat;
 
   useEffect(() => {
     const handleScroll = () => {
