@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
               </div>
             </a>
             <p className="mt-5 max-w-md font-sans text-base leading-relaxed text-gray-600">
-              Email is the best way to reach me if you want to talk through a mechanism, prototype, or design that is stuck.
+              Email is the best way to reach me!
             </p>
           </div>
 
