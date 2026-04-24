@@ -21,6 +21,7 @@ const Home: React.FC = () => {
         <WorkGrid />
         <DesignValues />
       </main>
+      <div className="h-[calc(80vh+100px)] w-full pointer-events-none bg-[#fbfbfd]" />
       <Footer />
     </div>
   );

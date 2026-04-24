@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
   const toastText = copyStatus === 'success' ? 'Email copied' : copyStatus === 'error' ? 'Copy failed' : '';
 
   return (
-    <footer id="contact" className="relative scroll-mt-28 px-6 pt-20 pb-8 md:px-12 bg-[#f5f5f5] text-token-dark-green overflow-hidden transition-colors duration-500">
+    <footer id="contact" className="sticky bottom-0 z-0 relative scroll-mt-28 px-6 pt-20 pb-8 md:px-12 bg-[#f5f5f5] text-token-dark-green overflow-hidden transition-colors duration-500">
       <div className="max-w-site mx-auto relative z-10 flex flex-col">
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_minmax(220px,0.7fr)] gap-12 mb-20 md:mb-28 items-end">
           <div className="flex flex-col items-start">
