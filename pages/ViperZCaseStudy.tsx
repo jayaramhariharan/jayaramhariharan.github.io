@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import ParallaxImage from '../components/ParallaxImage';
 import { getFooterProjects } from '../lib/projectSummaries';
 import useScrollReveal from '../hooks/useScrollReveal';
+import CopyEmailButton from '../components/CopyEmailButton';
 import flightstickCloseup from '../assets1/flightstick/closeup.png';
 import flightstickWireframe from '../assets1/flightstick/wireframe.png';
 import flightstickExploded from '../assets1/flightstick/exploded.png';
@@ -596,9 +597,7 @@ const ViperZCaseStudy: React.FC = () => {
             <a href="https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
               Resume
             </a>
-            <a href="mailto:jayaram.h1501@gmail.com" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
-              Email
-            </a>
+            <CopyEmailButton className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]" />
           </div>
         </div>
       </section>
