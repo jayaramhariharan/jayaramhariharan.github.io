@@ -26,13 +26,18 @@ const Navbar: React.FC = () => {
 
   const handleSectionNav = (sectionId: string) => (e: React.MouseEvent) => {
     e.preventDefault();
+    const scrollToSection = () => {
+      if (sectionId === 'contact') {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      } else {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
     if (location.pathname === '/') {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToSection();
     } else {
       navigate('/');
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 400);
+      setTimeout(scrollToSection, 400);
     }
   };
 
