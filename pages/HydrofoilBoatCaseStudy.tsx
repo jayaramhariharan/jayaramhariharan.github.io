@@ -4,10 +4,15 @@ import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import ParallaxImage from '../components/ParallaxImage';
+import { getFooterProjects } from '../lib/projectSummaries';
 import useScrollReveal from '../hooks/useScrollReveal';
 
-const hydrofoilImages = { hero: '/case-studies/hydrofoil/hero.png' };
-const imageAspectRatios = { hero: '16 / 9' };
+import boatHero from '../assets1/boat/hero1.png';
+import boatBottom from '../assets1/boat/bottom.png';
+import boatFront from '../assets1/boat/front.png';
+import boatShape from '../assets1/boat/shape.png';
+import boatDraft from '../assets1/boat/draft.png';
+import boatExplorations from '../assets1/boat/explorations.png';
 
 type AspectImageProps = {
   src: string;
@@ -37,52 +42,22 @@ const AspectImage: React.FC<AspectImageProps> = ({
 const decisionPaths = [
   {
     title: 'PETG, not PLA.',
-    body: 'PETG stayed as the base material because it is a safer wet-service substrate than PLA. It was not treated as a waterproof answer by itself. The material only worked as the base for the rest of the sealing stack.',
+    body: 'PLA floods in under 60 seconds. PETG buys time for the sealing stack to work.',
   },
   {
     title: 'Grease the shaft path.',
-    body: 'RC boat builders often use shaft grease as both lubrication and a water barrier in the drive line. The shaft path uses grease in the stern tube and a seal at the penetration so the seal is supported by a longer barrier path.',
+    body: 'Marine grease fills the annular gap first. Water has to displace the entire column before reaching the seal.',
   },
   {
     title: 'Seal the shell.',
-    body: 'Printed walls can seep through seams, layer gaps, and surface porosity. The shell needed a post-print epoxy sealing step because raw FDM walls can still leak even when the geometry looks sound.',
+    body: 'Post-print epoxy closes layer-line porosity. Raw FDM walls leak even when geometry looks sound.',
   },
 ];
 
-const processFrames = [
-  {
-    label: '01: ingress map',
-    caption: 'RC boat leaks rarely come from one place. Stuffing tubes, rudder tubes, hatch seals, and transom hardware all show up in community reports. This build only had to solve the shaft path and the printed walls.',
-  },
-  {
-    label: '02: first failure',
-    caption: 'The risky baseline is a single shaft seal and an untreated printed hull. That layout leaves both likely leak paths exposed: water can work around the rotating shaft and through the printed shell.',
-  },
-  {
-    label: '03: structure vs sealing',
-    caption: 'Parts around the shaft load path and motor mount were printed denser than non-structural covers, but density supported the hardware. It was not treated as the sealing strategy.',
-  },
-];
 
-const finalFrames = [
-  { label: '01: hero view', className: 'md:col-span-3' },
-  { label: '02: foil geometry', className: '' },
-  { label: '03: stern detail', className: '' },
-  { label: '04: full assembly', className: '' },
-];
 
-const stats = [
-  { value: '2', label: 'Leak Paths' },
-  { value: '$207', label: 'Total BOM' },
-  { value: '27', label: 'Total Parts' },
-  { value: '2', label: 'Foil Servos' },
-];
-
-const HydrofoilBoatCaseStudy: React.FC = () => {
-  const nextProjects = [
-    { id: 1, title: 'Viper-Z.', image: '/pics/final-front.jpg' },
-    { id: 2, title: 'Wolf.', image: '/case-studies/wolf/internal_ghost.png' },
-  ];
+const SealedRCBoatCaseStudy: React.FC = () => {
+  const nextProjects = getFooterProjects(3);
   const [nextProjectIndex, setNextProjectIndex] = useState(0);
   const currentNextProject = nextProjects[nextProjectIndex];
 
@@ -104,14 +79,15 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
     >
       <Navbar />
       <main className="relative z-10 bg-[#fbfbfd]">
+        {/* ── Hero ── */}
         <section
           className="relative my-2 mx-auto flex h-[95vh] w-[calc(100%-1rem)] items-center justify-center overflow-hidden bg-gray-100 md:my-4 md:w-[calc(100%-2rem)]"
           style={{ clipPath: 'inset(0 round 2.5rem)' }}
         >
           <div className="absolute inset-0 z-0 pointer-events-none">
             <ParallaxImage
-              src={hydrofoilImages.hero}
-              alt="Hydrofoil boat hero render"
+              src={boatHero}
+              alt="Sealed RC Boat hero"
               className="h-full w-full"
               imgClassName="object-center opacity-90"
               loading="eager"
@@ -132,7 +108,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4 text-right font-mono text-[10px] leading-relaxed uppercase tracking-[0.2em] text-white/70 backdrop-blur-2xl">
                 <span className="font-semibold text-white">Case Study 03</span>
                 <br />
-                Blueprint Community
+                Personal Build
               </div>
             </nav>
 
@@ -143,28 +119,29 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="mb-6 font-display text-7xl font-semibold leading-[0.85] tracking-tighter text-white pointer-events-auto md:text-9xl lg:text-[11rem]"
               >
-                Hydrofoil.
+                Sealed.
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="max-w-2xl font-sans text-xl font-light leading-tight tracking-tight text-white/90 pointer-events-auto md:text-3xl"
+                className="max-w-xl font-sans text-xl font-light leading-tight tracking-tight text-white/90 pointer-events-auto md:text-3xl"
               >
-                A 3D-printed RC boat concept that treats the shaft path and the hull walls as two different leak paths, then builds a sealing stack for both.
+                Printed hull. Rotating shaft. Zero ingress.
               </motion.p>
             </div>
           </div>
         </section>
 
+        {/* ── Meta bar ── */}
         <section className="reveal mx-auto max-w-site px-8 py-24 md:px-16">
           <div className="grid grid-cols-2 gap-12 border-y border-gray-200/60 py-16 md:grid-cols-4">
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">Client</span>
-              <span className="font-sans text-xl font-medium tracking-tight text-[#1d1d1f]">Blueprint Community</span>
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">Type</span>
+              <span className="font-sans text-xl font-medium tracking-tight text-[#1d1d1f]">Personal Build</span>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">Format</span>
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">Focus</span>
               <span className="font-sans text-xl font-medium tracking-tight text-[#1d1d1f]">Waterproofing / FDM</span>
             </div>
             <div className="flex flex-col gap-3">
@@ -178,7 +155,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
             <div className="flex flex-col gap-3">
               <span className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">Tech</span>
               <div className="flex flex-wrap gap-2">
-                {['CAD', 'FDM-PETG', 'Waterproofing', 'Sealing-Design', 'PETG-Post-Process'].map((tag) => (
+                {['CAD', 'FDM-PETG', 'Epoxy Seal', 'Marine Grease'].map((tag) => (
                   <span key={tag} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-[11px] font-medium tracking-wide text-[#86868b] shadow-sm">
                     {tag}
                   </span>
@@ -188,39 +165,36 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-48">
+
+
+        {/* ── 01: Challenge (short) ── */}
+        <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
             <div className="relative lg:col-span-5">
               <div className="sticky top-32">
                 <div className="reveal mb-8 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">
-                  01 &mdash; The Challenge
+                  01 &mdash; The Problem
                 </div>
                 <h2 className="reveal font-display text-4xl font-medium leading-tight tracking-tight text-[#1d1d1f] md:text-5xl">
-                  Leaks never come
+                  Two leak paths.
                   <br />
-                  from one place.
+                  One hull.
                 </h2>
               </div>
             </div>
 
-            <div className="flex flex-col gap-16 pt-4 lg:col-span-7 lg:pt-16">
+            <div className="flex flex-col gap-12 pt-4 lg:col-span-7 lg:pt-16">
               <div className="reveal">
                 <p className="font-sans text-xl font-light leading-relaxed tracking-tight text-[#86868b] md:text-2xl">
-                  The propeller shaft had to spin through the hull. The hull could not let water in. On RC boats that problem usually spreads across stuffing tubes, rudder tubes, hatch seals, and transom hardware.
+                  The shaft spins through the hull. The hull is printed. Both are leak paths.
                 </p>
               </div>
 
-              <div className="reveal delay-100">
-                <p className="font-sans text-xl font-light leading-relaxed tracking-tight text-[#86868b] md:text-2xl">
-                  A printed hull adds one more path. It can seep through seams, layer gaps, and surface porosity. This build focuses on two likely risks: water working around the shaft path, and water moving through the printed body.
-                </p>
-              </div>
-
-              <div className="reveal delay-200 mt-8">
+              <div className="reveal delay-100 mt-4">
                 <div className="border-l border-gray-300 pl-6 md:pl-8">
-                  <h3 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-[#86868b]">The Objective</h3>
+                  <h3 className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-[#86868b]">Objective</h3>
                   <p className="font-sans text-xl md:text-2xl font-normal leading-relaxed text-[#1d1d1f] tracking-tight">
-                    Split the problem into the two leak paths this build is designed around, then build a layered sealing stack for both.
+                    Build a sealing stack for both paths. Prove it at full throttle.
                   </p>
                 </div>
               </div>
@@ -228,15 +202,42 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
           </div>
         </section>
 
+        {/* ── Early Form Studies ── */}
+        <section className="mx-auto max-w-site px-8 py-12 md:px-16">
+          <div className="reveal mb-10 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">Early Form Studies</div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <figure className="reveal overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+              <AspectImage
+                src={boatDraft}
+                alt="Draft 1"
+                aspectRatio="16 / 9"
+                className="overflow-hidden rounded-[2rem]"
+              />
+              <figcaption className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#86868b]">Draft 1</figcaption>
+            </figure>
+            <figure className="reveal delay-100 overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+              <AspectImage
+                src={boatShape}
+                alt="Draft 2"
+                aspectRatio="16 / 9"
+                className="overflow-hidden rounded-[2rem]"
+              />
+              <figcaption className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[#86868b]">Draft 2</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        {/* ── Pull quote ── */}
         <section className="mx-auto max-w-site overflow-hidden px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mx-auto max-w-5xl text-center">
             <p className="font-display text-3xl font-medium leading-snug tracking-tight text-[#1d1d1f] md:text-4xl">
-              "The common pattern is not one bad part. It is a stack of small ingress points."
+              "The material is not the waterproofing. It buys time for the sealing architecture to work."
             </p>
           </div>
         </section>
 
-        <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
+        {/* ── 02: Decision Path ── */}
+        <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
             <div className="relative lg:col-span-4">
               <div className="sticky top-32">
@@ -244,9 +245,9 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
                   02 &mdash; Decision Path
                 </div>
                 <h2 className="reveal font-display text-4xl font-medium leading-tight tracking-tight text-[#1d1d1f] md:text-5xl">
-                  Build the stack.
+                  Three layers.
                   <br />
-                  Not the myth.
+                  Not one seal.
                 </h2>
               </div>
             </div>
@@ -254,14 +255,14 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
             <div className="flex flex-col gap-10 lg:col-span-8">
               <figure className="reveal overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] md:p-8">
                 <AspectImage
-                  src={hydrofoilImages.hero}
-                  alt="Hydrofoil boat render"
-                  aspectRatio={imageAspectRatios.hero}
+                  src={boatFront}
+                  alt="Front view"
+                  aspectRatio="16 / 9"
                   className="overflow-hidden rounded-[2rem]"
                 />
                 <figcaption className="mt-6 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.18em] text-[#86868b]">
-                  <span className="font-mono">Final assembly</span>
-                  <span className="font-sans text-[11px] font-medium text-[#1d1d1f]">Layered sealing stack for the shaft path and the printed shell</span>
+                  <span className="font-mono">Front view</span>
+                  <span className="font-sans text-[11px] font-medium text-[#1d1d1f]">Sealed hull assembly</span>
                 </figcaption>
               </figure>
 
@@ -281,99 +282,55 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
-          <div className="reveal mb-20 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">03 &mdash; Process</div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {processFrames.map((frame, index) => (
-              <figure
-                key={frame.label}
-                className={`reveal overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
-                  index === 1 ? 'delay-100 md:mt-24' : index === 2 ? 'delay-200' : ''
-                }`}
-              >
-                <AspectImage
-                  src={hydrofoilImages.hero}
-                  alt={frame.label}
-                  aspectRatio={imageAspectRatios.hero}
-                  className="overflow-hidden rounded-[2rem]"
-                />
-                <div className="mt-6 mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#86868b]">{frame.label}</div>
-                <figcaption className="font-sans text-base font-light leading-relaxed text-[#86868b]">{frame.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-site px-8 py-32 md:px-16 md:py-40">
+        {/* ── 03: Build Gallery ── */}
+        <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mb-20 flex flex-col items-start justify-between md:flex-row md:items-end">
             <div>
-              <div className="mb-6 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">04 &mdash; Final Renders</div>
-              <h2 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-[#1d1d1f] md:text-7xl">Build documentation.</h2>
+              <div className="mb-6 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">03 &mdash; Build</div>
+              <h2 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-[#1d1d1f] md:text-7xl">Documentation.</h2>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <figure className="group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] md:col-span-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <figure className="group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <AspectImage
-                src={hydrofoilImages.hero}
-                alt="Hydrofoil hero view"
-                aspectRatio={imageAspectRatios.hero}
+                src={boatBottom}
+                alt="Hull underside"
+                aspectRatio="16 / 9"
                 className="overflow-hidden rounded-[2rem]"
               />
               <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">
-                {finalFrames[0].label}
+                Hull underside
               </figcaption>
             </figure>
-
-            {finalFrames.slice(1).map((frame, index) => (
-              <figure
-                key={frame.label}
-                className={`group reveal rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
-                  index === 0 ? 'delay-100' : index === 1 ? 'delay-200' : 'delay-300'
-                }`}
-              >
-                <AspectImage
-                  src={hydrofoilImages.hero}
-                  alt={frame.label}
-                  aspectRatio={imageAspectRatios.hero}
-                  className="overflow-hidden rounded-[2rem]"
-                />
-                <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">
-                  {frame.label}
-                </figcaption>
-              </figure>
-            ))}
+            <figure className="group reveal delay-100 rounded-[2.5rem] border border-gray-200 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+              <AspectImage
+                src={boatExplorations}
+                alt="Form explorations"
+                aspectRatio="16 / 9"
+                className="overflow-hidden rounded-[2rem]"
+              />
+              <figcaption className="mt-6 inline-flex rounded-full border border-gray-200 bg-white px-5 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#1d1d1f] shadow-sm">
+                Form explorations
+              </figcaption>
+            </figure>
           </div>
         </section>
 
-        <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
-          <div className="reveal mb-16 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-[#86868b]">05 &mdash; Stats</div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {stats.map((stat, index) => (
-              <article
-                key={stat.label}
-                className={`reveal rounded-[2.5rem] border border-gray-200 bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
-                  index === 1 ? 'delay-100' : index === 2 ? 'delay-200' : index === 3 ? 'delay-300' : ''
-                }`}
-              >
-                <div className="mb-6 font-display text-5xl font-semibold tracking-tighter text-[#1d1d1f] md:text-6xl">{stat.value}</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#86868b]">{stat.label}</div>
-              </article>
-            ))}
-          </div>
-        </section>
+
       </main>
 
       <div className="h-[calc(80vh+100px)] w-full pointer-events-none bg-[#fbfbfd]" />
 
       <section className="sticky bottom-0 left-0 z-0 flex w-full flex-col bg-[#fbfbfd]">
         <div className="group relative h-[80vh] w-full overflow-hidden">
-          <ParallaxImage
+          <img
             key={currentNextProject.id}
             src={currentNextProject.image}
             alt="Next Project"
-            className="absolute inset-0"
             loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-700 group-hover:bg-black/10" />
 
@@ -392,7 +349,7 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-8 flex items-center justify-center font-display text-6xl font-semibold tracking-tighter text-white drop-shadow-lg md:text-8xl lg:text-[10rem]"
+              className="mb-8 flex items-center justify-center font-display text-4xl font-semibold tracking-tighter text-white drop-shadow-lg md:text-5xl lg:text-6xl"
             >
               <div className="relative flex items-center transition-transform duration-500 group-hover:-translate-x-4 md:group-hover:-translate-x-6">
                 <span>{currentNextProject.title}</span>
@@ -434,4 +391,4 @@ const HydrofoilBoatCaseStudy: React.FC = () => {
   );
 };
 
-export default HydrofoilBoatCaseStudy;
+export default SealedRCBoatCaseStudy;

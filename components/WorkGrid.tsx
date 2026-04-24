@@ -5,16 +5,16 @@ import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const homepageCopy: Record<number, { hook: string; proof: string }> = {
   1: {
-    hook: 'Modified a premium flight grip to add a new control input without changing the feel that made it worth keeping.',
-    proof: 'Original ergonomics preserved | Validation build completed'
+    hook: 'Kept the flight grip the client already liked and added yaw without pedals or a full replacement.',
+    proof: '$15 emulator | Added yaw axis'
   },
   2: {
     hook: 'Designed a combat robot, changed the front geometry between rounds, and turned that update into a winning build.',
     proof: 'Tournament winner | Best Designer'
   },
   3: {
-    hook: 'Built a test boat to prove a waterproofing approach for moving parts inside a printed hull.',
-    proof: 'Waterproofing validated | Zero ingress in testing'
+    hook: 'Printed hull, rotating shaft, zero ingress.',
+    proof: ''
   }
 };
 

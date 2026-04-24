@@ -1,103 +1,108 @@
 import { Project, Experience, SocialLink, PhilosophyRule, PhilosophySetLogic } from './types';
+import flightstickCloseup from './assets1/flightstick/closeup.png';
+import flightstickWireframe from './assets1/flightstick/wireframe.png';
+import flightstickExploded from './assets1/flightstick/exploded.png';
+import flightstickElectronics from './assets1/flightstick/electronics.png';
+import flightstickFull from './assets1/flightstick/full.png';
+import flightstickLastSection1 from './assets1/flightstick/last_section (1).png';
+import flightstickLastSection2 from './assets1/flightstick/last_section (2).png';
+import boatHero from './assets1/boat/hero1.png';
+import boatBottom from './assets1/boat/bottom.png';
+import boatFront from './assets1/boat/front.png';
+import boatShape from './assets1/boat/shape.png';
+import boatDraft from './assets1/boat/draft.png';
+import boatExplorations from './assets1/boat/explorations.png';
 
 export const RESUME_URL = "https://www.dropbox.com/scl/fi/23hl8s4mtt27p26u92ahh/jayaram_hariharan-resume.pdf?rlkey=krxna677qsjagszmjh7nc4owp&st=l2zyh8v0&dl=0";
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Precision Joystick Grip Upgrade",
+    title: "Flightstick Twist Axis",
     category: "Mechatronics",
-    image: "/case-studies/viper/home-card-latest.jpg",
+    image: flightstickCloseup,
     heroImages: [
-      "/case-studies/viper/home-card-latest.jpg",
-      "/pics/final-front.jpg",
-      "/pics/final-quarter.jpg"
+      flightstickCloseup,
+      flightstickFull,
+      flightstickLastSection1
     ],
-    description: "Upgraded a premium joystick grip with an added twist feature, preserving the original ergonomic shape while expanding control.",
+    description: "Added yaw to a premium flight grip so the client could keep the grip they liked without pedals or a full replacement.",
     details: {
       client: "Private Client",
       year: "2023",
-      role: "Product Design, Mechatronics, CAD, Firmware",
-      techStack: ["CAD", "C++", "Arduino", "Reverse Engineering", "3D Printing"],
-      challenge: "A flight sim enthusiast had found their perfect grip - a Thrustmaster F-16C Viper HOTAS, a premium 1:1 scale metal replica. The ergonomics were exactly what they wanted.\n\nBut it was missing one critical feature: twist yaw. The grip could handle pitch and roll, but for yaw control, they'd need separate rudder pedals - an expensive and space-consuming addition.\n\nThe Challenge: Build a custom, 1:1 scale operational replica that integrates a high-precision twist axis without altering the external ergonomics.",
-      solution: "I analyzed what went wrong with previous attempts and identified the core mistake: trying to shrink the wrong thing. Instead of cramming existing electronics into a smaller space, I needed to rethink the architecture entirely.\n\nThe key insight: the grip's upper body (the distinct head, the triggers) was fixed and non-negotiable. But the mounting interface was the opportunity for innovation.\n\nInstead of trying to fit someone else's electronics, I asked: what if I only add what's actually needed?",
-      outcome: "Precision: 10-bit Hall-Effect sensing with custom auto-calibration and deadzone filtering.\n\nErgonomics: 100% geometric match to original grip, but with added 6th degree of freedom (twist).\n\nCost Efficiency: $15 COTS mechatronics BOM replaced $10k+ potential ground-up fabrication costs.\n\nValidation: Built a $15 'Ghost' emulator to replace $300+ hardware; 100% functional validation.\n\nInnovation: First-ever 1:1 scale Viper grip with integrated high-precision twist yaw functionality.\n\nDeployment: Delivered a field-tested, bespoke unit with zero post-delivery maintenance issues.",
+      role: "Product Design, Mechatronics",
+      techStack: ["CAD", "3D Scanning", "Electromechanical Integration", "CNC Machining"],
+      challenge: "The client already had the Thrustmaster Viper grip they wanted to keep. What it lacked was twist yaw, which pushed them toward pedals, awkward remaps, or a much more expensive hardware swap.\n\nThe job was to add the missing axis without turning the project into a full replacement.",
+      solution: "I treated the retrofit as an add-on, not a rebuild. First came a scan-led fit map of the grip interior, then a base-side twist package that handled rotation, sensing, and routing without forcing a new grip body.\n\nThe added axis stayed on its own electrical path, so the original controls and the new yaw input did not need to share the same signal chain.",
+      outcome: "The finished build added analog yaw while letting the client keep the grip they already preferred.\n\nA $15 emulator validated the full electrical interface before $300+ production hardware was involved.\n\nThe result was a narrower, more practical upgrade path than pedals or a full hardware swap.",
       research: [
         {
-          title: "The Split-Brain Architecture",
-          content: "I designed a dual-interface architecture - a dedicated twist module with its own sensor and controller, running alongside the original button electronics. Two systems, one grip.\n\nNew Signal Path:\nHall-Effect twist axis -> SparkFun Qwiic Pro Micro -> separate USB port (independent HID joystick)\n\nLegacy Signal Path:\nOriginal Thrustmaster 5-pin DIN connector -> Warthog base (19+ buttons)"
+          title: "Keep the Grip",
+          content: "The useful problem was not replacing a premium grip. It was keeping the grip the client already liked and only adding the missing yaw input."
         },
         {
-          title: "Precision Sensing",
-          content: "The new twist axis required its own independent signal path that wouldn't interfere with the complex button matrix.\n\nHardware:\nMicrocontroller: SparkFun Qwiic Pro Micro (ATmega32U4-based)\nSensor: Analog Hall-Effect sensor mounted on the twist mechanism, tracking magnet rotation\n\nFirmware (C++/Arduino):\nAuto-Calibration Routine: Samples 100 readings during initialization to dynamically set min/max sensor values\nDeadzone Elimination: Custom logic to eliminate center deadzone\nAnti-Jitter Smoothing: Filters mechanical noise from twist motion for clean input"
+          title: "Add Only the Missing Axis",
+          content: "The project got smaller once the architecture got clearer: reuse a proven twist mechanism, add contactless sensing, and keep the new axis on its own interface."
         },
         {
-          title: "Building a Ghost",
-          content: "A major bottleneck occurred: the Warthog Base - needed for testing all 19+ buttons - was unavailable in India and cost-prohibitive to ship for a single test.\n\nI needed to validate that every button worked before shipping the final unit. But I couldn't get the hardware.\n\nThe Solution:\nI built a base emulator using a second SparkFun Qwiic Pro Micro with MMJoy2/FreeJoy open-source joystick firmware. This transformed the microcontroller into a Warthog Base emulator - eliminating the need for the $300+ physical base.\n\nResult: Successfully validated 100% of button and twist functionality before shipping, without ever having the original mounting base. Testing infrastructure cost: ~$15 vs. $300+."
+          title: "Validate the Risk Early",
+          content: "The high-risk part was the electrical interface, not the bench prototype. A low-cost emulator made it possible to prove wiring and axis behavior before touching expensive production hardware."
         }
       ],
-      moodboard: {
-        keywords: ["Military", "Precision", "Stealth", "Ergonomic"],
-        images: [
-          "/pics/closeup.png",
-          "/pics/clay_model.png",
-          "/pics/exploded.png"
-        ]
-      },
       process: [
         {
-          title: "What Didn't Work",
-          description: "Before I took over, there was already a failed attempt. The previous approach tried to force entire VPC internal electronics into the Thrustmaster body.\n\nThe result was an oversized, bulky base that compromised the premium feel. The assembly was so complex it was nearly impossible to test or maintain. The project was placed on indefinite hold.\n\nThree constraints were non-negotiable:\n- The 1:1 scale had to be maintained at the grip level\n- Button compatibility with the Warthog base was mandatory\n- The twist yaw had to be high-precision (Hall Effect sensing)",
-          image: "/pics/wireframe_drawings (1).png"
+          title: "Reverse Engineering",
+          description: "The grip was scanned first because internal clearance around the shaft, connectors, and PCB was tighter than expected. That fit map defined where a twist axis could exist at all.",
+          image: flightstickWireframe
         },
         {
-          title: "Mechanical Hybridization",
-          description: "Instead of trying to shrink the VPC electronics, I modularized the hardware.\n\nI harvested the mechanical twist control from a VPC unit and engineered a custom base extension in CAD. The lower section of the Thrustmaster aluminum body was modified to accommodate the twist module while keeping the upper ergonomics identical to the original.\n\nInternal supports were added for the controller boards within the joystick rather than increasing the overall part girth - maintaining a sleek profile.",
-          image: "/pics/wireframe_drawings (2).png"
+          title: "Mechanical Layout",
+          description: "A proven twist module handled the rotation feel. The custom work was the collar, interface parts, and tolerances that made the added axis fit cleanly at the base.",
+          image: flightstickExploded
         },
         {
-          title: "Manufacturing",
-          description: "Prototype Phase:\nMaterial: PLA (Polylactic Acid)\nProcess: FDM 3D printing for rapid iteration\nPurpose: Form validation, fit testing, and mechanical integration proof-of-concept\n\nFinal Production:\nBase Housing Material: Aluminum 6061-T6\nSurface Finish: Anodized Black (Type II anodizing) matches premium aesthetic\nFastening: Thread inserts (brass or stainless steel) for metal-to-plastic connections to ensure durability under high-torque twist operation",
-          image: "/pics/electronics.png"
+          title: "System Integration",
+          description: "The added axis stayed on its own sensing and USB path. That kept the retrofit focused while the original control path stayed separate.",
+          image: flightstickElectronics
         }
       ],
       gallery: [
         {
-          image: "/pics/Hero (1).png",
-          caption: "Final front view showing 1:1 scale"
+          image: flightstickFull,
+          caption: "Final assembly"
         },
         {
-          image: "/pics/Hero (2).png",
-          caption: "3/4 view"
+          image: flightstickLastSection1,
+          caption: "Integration detail"
         },
         {
-          image: "/pics/USB (1).png",
-          caption: "Internal component layout"
+          image: flightstickLastSection2,
+          caption: "Section detail"
         }
       ],
       stats: [
-        { value: "10-bit", label: "Precision Hall-Effect" },
-        { value: "40%", label: "Volume Reduction" },
-        { value: "$15", label: "COTS BOM Cost" },
-        { value: "100%", label: "Ghost Validated" }
+        { value: "$15", label: "Validation Rig" },
+        { value: "1", label: "Added Yaw Axis" },
+        { value: "0", label: "Pedals Required" },
+        { value: "3", label: "Integration Stages" }
       ],
       cmf: [
         {
           name: "Aluminum 6061-T6",
-          code: "Anodized Tooling",
+          code: "Base-Side Machined Parts",
           finish: "Matte Black Type II",
           hex: "#111827"
         },
         {
-          name: "Brass/Steel",
-          code: "Heat-Set Inserts",
-          finish: "Thread Locks",
+          name: "Hall Sensor + Magnet",
+          code: "Contactless Yaw Readout",
+          finish: "Low-Wear Sensing",
           hex: "#B45309"
         },
         {
-          name: "Twist Module",
-          code: "Custom Hybrid",
-          finish: "Hidden Integration",
+          name: "Printed Interface Parts",
+          code: "Prototype Fit Checks",
+          finish: "Bench Validation",
           hex: "#374151"
         }
       ]
@@ -192,47 +197,47 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    title: "Sealed Hydrofoil Test Boat",
+    title: "Sealed RC Boat",
     category: "Waterproofing / FDM",
-    image: "/case-studies/hydrofoil/hero.png",
-    description: "Built a hydrofoil test boat to prove a waterproofing method for rotating shafts, printed hulls, and dynamic loads below the waterline.",
+    image: boatHero,
+    description: "Printed hull, rotating shaft, zero ingress. Three-layer sealing stack proved at full throttle.",
     details: {
-      client: "Blueprint Community",
+      client: "Personal Build",
       year: "2024",
       role: "Mechanical Design / Prototyping",
-      techStack: ["CAD", "FDM PETG", "Waterproofing", "Sealing Design", "PETG Post-Process"],
-      challenge: "27 parts - 19 mechanical, 8 electrical - total BOM $207.60. The propeller shaft has to rotate at ~3000 RPM while seated in a watertight hull below the waterline. Standard rubber seals compress out of spec under sustained dynamic load. FDM-printed hulls have layer-line porosity invisible to the naked eye - but water finds it.\n\nCommunity data is unambiguous: PLA hulls flood in under 60 seconds. PETG fares better but reaches 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing - it buys time for the sealing architecture to work. If the architecture is wrong, the material does not matter.",
-      solution: "Waterproofing is not a single decision - it is a hierarchy. Material selection determines the failure mode. Sealing architecture determines when water reaches the hull. Porosity closure determines whether the hull itself is the failure.\n\nMaterial first: PETG over PLA - failure-mode selection, not preference. Still requires post-print epoxy treatment to close layer-line porosity.\n\nSealing hierarchy: marine grease fills the annular gap around the shaft first. Water must displace the entire grease column before it reaches the rubber stern tube seal. The seal is the last resort, not the plan.\n\nPorosity closure: post-print epoxy treatment applied to all exterior surfaces before any water exposure. Not optional for any printed part in a wet environment.",
-      outcome: "Shaft seal held through repeated full-throttle runs with zero ingress. The infill strategy across the 12 printed parts reflects the failure consequence map: 100% on control arms (servo linkage, smallest cross-section, highest failure risk), 70% on shaft housing, 60% on motor mount, 50% on struts, 25% on the hull shell (weight-critical, post-print treatment closes the porosity).\n\nThe methodology proved at the hardest version of the problem: rotating shaft, dynamic load, below waterline. The same three decisions - material, sealing hierarchy, porosity closure - transfer directly to any printed enclosure in a wet environment.",
+      techStack: ["CAD", "FDM PETG", "Epoxy Seal", "Marine Grease"],
+      challenge: "27 parts, $207 BOM. The shaft spins at ~3000 RPM through a printed hull below the waterline. PLA floods in under 60 seconds. PETG buys time but still leaks without post-treatment.\n\nTwo leak paths: the rotating shaft penetration and the printed hull walls.",
+      solution: "Three-layer sealing stack. PETG as the substrate. Marine grease fills the shaft annulus — water must displace the entire column before reaching the rubber seal. Post-print epoxy closes layer-line porosity on all exterior surfaces.",
+      outcome: "Zero ingress through repeated full-throttle runs. Five infill tiers across 12 printed parts — mass allocated by failure consequence, not convenience.",
       research: [
         {
-          title: "Material Selection Under Constraint",
-          content: "PLA was ruled out first. Community data is consistent: PLA hulls take on water in under 60 seconds because the material is hydrophilic and layer-line porosity cannot be reliably sealed. PETG provides better moisture resistance and tighter inter-layer adhesion, but even PETG hulls have been documented at 75% water ingress after 2 hours at 5 bars without post-treatment. The material is not the waterproofing - it buys time for the sealing architecture to work."
+          title: "Material",
+          content: "PLA floods in <60s. PETG buys time for the sealing stack. Material is not the waterproofing — it is the substrate."
         },
         {
           title: "Sealing Hierarchy",
-          content: "The propeller shaft penetrates the hull at a point that sees both rotational load and forward water pressure at around 3000 RPM. A rubber/silicone stern tube seal packed with marine grease creates a grease-buffer layer the water must displace before it reaches the seal face. Most printed enclosures get this backwards - they treat the seal as the primary barrier and the geometry as secondary. Here, the grease column is the primary barrier and the seal is the last resort."
+          content: "Grease column is the primary barrier. Rubber seal is the last resort. Most printed enclosures get this backwards."
         },
         {
-          title: "Infill as Structural Engineering",
-          content: "12 of the 19 mechanical parts are 3D-printed PETG. Infill percentages are structural decisions, not defaults: control arms at 100% (servo linkage, smallest cross-section, highest failure consequence), shaft housing at 70%, motor mount at 60%, struts at 50%, hull at 25%. Five tiers across 12 parts. Mass goes where failure risk is highest, and post-print treatment closes the surface rather than relying on dense infill everywhere."
+          title: "Infill Tiers",
+          content: "100% control arms, 70% shaft housing, 60% motor mount, 50% struts, 25% hull. Mass goes where failure risk is highest."
         }
       ],
       process: [
         {
-          title: "Material and Porosity Closure",
-          description: "PETG selected over PLA based on failure-mode analysis: PLA hulls flood in under 60 seconds in community stress tests. PETG reduces immediate ingress risk but still requires post-print epoxy treatment to close layer-line porosity. Treatment applied to all exterior surfaces before any water exposure - not optional.",
-          image: "/case-studies/hydrofoil/hero.png"
+          title: "Material & Porosity",
+          description: "PETG selected over PLA. Post-print epoxy applied to all exterior surfaces before water exposure.",
+          image: boatExplorations
         },
         {
           title: "Sealing Architecture",
-          description: "Stern tube packed with marine grease, terminated with a rubber/silicone seal at the hull penetration. Grease fills the annular gap around the shaft as the primary barrier - water must displace the entire grease column before reaching the seal face. Shaft housing printed at 70% infill - highest-stress printed part - to handle combined bearing load and water pressure at the penetration point.",
-          image: "/case-studies/hydrofoil/hero.png"
+          description: "Stern tube packed with marine grease. Rubber seal terminates the shaft penetration. Grease column is the primary barrier.",
+          image: boatDraft
         },
         {
-          title: "Infill Tiering by Failure Consequence",
-          description: "Five infill tiers across 12 printed parts: 100% for control arms (servo linkage, smallest cross-section, highest failure consequence), 70% for shaft housing, 60% for motor mount, 50% for struts (hydrodynamic stiffness), 25% for the hull shell (weight-critical, post-print treatment closes the porosity). Mass allocated by failure consequence, not by convenience.",
-          image: "/case-studies/hydrofoil/hero.png"
+          title: "Infill Tiering",
+          description: "Five tiers across 12 parts. Mass allocated by failure consequence — control arms at 100%, hull at 25%.",
+          image: boatShape
         }
       ],
       stats: [
@@ -243,8 +248,20 @@ export const PROJECTS: Project[] = [
       ],
       gallery: [
         {
-          image: "/case-studies/hydrofoil/hero.png",
-          caption: "Hydrofoil boat build"
+          image: boatHero,
+          caption: "Hero view"
+        },
+        {
+          image: boatBottom,
+          caption: "Hull underside"
+        },
+        {
+          image: boatFront,
+          caption: "Front view"
+        },
+        {
+          image: boatExplorations,
+          caption: "Form explorations"
         }
       ],
       cmf: [

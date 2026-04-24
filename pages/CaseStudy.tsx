@@ -9,7 +9,7 @@ import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const ViperZCaseStudy = React.lazy(() => import('./ViperZCaseStudy'));
 const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
-const HydrofoilBoatCaseStudy = React.lazy(() => import('./HydrofoilBoatCaseStudy'));
+const SealedRCBoatCaseStudy = React.lazy(() => import('./HydrofoilBoatCaseStudy'));
 
 const DefaultCaseStudy: React.FC<{ project: Project }> = ({ project }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -134,10 +134,10 @@ const CaseStudy: React.FC = () => {
   }
 
   if (id === '3') {
-    // Hydrofoil Boat has its own custom page
+    // Sealed RC Boat has its own custom page
     return (
       <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
-        <HydrofoilBoatCaseStudy />
+        <SealedRCBoatCaseStudy />
       </React.Suspense>
     );
   }

@@ -1,3 +1,6 @@
+import flightstickCloseup from '../assets1/flightstick/closeup.png';
+import boatHero1 from '../assets1/boat/hero1.png';
+
 export type HomeProject = {
   id: number;
   title: string;
@@ -14,10 +17,10 @@ export type HomeProject = {
 export const HOME_PROJECTS: HomeProject[] = [
   {
     id: 1,
-    title: 'Precision Joystick Grip Upgrade',
+    title: 'Flightstick Twist Axis',
     category: 'Mechatronics',
-    image: '/case-studies/viper/home-card-latest.jpg',
-    description: 'Upgraded a premium joystick grip with an added twist feature, preserving the original ergonomic shape while expanding control.',
+    image: flightstickCloseup,
+    description: 'Added yaw to a premium flight grip so the client could keep the grip they liked without pedals or a full replacement.',
   },
   {
     id: 2,
@@ -28,9 +31,12 @@ export const HOME_PROJECTS: HomeProject[] = [
   },
   {
     id: 3,
-    title: 'Sealed Hydrofoil Test Boat',
+    title: 'Sealed RC Boat',
     category: 'Waterproofing / FDM',
-    image: '/case-studies/hydrofoil/hero-home.jpg',
-    description: 'Built a hydrofoil test boat to prove a waterproofing method for rotating shafts, printed hulls, and dynamic loads below the waterline.',
+    image: boatHero1,
+    description: 'Printed hull, rotating shaft, zero ingress.',
   },
 ];
+
+export const getFooterProjects = (currentId: number): HomeProject[] =>
+  HOME_PROJECTS.filter((project) => project.id !== currentId);
