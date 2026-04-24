@@ -13,7 +13,7 @@ import boatShape from './assets1/boat/shape.png';
 import boatDraft from './assets1/boat/draft.png';
 import boatExplorations from './assets1/boat/explorations.png';
 
-export const RESUME_URL = "https://www.dropbox.com/scl/fi/23hl8s4mtt27p26u92ahh/jayaram_hariharan-resume.pdf?rlkey=krxna677qsjagszmjh7nc4owp&st=l2zyh8v0&dl=0";
+export const RESUME_URL = "https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0";
 
 export const PROJECTS: Project[] = [
   {

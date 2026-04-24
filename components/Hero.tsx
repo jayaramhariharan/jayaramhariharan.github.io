@@ -38,10 +38,12 @@ const Hero: React.FC = () => {
           </div>
 
           <a
-            href="#work"
+            href="https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[11px] font-sans text-token-text-gray uppercase tracking-[0.15em] hover:text-black transition-colors flex items-center gap-1 group"
           >
-            View selected work
+            Download CV
             <svg
               width="10"
               height="10"
