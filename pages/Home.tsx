@@ -16,8 +16,8 @@ const Home: React.FC = () => {
       <Navbar />
       <main className="relative z-10 bg-[#fbfbfd]">
         <Hero />
-        <Skills />
         <ExperienceList />
+        <Skills />
         <WorkGrid />
         <DesignValues />
       </main>
