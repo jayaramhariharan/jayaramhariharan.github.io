@@ -1,11 +1,4 @@
 import { Project, Experience, SocialLink, PhilosophyRule, PhilosophySetLogic } from './types';
-import archivedCloseup from './assets1/archived/closeup.png';
-import archivedWireframe from './assets1/archived/wireframe.png';
-import archivedExploded from './assets1/archived/exploded.png';
-import archivedElectronics from './assets1/archived/electronics.png';
-import archivedFull from './assets1/archived/full.png';
-import archivedLastSection1 from './assets1/archived/last_section (1).png';
-import archivedLastSection2 from './assets1/archived/last_section (2).png';
 import boatHero from './assets1/boat/hero1.png';
 import boatBottom from './assets1/boat/bottom.png';
 import boatFront from './assets1/boat/front.png';
@@ -16,98 +9,6 @@ import boatExplorations from './assets1/boat/explorations.png';
 export const RESUME_URL = "https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0";
 
 export const PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: "archived Twist Axis",
-    category: "Mechatronics",
-    image: archivedCloseup,
-    heroImages: [
-      archivedCloseup,
-      archivedFull,
-      archivedLastSection1
-    ],
-    description: "Added yaw to a premium archived grip so the client could keep the grip they liked without pedals or a full replacement.",
-    details: {
-      client: "Private Client",
-      year: "2023",
-      role: "Product Design, Mechatronics",
-      techStack: ["CAD", "3D Scanning", "Electromechanical Integration", "CNC Machining"],
-      challenge: "The client already had the Thrustmaster ProjectA grip they wanted to keep. What it lacked was twist yaw, which pushed them toward pedals, awkward remaps, or a much more expensive hardware swap.\n\nThe job was to add the missing axis without turning the project into a full replacement.",
-      solution: "I treated the retrofit as an add-on, not a rebuild. First came a scan-led fit map of the grip interior, then a base-side twist package that handled rotation, sensing, and routing without forcing a new grip body.\n\nThe added axis stayed on its own electrical path, so the original controls and the new yaw input did not need to share the same signal chain.",
-      outcome: "The finished build added analog yaw while letting the client keep the grip they already preferred.\n\nA REDACTED validated the full electrical interface before $300+ production hardware was involved.\n\nThe result was a narrower, more practical upgrade path than pedals or a full hardware swap.",
-      research: [
-        {
-          title: "Keep the Grip",
-          content: "The useful problem was not replacing a premium grip. It was keeping the grip the client already liked and only adding the missing yaw input."
-        },
-        {
-          title: "Add Only the Missing Axis",
-          content: "The project got smaller once the architecture got clearer: reuse a proven twist mechanism, add contactless sensing, and keep the new axis on its own interface."
-        },
-        {
-          title: "Validate the Risk Early",
-          content: "The high-risk part was the electrical interface, not the bench prototype. A low-cost emulator made it possible to prove wiring and axis behavior before touching expensive production hardware."
-        }
-      ],
-      process: [
-        {
-          title: "Reverse Engineering",
-          description: "The grip was scanned first because internal clearance around the shaft, connectors, and PCB was tighter than expected. That fit map defined where a twist axis could exist at all.",
-          image: archivedWireframe
-        },
-        {
-          title: "Mechanical Layout",
-          description: "A proven twist module handled the rotation feel. The custom work was the collar, interface parts, and tolerances that made the added axis fit cleanly at the base.",
-          image: archivedExploded
-        },
-        {
-          title: "System Integration",
-          description: "The added axis stayed on its own sensing and USB path. That kept the retrofit focused while the original control path stayed separate.",
-          image: archivedElectronics
-        }
-      ],
-      gallery: [
-        {
-          image: archivedFull,
-          caption: "Final assembly"
-        },
-        {
-          image: archivedLastSection1,
-          caption: "Integration detail"
-        },
-        {
-          image: archivedLastSection2,
-          caption: "Section detail"
-        }
-      ],
-      stats: [
-        { value: "$15", label: "Validation Rig" },
-        { value: "1", label: "Added REDACTED" },
-        { value: "0", label: "Pedals Required" },
-        { value: "3", label: "Integration Stages" }
-      ],
-      cmf: [
-        {
-          name: "Aluminum 6061-T6",
-          code: "Base-Side Machined Parts",
-          finish: "Matte Black Type II",
-          hex: "#111827"
-        },
-        {
-          name: "Hall Sensor + Magnet",
-          code: "Contactless Yaw Readout",
-          finish: "Low-Wear Sensing",
-          hex: "#B45309"
-        },
-        {
-          name: "Printed Interface Parts",
-          code: "Prototype Fit Checks",
-          finish: "Bench Validation",
-          hex: "#374151"
-        }
-      ]
-    }
-  },
   {
     id: 2,
     title: "Wolf",

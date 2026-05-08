@@ -44,6 +44,7 @@ export interface Project {
   description: string;
   details?: ProjectDetails;
   isNDA?: boolean;
+  isArchived?: boolean;
 }
 
 export interface Experience {

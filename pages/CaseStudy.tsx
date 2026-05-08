@@ -7,7 +7,6 @@ import type { Project } from '../types';
 import Navbar from '../components/Navbar';
 import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
-const ArchivedCaseStudy = React.lazy(() => import('./ArchivedCaseStudy'));
 const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
 const SealedRCBoatCaseStudy = React.lazy(() => import('./HydrofoilBoatCaseStudy'));
 
@@ -115,15 +114,6 @@ const CaseStudy: React.FC = () => {
     return <LockedCaseStudies />;
   }
 
-  if (id === '1') {
-    // Project-A has its own custom page
-    return (
-      <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
-        <ArchivedCaseStudy />
-      </React.Suspense>
-    );
-  }
-
   if (id === '2') {
     // Wolf has its own custom page
     return (
@@ -142,7 +132,7 @@ const CaseStudy: React.FC = () => {
     );
   }
 
-  const project = PROJECTS.find(p => p.id === Number(id));
+  const project = PROJECTS.find(p => p.id === Number(id) && !p.isArchived);
 
   if (!project) {
     return (

@@ -1,4 +1,3 @@
-import archivedCloseup from '../assets1/archived/closeup.png';
 import boatHero1 from '../assets1/boat/hero1.png';
 
 export type HomeProject = {
@@ -8,20 +7,14 @@ export type HomeProject = {
   image: string;
   description: string;
   isNDA?: boolean;
+  isArchived?: boolean;
   details?: {
     role?: string;
     challenge?: string;
   };
 };
 
-export const HOME_PROJECTS: HomeProject[] = [
-  {
-    id: 1,
-    title: 'archived Twist Axis',
-    category: 'Mechatronics',
-    image: archivedCloseup,
-    description: 'Added yaw to a premium archived grip so the client could keep the grip they liked without pedals or a full replacement.',
-  },
+const ALL_HOME_PROJECTS: HomeProject[] = [
   {
     id: 2,
     title: 'Wolf',
@@ -37,6 +30,8 @@ export const HOME_PROJECTS: HomeProject[] = [
     description: 'Printed hull, rotating shaft, zero ingress.',
   },
 ];
+
+export const HOME_PROJECTS: HomeProject[] = ALL_HOME_PROJECTS.filter((project) => !project.isArchived);
 
 export const getFooterProjects = (currentId: number): HomeProject[] =>
   HOME_PROJECTS.filter((project) => project.id !== currentId);

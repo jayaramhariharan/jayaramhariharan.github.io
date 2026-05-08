@@ -33,12 +33,12 @@ const NotFound: React.FC = () => {
             >
               Return Home
             </Link>
-            <Link 
-              to="/case-study/1" 
+            <Link
+              to="/case-study/2"
               data-cursor="nav"
               className="px-8 py-4 bg-gray-100 text-token-dark-green rounded-full font-medium hover:bg-gray-200 transition-colors w-full sm:w-auto"
             >
-              View Project-A
+              View Wolf
             </Link>
           </div>
 
@@ -51,13 +51,13 @@ const NotFound: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/case-study/1" className="hover:text-token-light-green transition-colors flex items-center gap-2" data-cursor="nav">
-                  <span className="w-2 h-2 rounded-full bg-token-light-green"></span> /case-study/1 (Project-A)
+                <Link to="/case-study/2" className="hover:text-token-light-green transition-colors flex items-center gap-2" data-cursor="nav">
+                  <span className="w-2 h-2 rounded-full bg-token-light-green"></span> /case-study/2 (Wolf)
                 </Link>
               </li>
               <li>
-                <Link to="/case-study/2" className="hover:text-token-light-green transition-colors flex items-center gap-2" data-cursor="nav">
-                  <span className="w-2 h-2 rounded-full bg-token-light-green"></span> /case-study/2 (Wolf)
+                <Link to="/case-study/3" className="hover:text-token-light-green transition-colors flex items-center gap-2" data-cursor="nav">
+                  <span className="w-2 h-2 rounded-full bg-token-light-green"></span> /case-study/3 (Sealed RC Boat)
                 </Link>
               </li>
             </ul>
