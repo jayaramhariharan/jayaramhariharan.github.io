@@ -1,4 +1,4 @@
-import boatHero1 from '../assets1/boat/hero1.png';
+﻿import boatHero1 from '../assets1/boat/hero1.webp';
 
 export type HomeProject = {
   id: number;

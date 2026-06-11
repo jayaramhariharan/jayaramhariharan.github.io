@@ -8,12 +8,12 @@ import { getFooterProjects } from '../lib/projectSummaries';
 import useScrollReveal from '../hooks/useScrollReveal';
 import CopyEmailButton from '../components/CopyEmailButton';
 
-import boatHero from '../assets1/boat/hero1.png';
-import boatBottom from '../assets1/boat/bottom.png';
-import boatFront from '../assets1/boat/front.png';
-import boatShape from '../assets1/boat/shape.png';
-import boatDraft from '../assets1/boat/draft.png';
-import boatExplorations from '../assets1/boat/explorations.png';
+import boatHero from '../assets1/boat/hero1.webp';
+import boatBottom from '../assets1/boat/bottom.webp';
+import boatFront from '../assets1/boat/front.webp';
+import boatShape from '../assets1/boat/shape.webp';
+import boatDraft from '../assets1/boat/draft.webp';
+import boatExplorations from '../assets1/boat/explorations.webp';
 
 type AspectImageProps = {
   src: string;

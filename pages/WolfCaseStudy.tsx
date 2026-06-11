@@ -9,13 +9,13 @@ import useScrollReveal from '../hooks/useScrollReveal';
 import CopyEmailButton from '../components/CopyEmailButton';
 
 const wolfImages = {
-  hero: '/case-studies/wolf/side.png',
-  heroMobile: '/case-studies/wolf/hero.png',
-  decision: '/case-studies/wolf/iso.png',
-  build: '/case-studies/wolf/top.png',
-  before: '/case-studies/wolf/no_wedge.png',
-  detail: '/case-studies/wolf/closeup_wedge.png',
-  after: '/case-studies/wolf/hero.png',
+  hero: '/case-studies/wolf/side.webp',
+  heroMobile: '/case-studies/wolf/hero.webp',
+  decision: '/case-studies/wolf/iso.webp',
+  build: '/case-studies/wolf/top.webp',
+  before: '/case-studies/wolf/no_wedge.webp',
+  detail: '/case-studies/wolf/closeup_wedge.webp',
+  after: '/case-studies/wolf/hero.webp',
 };
 
 const decisionPaths = [

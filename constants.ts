@@ -1,10 +1,10 @@
-import { Project, Experience, SocialLink, PhilosophyRule, PhilosophySetLogic } from './types';
-import boatHero from './assets1/boat/hero1.png';
-import boatBottom from './assets1/boat/bottom.png';
-import boatFront from './assets1/boat/front.png';
-import boatShape from './assets1/boat/shape.png';
-import boatDraft from './assets1/boat/draft.png';
-import boatExplorations from './assets1/boat/explorations.png';
+﻿import { Project, Experience, SocialLink, PhilosophyRule, PhilosophySetLogic } from './types';
+import boatHero from './assets1/boat/hero1.webp';
+import boatBottom from './assets1/boat/bottom.webp';
+import boatFront from './assets1/boat/front.webp';
+import boatShape from './assets1/boat/shape.webp';
+import boatDraft from './assets1/boat/draft.webp';
+import boatExplorations from './assets1/boat/explorations.webp';
 
 export const RESUME_URL = "https://www.dropbox.com/scl/fi/nqwj05anu7sacc1sv1u3e/jayaram_hariharan_resume.pdf?rlkey=i063teb8ush87fvuih8zpqgz2&st=rdgewb8a&dl=0";
 
@@ -13,7 +13,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     title: "Wolf",
     category: "Product Design",
-    image: "/case-studies/wolf/iso34th.png",
+    image: "/case-studies/wolf/iso34th.webp",
     description: "Designed and campaigned a battlebot that won the tournament with a low, impact-resistant chassis and a between-round wedge upgrade.",
     details: {
       client: "Propeller Technologies",
@@ -41,17 +41,17 @@ export const PROJECTS: Project[] = [
         {
           title: "Flat Pattern Engineering",
           description: "The chassis started as a full flat layout drawn directly into the sheet. Cut lines, bend radii, motor mounts, battery positions, and wiring paths were resolved before fabrication so the whole bot could be made in one mark-cut-bend pass.\n\nThe key decision was using fold geometry as structure. Short side walls reinforced the base plate, and the pattern stayed simple enough to manufacture without losing alignment.",
-          image: "/case-studies/wolf/top.png"
+          image: "/case-studies/wolf/top.webp"
         },
         {
           title: "Chassis Assembly",
           description: "Once the sheet came back from cutting and bending, the build moved into mechanical integration. The folded chassis was assembled first, then the rear-drive motors, battery pack, receiver, motor driver, and wiring were installed low inside the body.\n\nEverything was arranged for stability and impact survival. No welding, no redundant structure, and no loose routing that could fail during a hit.",
-          image: "/case-studies/wolf/internal_ghost.png"
+          image: "/case-studies/wolf/internal_ghost.webp"
         },
         {
           title: "Combat Optimization",
           description: "The opening rumble validated the chassis but exposed a contact problem: Wolf could push, yet it could not consistently get under opponents. That made the next decision clear.\n\nBetween rounds I designed a bolt-on wedge from leftover sheet material and mounted it to the existing chassis. It was a fast, constraint-aware upgrade that changed the way Wolf entered every fight and directly improved match control.",
-          image: "/case-studies/wolf/closeup_wedge.png"
+          image: "/case-studies/wolf/closeup_wedge.webp"
         }
       ],
       stats: [
@@ -62,15 +62,15 @@ export const PROJECTS: Project[] = [
       ],
       gallery: [
         {
-          image: "/case-studies/wolf/hero.png",
+          image: "/case-studies/wolf/hero.webp",
           caption: "Front view"
         },
         {
-          image: "/case-studies/wolf/iso34th.png",
+          image: "/case-studies/wolf/iso34th.webp",
           caption: "Three-quarter view"
         },
         {
-          image: "/case-studies/wolf/top.png",
+          image: "/case-studies/wolf/top.webp",
           caption: "Top view"
         }
       ],
@@ -108,12 +108,12 @@ export const PROJECTS: Project[] = [
       role: "Mechanical Design / Prototyping",
       techStack: ["CAD", "FDM PETG", "Epoxy Seal", "Marine Grease"],
       challenge: "27 parts, $207 BOM. The shaft spins at ~3000 RPM through a printed hull below the waterline. PLA floods in under 60 seconds. PETG buys time but still leaks without post-treatment.\n\nTwo leak paths: the rotating shaft penetration and the printed hull walls.",
-      solution: "Three-layer sealing stack. PETG as the substrate. Marine grease fills the shaft annulus — water must displace the entire column before reaching the rubber seal. Post-print epoxy closes layer-line porosity on all exterior surfaces.",
-      outcome: "Zero ingress through repeated full-throttle runs. Five infill tiers across 12 printed parts — mass allocated by failure consequence, not convenience.",
+      solution: "Three-layer sealing stack. PETG as the substrate. Marine grease fills the shaft annulus â€” water must displace the entire column before reaching the rubber seal. Post-print epoxy closes layer-line porosity on all exterior surfaces.",
+      outcome: "Zero ingress through repeated full-throttle runs. Five infill tiers across 12 printed parts â€” mass allocated by failure consequence, not convenience.",
       research: [
         {
           title: "Material",
-          content: "PLA floods in <60s. PETG buys time for the sealing stack. Material is not the waterproofing — it is the substrate."
+          content: "PLA floods in <60s. PETG buys time for the sealing stack. Material is not the waterproofing â€” it is the substrate."
         },
         {
           title: "Sealing Hierarchy",
@@ -137,7 +137,7 @@ export const PROJECTS: Project[] = [
         },
         {
           title: "Infill Tiering",
-          description: "Five tiers across 12 parts. Mass allocated by failure consequence — control arms at 100%, hull at 25%.",
+          description: "Five tiers across 12 parts. Mass allocated by failure consequence â€” control arms at 100%, hull at 25%.",
           image: boatShape
         }
       ],
