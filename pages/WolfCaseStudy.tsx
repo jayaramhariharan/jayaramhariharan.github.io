@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -64,7 +64,7 @@ const WolfCaseStudy: React.FC = () => {
       <Navbar />
       <main className="relative z-10 bg-[#fbfbfd]">
 
-        {/* ── Hero ── */}
+        {/* â”€â”€ Hero â”€â”€ */}
         <section
           className="relative my-2 mx-auto flex h-[95vh] w-[calc(100%-1rem)] items-center justify-center overflow-hidden bg-gray-100 md:my-4 md:w-[calc(100%-2rem)]"
           style={{ clipPath: 'inset(0 round 2.5rem)' }}
@@ -127,7 +127,7 @@ const WolfCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        {/* ── Meta bar ── */}
+        {/* â”€â”€ Meta bar â”€â”€ */}
         <section className="reveal mx-auto max-w-site px-8 py-24 md:px-16">
           <div className="grid grid-cols-2 gap-12 border-y border-gray-200/60 py-16 md:grid-cols-4">
             <div className="flex flex-col gap-3">
@@ -159,7 +159,7 @@ const WolfCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        {/* ── 01: The Constraint ── */}
+        {/* â”€â”€ 01: The Constraint â”€â”€ */}
         <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
             <div className="relative lg:col-span-5">
@@ -194,7 +194,7 @@ const WolfCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        {/* ── Pull quote ── */}
+        {/* â”€â”€ Pull quote â”€â”€ */}
         <section className="mx-auto max-w-site overflow-hidden px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mx-auto max-w-5xl text-center">
             <p className="font-display text-3xl font-medium leading-snug tracking-tight text-[#1d1d1f] md:text-4xl">
@@ -203,7 +203,7 @@ const WolfCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        {/* ── 02: Decision Path ── */}
+        {/* â”€â”€ 02: Decision Path â”€â”€ */}
         <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-24">
             <div className="relative lg:col-span-4">
@@ -254,7 +254,7 @@ const WolfCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        {/* ── 03: Build Gallery ── */}
+        {/* â”€â”€ 03: Build Gallery â”€â”€ */}
         <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mb-20 flex flex-col items-start justify-between md:flex-row md:items-end">
             <div>
@@ -290,7 +290,7 @@ const WolfCaseStudy: React.FC = () => {
           </div>
         </section>
 
-        {/* ── 04: Results ── */}
+        {/* â”€â”€ 04: Results â”€â”€ */}
         <section className="mx-auto max-w-site px-8 py-24 md:px-16 md:py-32">
           <div className="reveal mb-20 flex flex-col items-start justify-between md:flex-row md:items-end">
             <div>
@@ -369,7 +369,7 @@ const WolfCaseStudy: React.FC = () => {
             <a href="https://www.linkedin.com/in/jayaramh" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
               LinkedIn
             </a>
-            <a href="https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
+            <a href="https://www.dropbox.com/scl/fi/nqwj05anu7sacc1sv1u3e/jayaram_hariharan_resume.pdf?rlkey=i063teb8ush87fvuih8zpqgz2&st=rdgewb8a&dl=0" target="_blank" rel="noopener noreferrer" data-cursor="nav" className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]">
               Resume
             </a>
             <CopyEmailButton className="rounded-full px-5 py-2.5 font-medium transition-colors hover:text-[#1d1d1f]" />

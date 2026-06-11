@@ -30,7 +30,7 @@ const WorkGrid: React.FC = () => {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-16 reveal">
         <h2 className="font-serif text-5xl md:text-7xl text-token-dark-green tracking-tight">Selected work</h2>
         <p className="max-w-md font-sans text-sm md:text-base font-light leading-relaxed text-gray-500 md:text-right">
-          Three builds where the hardest constraint decided what the design had to do.
+          Builds where the hardest constraint decided what the design had to do. More writeups on the way.
         </p>
       </div>
 

@@ -6,7 +6,7 @@ import boatShape from './assets1/boat/shape.png';
 import boatDraft from './assets1/boat/draft.png';
 import boatExplorations from './assets1/boat/explorations.png';
 
-export const RESUME_URL = "https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0";
+export const RESUME_URL = "https://www.dropbox.com/scl/fi/nqwj05anu7sacc1sv1u3e/jayaram_hariharan_resume.pdf?rlkey=i063teb8ush87fvuih8zpqgz2&st=rdgewb8a&dl=0";
 
 export const PROJECTS: Project[] = [
   {
@@ -193,7 +193,7 @@ export const EXPERIENCE: Experience[] = [
   {
     id: 1,
     company: "Afterconcepts",
-    role: "Product Design Engineer",
+    role: "Senior Product Design Engineer",
     period: "2024 - Present",
     description: "Mechanical design across healthcare, consumer, mobility, and industrial products, from concept work through CAD and prototypes.",
     details: [

@@ -28,3 +28,6 @@ dist-ssr
 .claude
 blueprint_bundle.js
 portfolio_content_system
+
+HANDOFF.md
+SNAPSHOT.md

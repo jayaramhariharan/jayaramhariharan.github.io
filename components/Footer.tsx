@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_minmax(220px,0.7fr)] gap-12 mb-20 md:mb-28 items-end">
           <div className="flex flex-col items-start">
             <p className="mb-4 font-sans text-[11px] uppercase tracking-[0.15em] text-token-text-gray">
-              Need help with a product?
+              WANT TO WORK TOGETHER?
             </p>
             <a href="mailto:jayaram.h1501@gmail.com" className="group inline-flex items-center gap-2 -ml-1 text-left" data-cursor="nav">
               <h2 className="font-serif text-4xl leading-tight text-token-dark-green sm:text-5xl md:text-7xl">
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200 text-gray-500 text-sm font-sans">
           <p>Mechanical design portfolio.</p>
-          <p>&copy; 2026 Jayaram H</p>
+          <p>© 2026 Jayaram H</p>
         </div>
       </div>
 

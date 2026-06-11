@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
           <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-3 md:gap-8">
             <div>
               <div className="text-[10px] font-sans uppercase tracking-[0.18em] text-token-text-gray mb-1">Current Role</div>
-              <p className="text-sm font-sans text-token-dark-green">Product Design Engineer at Afterconcepts</p>
+              <p className="text-sm font-sans text-token-dark-green">Senior Product Design Engineer at Afterconcepts</p>
             </div>
             <div>
               <div className="text-[10px] font-sans uppercase tracking-[0.18em] text-token-text-gray mb-1">Industries</div>
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
           </div>
 
           <a
-            href="https://www.dropbox.com/scl/fi/r8oparg6h84q7x3yytzsh/jayaram_hariharan-resume.pdf?rlkey=3c3uxr5smrp50httf6x7gc9f1&st=zx8a5fm7&dl=0"
+            href="https://www.dropbox.com/scl/fi/nqwj05anu7sacc1sv1u3e/jayaram_hariharan_resume.pdf?rlkey=i063teb8ush87fvuih8zpqgz2&st=rdgewb8a&dl=0"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[11px] font-sans text-token-text-gray uppercase tracking-[0.15em] hover:text-black transition-colors flex items-center gap-1 group"

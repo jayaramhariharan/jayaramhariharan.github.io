@@ -234,7 +234,7 @@ const AboutSection: React.FC = () => {
             </p>
 
             <p className="font-sans text-lg md:text-xl leading-8 md:leading-9 text-token-dark-green">
-              I like doing things I&apos;m not good at yet, because that is how I learn.
+              I take on work outside my comfort zone — that&apos;s where the useful lessons are.
             </p>
           </div>
 
