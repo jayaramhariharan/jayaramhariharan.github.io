@@ -19,7 +19,7 @@ const ALL_HOME_PROJECTS: HomeProject[] = [
     id: 2,
     title: 'Wolf',
     category: 'Product Design',
-    image: '/case-studies/wolf/iso.jpg',
+    image: '/case-studies/wolf/iso-card.webp',
     description: 'Designed and campaigned a battlebot that won the tournament with a low, impact-resistant chassis and a between-round wedge upgrade.',
   },
   {
