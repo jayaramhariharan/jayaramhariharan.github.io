@@ -4,10 +4,6 @@ import { HOME_PROJECTS } from '../lib/projectSummaries';
 import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const homepageCopy: Record<number, { hook: string; proof: string }> = {
-  1: {
-    hook: 'Kept the archived grip the client already liked and added yaw without pedals or a full replacement.',
-    proof: 'REDACTED | Added REDACTED'
-  },
   2: {
     hook: 'Designed a combat robot, changed the front geometry between rounds, and turned that update into a winning build.',
     proof: 'Tournament winner | Best Designer'

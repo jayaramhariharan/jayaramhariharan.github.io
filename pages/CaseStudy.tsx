@@ -9,7 +9,6 @@ import { areCaseStudiesUnlocked } from '../lib/caseStudyAccess';
 
 const WolfCaseStudy = React.lazy(() => import('./WolfCaseStudy'));
 const SealedRCBoatCaseStudy = React.lazy(() => import('./HydrofoilBoatCaseStudy'));
-const ArchivedCaseStudy = React.lazy(() => import('./ArchivedCaseStudy'));
 
 const DefaultCaseStudy: React.FC<{ project: Project }> = ({ project }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -113,14 +112,6 @@ const CaseStudy: React.FC = () => {
 
   if (!areCaseStudiesUnlocked()) {
     return <LockedCaseStudies />;
-  }
-
-  if (id === '1') {
-    return (
-      <React.Suspense fallback={<div className="min-h-screen bg-[#fbfbfd]" />}>
-        <ArchivedCaseStudy />
-      </React.Suspense>
-    );
   }
 
   if (id === '2') {
